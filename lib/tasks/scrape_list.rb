@@ -2,15 +2,13 @@ require 'open-uri'
 
 class ScrapeList
 
-  attr_reader :drama_list
-
   def initialize
     url = "http://asianwiki.com/index.php?title=Category:TV-Dramas&from=0"
     @doc = Nokogiri::HTML(open(url))
   end
 
   def scrape_drama_list
-    @doc.search('table ul > li').map { |span| span.inner_text}
+    @doc.search('table ul > li').map { |element| element.inner_text}
   end
 
   def scrape_drama_url
