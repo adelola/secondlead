@@ -5,6 +5,7 @@ class CreateDramas < ActiveRecord::Migration
       t.string  :non_english_namr
       t.text    :plot
       t.integer :episode_count
+      t.string  :release_date
       t.string  :url
       t.string  :language
       t.string  :image_url
