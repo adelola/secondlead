@@ -1,6 +1,6 @@
 require 'open-uri'
 
-class Scraper
+class ScrapeList
 
   attr_reader :drama_list
 

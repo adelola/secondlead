@@ -18,10 +18,13 @@ ActiveRecord::Schema.define(version: 20150829191150) do
 
   create_table "dramas", force: :cascade do |t|
     t.string   "name"
-    t.text     "description"
+    t.string   "non_english_name"
+    t.text     "plot"
     t.string   "url"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "language"
+    t.string   "image_url"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
 end
