@@ -5,12 +5,9 @@ namespace :db do
 
   desc "Import data from scraping Asian Drama Wiki"
   task :import_db => :environment do
-    ScrapeList.new.add_drama_to_db
-
-    count = Drama.count
-
-    count.times do |num|
-      ScrapeDramaContent.new(num + 1)
+    urls = ScrapeList.drama_url
+    urls.each do |url|
+      ScrapeDramaContent.new(url)
     end
   end
 end
