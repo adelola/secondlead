@@ -14,6 +14,7 @@ gem 'coveralls', require: false
 gem 'rails_12factor', group: :production
 gem 'materialize-sass'
 gem 'nokogiri'
+gem 'paperclip'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'

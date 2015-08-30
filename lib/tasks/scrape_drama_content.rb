@@ -2,10 +2,17 @@ require 'open-uri'
 
 class ScrapeDramaContent
 
-  def initialize(id)
-    @drama = Drama.find(id)
-    @doc   = Nokogiri::HTML(open(@drama.url))
+  def initialize(url)
+    @doc   = Nokogiri::HTML(open(url))
     add_content_to_db
+  end
+
+  def scrape_name
+    if @doc.search('#mw-content-text ul > li:nth-child(1)').map { |element| element.inner_text }[1] != nil
+      @doc.search('#mw-content-text ul > li:nth-child(1)').map { |element| element.inner_text }[1].gsub(/( Drama: )/, "").chomp
+    else
+      nil
+    end
   end
 
   def scrape_non_english_name
@@ -51,8 +58,13 @@ class ScrapeDramaContent
       nil
     end
   end
-
+e
   def add_content_to_db
+    if scrape_image_url != nil
+      @drama = Drama.create!(name: scrape_name, poster: URI.parse(Drama.first.image_url))
+    else
+      @drama.create!(name: scrape_name)
+    end
     @drama.update_attributes(
       non_english_name: scrape_non_english_name,
       episode_count:    scrape_episode_count,
