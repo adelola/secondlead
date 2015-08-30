@@ -8,55 +8,43 @@ class ScrapeDramaContent
   end
 
   def scrape_name
-    if @doc.search('.article > h1').map { |element| element.inner_text } != nil
-      @doc.search('.article > h1').map { |element| element.inner_text }
-    else
-      nil
-    end
+    @doc.search('.info-card h3 > span').map { |element| element.inner_text }[0]
   end
 
   def scrape_non_english_name
-    @doc.search('#mw-content-text ul > li:nth-child(3)').map { |element| element.inner_text }[1].gsub(/[a-z: \\\n]/i, "")
+    @doc.search('.info-card h3 > span').map { |element| element.inner_text }[1].gsub(/[()]/, "")
   end
 
   def scrape_episode_count
-    if @doc.search('#mw-content-text ul > li:nth-child(7)').map { |element| element.inner_text }[0].to_i != 0
-      @doc.search('#mw-content-text ul > li:nth-child(7)').map { |element| element.inner_text }[0].gsub(/[a-z: \\\n]/i, "").to_i
-    else
-      nil
-    end
+    @doc.search('.quickview').map { |element| element.inner_text }[0].gsub(/[a-z\-|]/i, "").slice(2..3)
   end
 
   def scrape_release_date
-    if @doc.search('#mw-content-text ul > li:nth-child(8)').map { |element| element.inner_text }[0] != nil
-      @doc.search('#mw-content-text ul > li:nth-child(8)').map { |element| element.inner_text }[0].gsub(/(Release Date: )/, "").chomp
-    else
-      nil
-    end
-  end
-
-  def scrape_language
-    if @doc.search('#mw-content-text ul > li:nth-child(10)').map { |element| element.inner_text }[0] != nil
-      @doc.search('#mw-content-text ul > li:nth-child(10)').map { |element| element.inner_text }[0].gsub(/(Language: )/, "").chomp
-    else
-      nil
-    end
+    @doc.search('.quickview').map { |element| element.inner_text }[0].gsub(/[a-z\-|]/i, "").slice(-4..-1)
   end
 
   def scrape_plot
-    if @doc.search('#mw-content-text > p').map { |element| element.inner_text }[3] != nil
-      @doc.search('#mw-content-text > p').map { |element| element.inner_text }[3].chomp
+    if @doc.search('.short-descrip > p').map { |element| element.inner_text } != nil
+      @doc.search('.short-descrip > p').map { |element| element.inner_text }[0].strip != nil
     else
       nil
     end
   end
 
   def scrape_image_url
-    if @doc.search('.thumbinner a > img').map { |element| element['src'] }[0] != nil
-    "http://asianwiki.com" + @doc.search('.thumbinner a > img').map { |element| element['src'] }[0]
+    if @doc.search('.series-thumbnail > img').map { |element| element['src'] }[0] != nil
+    "http:" + @doc.search('.thumbinner a > img').map { |element| element['src'] }[0]
     else
       nil
     end
+  end
+
+  def scrape_cast
+    @doc.search('.actor-info h4 > a').map { |element| element.inner_text }
+  end
+
+  def scrape_genre
+    @doc.search('.theme-list li > a').map { |element| element.inner_text }
   end
 
   def add_content_to_db
@@ -69,7 +57,6 @@ class ScrapeDramaContent
       non_english_name: scrape_non_english_name,
       episode_count:    scrape_episode_count,
       release_date:     scrape_release_date,
-      language:         scrape_language,
       plot:             scrape_plot
     )
   end
