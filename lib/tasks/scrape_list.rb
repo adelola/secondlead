@@ -8,11 +8,11 @@ class ScrapeList
   end
 
   def scrape_drama_list
-    @doc.search('table ul > li').map { |element| element.inner_text}
+    @doc.search('table ul > li').map { |element| element.inner_text }
   end
 
   def scrape_drama_url
-    @doc.search('table ul > li a').map { |element| element['href']}
+    @doc.search('table ul > li a').map { |element| element['href'] }
   end
 
   def add_drama_to_db
