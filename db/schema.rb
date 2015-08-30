@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20150830182133) do
 
   create_table "drama_casts", force: :cascade do |t|
     t.integer  "drama_id"
-    t.integer  "genre_id"
+    t.integer  "cast_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
