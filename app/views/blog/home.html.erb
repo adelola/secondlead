@@ -1,0 +1,3 @@
+<%= render partial: "blog/post", collection: @recent_posts %>
+
+<%= render partial: "blog/pagers", locals: {next_page: @next_page, previous_page: @previous_page} %>

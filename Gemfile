@@ -15,6 +15,7 @@ gem 'rails_12factor', group: :production
 gem 'materialize-sass'
 gem 'nokogiri'
 gem 'paperclip'
+gem 'buttercms'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'
@@ -26,3 +27,6 @@ group :development, :test do
   gem 'faker'
   gem 'pry'
 end
+
+
+

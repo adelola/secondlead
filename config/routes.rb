@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+
+  mount Buttercms::Engine => '/blog'
+
   resources :genres
   resources :casts
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

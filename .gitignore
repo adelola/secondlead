@@ -15,4 +15,6 @@
 /log/*
 !/log/.keep
 /tmp
+.env
 /public/system/dramas/posters
+

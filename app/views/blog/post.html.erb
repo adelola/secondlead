@@ -1,0 +1,76 @@
+<!--
+For reference, @post has the following attributes:
+
+"url": "https://buttercms.com/blog/the-state-of-company-blogs",
+"created": "05/16/2015",
+"published": "05/16/2015",
+"author": {
+    "first_name": "Butter",
+    "last_name": "Cms",
+    "email": "buttercms@example.com",
+    "slug": "butter-cms"
+},
+"categories": [
+    {
+    "name": "blogs",
+    "slug": "blogs"
+    },
+    {
+    "name": "butter",
+    "slug": "butter"
+    }
+],
+"slug": "the-state-of-company-blogs",
+"title": "The State of Company Blogs",
+"featured_image": "http://www.example.com/image.png",
+"body": "<h3>The problem</h3><p>Countless people and essentially every...</p>",
+"summary": <h3>The problem</h3><p>Countless people and essentially...</p>,
+"status": "published"
+-->
+
+<div class="post-preview">
+    <h2 class="post-title">
+        <%= @post['title'] %>
+    </h2>
+
+    <p class="post-meta">
+    Posted by 
+    <%= link_to("#{@post['author']['first_name']} #{@post['author']['last_name']}", 
+        blog_author_path(:author_slug => @post['author']['slug'])) %>
+     on 
+     <%= @post['published'] %>
+
+    <% @post['categories'].each do |category| %>
+        <span class="label label-default">
+            <%= link_to(category['name'], blog_category_path(:category_slug => category['slug'])) %>
+        </span>
+    <% end %>
+    </p>
+
+    <p class="post-body">
+        <%= @post['body'].html_safe %>
+    </p>
+</div>
+
+
+<!-- 
+// For post comments, we recommend https://disqus.com/ 
+// Create a Disqus account and paste your embed code below.
+// Here's a sample
+<hr>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'XXXXXXXX';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+-->
+
+</div>
