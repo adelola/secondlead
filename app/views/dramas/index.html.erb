@@ -1,0 +1,12 @@
+<% @dramas.each do |drama| %>
+  <ul class="img-hover effect">
+    <li>
+       <h2 class="zero">
+        <%= drama.name %>
+        <span>&#40;<%= drama.release_date %>&#41;<span>
+       </h2>
+       <p class="zero"><%= drama.non_english_name %></p>
+    </li>
+    <li><%= image_tag drama.poster.url(:medium), class: 'top' %></li>
+  </ul>
+<% end %>
