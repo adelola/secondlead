@@ -41,4 +41,4 @@ use ```rspec```
 
 ## Contributors
 * Lola Adekunle
-* Huy Hyunh
+* Huy Huynh
