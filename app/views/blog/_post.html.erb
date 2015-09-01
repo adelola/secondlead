@@ -1,0 +1,22 @@
+<div class="post-preview">
+  <h2 class="post-title">
+    <%= link_to(post['title'], blog_post_path(:slug => post['slug'])) %>
+  </h2>
+
+  <p class="post-meta">
+    Posted by 
+    <%= link_to("#{post['author']['first_name']} #{post['author']['last_name']}", blog_author_path(:author_slug => post['author']['slug'])) %>
+    on <%= post['published'] %>
+
+    <% post['categories'].each do |category| %>
+    <span class="label label-default">
+    <%= link_to(category['name'], blog_category_path(:category_slug => category['slug'])) %>
+    </span>
+    <% end %>
+  </p>
+
+  <p class="post-summary">
+      <%= post['summary'] %>
+  </p>
+</div>
+<hr>

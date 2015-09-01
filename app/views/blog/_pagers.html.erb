@@ -1,0 +1,13 @@
+<ul class="pager">
+  <% if next_page %>
+  <li class="next">
+    <%= link_to("&larr; Older Posts".html_safe, archive_path(:page => next_page)) %>
+  </li>
+  <% end %>
+
+  <% if previous_page %>
+  <li class="previous">
+    <%= link_to("Newer Posts &rarr;".html_safe, archive_path(:page => previous_page)) %>
+  </li>
+  <% end %>
+</ul>
