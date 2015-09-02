@@ -21,6 +21,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'rspec-rails'
+  gem 'rspec-collection_matchers'
   gem "factory_girl_rails", "~> 4.0"
   gem "database_cleaner"
   gem 'capybara'
