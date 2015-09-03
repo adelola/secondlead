@@ -1,6 +1,6 @@
 .grid {
 	padding: 20px 20px 100px 20px;
-	max-width: 1300px;
+	/*max-width: 1400px;*/
 	margin: 0 auto;
 	list-style: none;
 	text-align: center;
@@ -30,7 +30,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	padding: 20px;
+	padding: 10px;
 	background: #2c3f52;
 	color: #ed4e6e;
 }
@@ -39,6 +39,10 @@
 	margin: 0;
 	padding: 0;
 	color: #fff;
+}
+
+.grid figcaption span {
+	padding-right: 30px;
 }
 
 .grid figcaption a {
@@ -133,10 +137,11 @@
 	-moz-transform: translateY(-50px);
 	-ms-transform: translateY(-50px);
 	transform: translateY(-50px);
+	opacity: 0.6;
 }
 
 .cs-style-3 figcaption {
-	height: 100px;
+	height: 85px;
 	width: 100%;
 	top: auto;
 	bottom: 0;
@@ -164,7 +169,7 @@
 
 .cs-style-3 figcaption a {
 	position: absolute;
-	bottom: 20px;
+	bottom: 13px;
 	right: 20px;
 }
 

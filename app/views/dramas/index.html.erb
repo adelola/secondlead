@@ -1,5 +1,5 @@
 <section class="browse-dramas">
-  <ul class="grid cs-style-3">
+  <ul class="grid cs-style-4">
     <% @dramas.each do |drama| %>
       <li>
         <figure>
@@ -10,9 +10,23 @@
               &#40;<%= drama.release_date %>&#41;
             </h3>
             <span><%= truncate drama.plot, length: 85 %></span>
+            <%= link_to 'See more', "#" %>
           </figcaption>
         </figure>
       </li>
     <% end %>
   </ul>
 </section>
+
+<ul class="grid cs-style-4">
+  <li>
+    <figure>
+      <div><%= image_tag @dramas.first.poster.url(:original) %></div>
+      <figcaption>
+        <h3>Safari</h3>
+        <span>Jacob Cummings</span>
+        <a href="http://dribbble.com/shots/1116775-Safari">Take a look</a>
+      </figcaption>
+    </figure>
+  </li>
+</ul>
