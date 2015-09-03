@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  
+
   <head>
     <title>Second Lead</title>
     <!--Let browser know website is optimized for mobile-->
@@ -13,19 +13,19 @@
   <body>
     <nav>
        <div class="nav-wrapper">
-        <div class="row">
-        <div class="col s12">
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <% if logged_in? %>
-        <li><%= link_to "Log Out", sessions_path, :method => :delete %></li>
-        <% else %>
-          <li><a href="<%= new_user_path %>">Sign Up</a></li>
-          <li><a href="<%= new_session_path %>">Log In</a></li>
-        <% end %>
-        </ul>
+         <div class="row">
+           <div class="col s12">
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <% if logged_in? %>
+                  <li><%= link_to "Log Out", sessions_path, :method => :delete %></li>
+                <% else %>
+                  <li><a href="<%= new_user_path %>">Sign Up</a></li>
+                  <li><a href="<%= new_session_path %>">Log In</a></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
         </div>
-        </div>
-        </div>   	
     </nav>
 
     <%= yield %>

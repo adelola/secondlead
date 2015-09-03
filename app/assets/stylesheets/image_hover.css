@@ -1,0 +1,59 @@
+/*temp styling*/
+
+html {
+    background-color: #EEEEEE;
+    color: #515151;
+}
+
+.img-hover {
+    padding: 0;
+    list-style-type: none;
+}
+
+.demo li {
+    list-style-type: none;
+}
+
+.img-hover {
+    position:relative;
+    width:300px;
+    height:172px;
+    overflow:hidden;
+    float:left;
+    margin-right:20px;
+    background-color:rgba(81,81,81,0.9)
+}
+.img-hover p,.img-hover h2 {
+    color:#fff;
+    padding:5px;
+    left:12px;
+    top:5px;
+    position:relative;
+    font-weight: normal;
+}
+.img-hover p {
+    font-size:0.9em;
+    line-height:18px;
+    margin:0
+}
+.img-hover h2 {
+    font-size:1.3em;
+    line-height:24px;
+    margin:0;
+}
+.effect img {
+    position:absolute;
+    left:0;
+    bottom:0;
+    cursor:pointer;
+    margin: 0;
+    transition:bottom .3s ease-in-out
+}
+.effect img.top:hover {
+    bottom:-52px;
+    padding-top:100px
+}
+h2.zero,p.zero {
+    margin:0;
+    padding:0
+}
