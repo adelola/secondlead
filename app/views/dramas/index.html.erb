@@ -1,5 +1,9 @@
+<section class="genres">
+  <%= link_to 'See more', "#" %>
+</section>
+
 <section class="browse-dramas">
-  <ul class="grid cs-style-4">
+  <ul class="grid cs-style-3">
     <% @dramas.each do |drama| %>
       <li>
         <figure>
@@ -17,16 +21,3 @@
     <% end %>
   </ul>
 </section>
-
-<ul class="grid cs-style-4">
-  <li>
-    <figure>
-      <div><%= image_tag @dramas.first.poster.url(:original) %></div>
-      <figcaption>
-        <h3>Safari</h3>
-        <span>Jacob Cummings</span>
-        <a href="http://dribbble.com/shots/1116775-Safari">Take a look</a>
-      </figcaption>
-    </figure>
-  </li>
-</ul>
