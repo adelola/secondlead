@@ -6,7 +6,8 @@ Rails.application.routes.draw do
 
   resources :genres
   resources :casts
-  resources :sessions, :only => [:new, :create, :destroy]
+  resources :sessions, :only => [:new, :create]
+  delete '/sessions' => 'sessions#destroy'
   resources :users, :only => [:show, :new, :create,:edit, :update, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
