@@ -1,7 +1,3 @@
-<section class="genres">
-  <%= link_to 'See more', "#" %>
-</section>
-
 <section class="browse-dramas">
   <ul class="grid cs-style-3">
     <% @dramas.each do |drama| %>
@@ -13,8 +9,8 @@
               <%= drama.name %>
               &#40;<%= drama.release_date %>&#41;
             </h3>
-            <span><%= truncate drama.plot, length: 85 %></span>
-            <%= link_to 'See more', "#" %>
+            <span><%= truncate drama.plot, length: 100s %></span>
+            <%= link_to raw("<strong>+</strong> to watched list"), "#", class: 'add-to-list', title: 'add this drama to your watched list' %>
           </figcaption>
         </figure>
       </li>

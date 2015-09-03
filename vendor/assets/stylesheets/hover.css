@@ -167,7 +167,14 @@
 .cs-style-3 figcaption a {
 	position: absolute;
 	bottom: 11px;
-	right: 0;
+	right: -100px;
+	transition: 0.4s;
+}
+
+.cs-style-3 figcaption a:hover {
+	position: absolute;
+	bottom: 11px;
+	right: 0px;
 }
 
 /* Caption Style 4 */
