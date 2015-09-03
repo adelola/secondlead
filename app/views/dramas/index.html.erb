@@ -1,12 +1,18 @@
-<% @dramas.each do |drama| %>
-  <ul class="img-hover effect">
-    <li>
-       <h2 class="zero">
-        <%= drama.name %>
-        <span>&#40;<%= drama.release_date %>&#41;<span>
-       </h2>
-       <p class="zero"><%= drama.non_english_name %></p>
-    </li>
-    <li><%= image_tag drama.poster.url(:medium), class: 'top' %></li>
+<section class="browse-dramas">
+  <ul class="grid cs-style-3">
+    <% @dramas.each do |drama| %>
+      <li>
+        <figure>
+          <%= image_tag drama.poster.url(:original) %>
+          <figcaption>
+            <h3>
+              <%= drama.name %>
+              &#40;<%= drama.release_date %>&#41;
+            </h3>
+            <span><%= truncate drama.plot, length: 85 %></span>
+          </figcaption>
+        </figure>
+      </li>
+    <% end %>
   </ul>
-<% end %>
+</section>
