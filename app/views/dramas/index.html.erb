@@ -1,19 +1,48 @@
 <section class="browse-dramas">
   <ul class="grid cs-style-3">
-    <% @dramas.each do |drama| %>
-      <li>
-        <figure>
-          <%= image_tag drama.poster.url(:original) %>
-          <figcaption>
-            <h3>
-              <%= drama.name %>
-              &#40;<%= drama.release_date %>&#41;
-            </h3>
-            <span><%= truncate drama.plot, length: 100s %></span>
-            <%= link_to raw("<strong>+</strong> to watched list"), "#", class: 'add-to-list', title: 'add this drama to your watched list' %>
-          </figcaption>
-        </figure>
-      </li>
+    <div class="layout">
+      <div id="freewall" class="free-wall">
+        <% @dramas.each do |drama| %>
+        <div class='cell' style='width: 380px; height: 250px;' data-handle=".handle">
+          <div class='cover'>
+            <div class='handle'>Drag item handle</div>
+          <li>
+            <figure>
+              <%= image_tag drama.poster.url(:original) %>
+              <figcaption>
+                <h3>
+                  <%= drama.name %>
+                  &#40;<%= drama.release_date %>&#41;
+                </h3>
+                <span><%= truncate drama.plot, length: 100 %></span>
+                <%= link_to raw("<strong>+</strong> to watched list"), "#", class: 'add-to-list', title: 'add this drama to your watched list' %>
+              </figcaption>
+            </figure>
+          </li>
+         </div>
+      </div>
     <% end %>
+      </div>
+    </div>
   </ul>
 </section>
+
+<script type="text/javascript">
+  var wall = new Freewall("#freewall");
+  wall.reset({
+    draggable: true,
+    selector: '.cell',
+    animate: true,
+    cellW: 380,
+    cellH: 250,
+    onResize: function() {
+      wall.refresh();
+    },
+    onBlockMove: function() {
+      console.log(this);
+    }
+  });
+  wall.fitWidth();
+  // for scroll bar appear;
+  $(window).trigger("resize");
+</script>
