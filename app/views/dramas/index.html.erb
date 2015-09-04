@@ -9,7 +9,7 @@
               <%= drama.name %>
               &#40;<%= drama.release_date %>&#41;
             </h3>
-            <span><%= truncate drama.plot, length: 100s %></span>
+            <span><%= truncate drama.plot, length: 100 %></span>
             <%= link_to raw("<strong>+</strong> to watched list"), "#", class: 'add-to-list', title: 'add this drama to your watched list' %>
           </figcaption>
         </figure>
