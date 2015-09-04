@@ -1,32 +1,29 @@
 <section class="browse-dramas">
   <ul class="grid cs-style-3">
-
-<div class="layout">
-  <div id="freewall" class="free-wall">
-
-    <% @dramas.each do |drama| %>
-    <div class='cell' style='width: 380px; height: 230px;' data-handle=".handle">
-      <div class='cover'>
-        <div class='handle'>Drag item handle</div>
-
-      <li>
-        <figure>
-          <%= image_tag drama.poster.url(:original) %>
-          <figcaption>
-            <h3>
-              <%= drama.name %>
-              &#40;<%= drama.release_date %>&#41;
-            </h3>
-            <span><%= truncate drama.plot, length: 100 %></span>
-            <%= link_to raw("<strong>+</strong> to watched list"), "#", class: 'add-to-list', title: 'add this drama to your watched list' %>
-          </figcaption>
-        </figure>
-      </li>
-            </div>
-    </div>
+    <div class="layout">
+      <div id="freewall" class="free-wall">
+        <% @dramas.each do |drama| %>
+        <div class='cell' style='width: 380px; height: 250px;' data-handle=".handle">
+          <div class='cover'>
+            <div class='handle'>Drag item handle</div>
+          <li>
+            <figure>
+              <%= image_tag drama.poster.url(:original) %>
+              <figcaption>
+                <h3>
+                  <%= drama.name %>
+                  &#40;<%= drama.release_date %>&#41;
+                </h3>
+                <span><%= truncate drama.plot, length: 100 %></span>
+                <%= link_to raw("<strong>+</strong> to watched list"), "#", class: 'add-to-list', title: 'add this drama to your watched list' %>
+              </figcaption>
+            </figure>
+          </li>
+         </div>
+      </div>
     <% end %>
       </div>
-</div>
+    </div>
   </ul>
 </section>
 
@@ -36,8 +33,8 @@
     draggable: true,
     selector: '.cell',
     animate: true,
-    cellW: 150,
-    cellH: 150,
+    cellW: 380,
+    cellH: 250,
     onResize: function() {
       wall.refresh();
     },
