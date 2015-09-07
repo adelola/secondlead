@@ -23,6 +23,8 @@
 //= require_tree ./angular-app/controllers
 //= require modernizr.custom
 //= require toucheffects
+//= require angular-dragdrop
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require_tree .
