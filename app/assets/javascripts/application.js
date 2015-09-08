@@ -9,7 +9,10 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+//= require jquery
+//= require jquery_ujs
+//= require jquery-ui
+
 //= require angular
 //= require angular-rails-templates
 //= require angular-app/app
@@ -24,7 +27,5 @@
 //= require modernizr.custom
 //= require toucheffects
 //= require angular-dragdrop
-//= require jquery
-//= require jquery_ujs
-//= require jquery-ui
+
 //= require_tree .
