@@ -1,0 +1,9 @@
+<div>
+ <h1><%= @list.name %></h1>
+ <h2><%= @list.description %></h2>
+ 	<ul>
+ 	<% @list.dramas.each do |drama| %>
+ 	  <li> <%= link_to drama.name, drama_path(drama) %> </li>
+  	<% end %>
+ 	</ul>
+</div>
