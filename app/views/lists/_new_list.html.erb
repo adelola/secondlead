@@ -1,0 +1,13 @@
+<div>
+  <%= form_for(@list) do |f| %>
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :description%>
+      <%= f.text_field :description %>
+     </div>
+        <%= f.submit "Create new list", class: "btn btn-primary" %>
+    <% end %>
+</div>
