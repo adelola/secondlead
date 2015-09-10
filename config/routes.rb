@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'static_pages#index'
   get 'example' => 'example#index'
   mount Buttercms::Engine => '/blog'
+  resources :lists, :only => [:show, :new, :create, :edit, :update, :destroy]
   resources :genres
   resources :casts
   resources :sessions, :only => [:new, :create]
