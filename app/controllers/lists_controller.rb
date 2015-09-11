@@ -1,6 +1,11 @@
 class ListsController < ApplicationController
   before_action :find_list, only: [:show, :edit, :update, :destroy]
   
+  def index
+  	find_user
+  	@lists = @user.lists
+  end
+  
   def show
   end
 
@@ -38,9 +43,14 @@ class ListsController < ApplicationController
 
 
   private
+  
+  def find_user
+  	@user = User.find(params[:user_id])
+  end
 
   def find_list
-  	@list = List.find(params[:id])
+  	find_user
+  	@list = @user.lists.find(params[:id])
   end
 
   def list_params
