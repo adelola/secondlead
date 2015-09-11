@@ -30,9 +30,10 @@ class ListsController < ApplicationController
   end
 
   def destroy
-  	if @list.user == current_user && @list.update_attributes(list_params)
-
-
+  	if @list.user == current_user 
+  	  @list.destroy
+  	  redirect_to user_path(current_user), notice: "Deleted #{@list.name}"
+  	end
   end
 
 
