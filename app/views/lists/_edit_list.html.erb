@@ -1,0 +1,13 @@
+<div>
+  <%= form_for(@list) do |f| %>
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name, :placeholder => @list.name %>
+    </div>
+    <div class="field">
+      <%= f.label :description%>
+      <%= f.text_field :description, :placeholder => @list.description %>
+     </div>
+        <%= f.submit "Update list", class: "btn btn-primary" %>
+    <% end %>
+</div>

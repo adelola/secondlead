@@ -9,7 +9,7 @@ class ListsController < ApplicationController
   end
 
   def create
-  	@list = List.new(new_list_params)
+  	@list = List.new(list_params)
     @list.user = current_user
   	if @list.save
       redirect_to user_path(current_user), notice: "Added #{@list.name}"
@@ -22,9 +22,17 @@ class ListsController < ApplicationController
   end
 
   def update
+    if @list.user == current_user && @list.update_attributes(list_params)
+      redirect_to user_path(current_user), notice: "Updated #{@list.name}"
+    else
+      render :edit
+    end
   end
 
   def destroy
+  	if @list.user == current_user && @list.update_attributes(list_params)
+
+
   end
 
 
@@ -34,7 +42,7 @@ class ListsController < ApplicationController
   	@list = List.find(params[:id])
   end
 
-  def new_list_params
+  def list_params
     params.require(:list).permit(:name, :description)
   end
 
