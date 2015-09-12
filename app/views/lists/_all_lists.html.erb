@@ -1,6 +1,6 @@
 <div>
   <% lists.each do |list| %>
-  <h1> <%= list.name %> </h1>
+  <h2> <%= list.name %> </h2>
   <ul>
   	<% list.dramas.each do |drama| %>
   	<li> <%= link_to drama.name, drama_path(drama) %> </li>
