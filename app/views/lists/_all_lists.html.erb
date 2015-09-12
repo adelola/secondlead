@@ -1,6 +1,10 @@
 <div>
   <% lists.each do |list| %>
   <h2> <%= list.name %> </h2>
+    <% if current_user == user %>
+    <%= button_to "Delete", [user, list],
+                                method: :delete, controller: :lists, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
+  	<% end %>
   <ul>
   	<% list.dramas.each do |drama| %>
   	<li> <%= link_to drama.name, drama_path(drama) %> </li>
