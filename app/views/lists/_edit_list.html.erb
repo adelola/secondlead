@@ -1,5 +1,5 @@
 <div>
-  <%= form_for(@list) do |f| %>
+  <%= form_for list, url: {action: "update"} do |f| %>
     <div class="field">
       <%= f.label :name %>
       <%= f.text_field :name, :placeholder => @list.name %>

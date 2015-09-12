@@ -2,6 +2,8 @@
   <% lists.each do |list| %>
   <h2> <%= list.name %> </h2>
     <% if current_user == user %>
+    <%= link_to "Edit List", edit_user_list_path([user, list], id: list.id)
+                                %>
     <%= button_to "Delete", [user, list],
                                 method: :delete, controller: :lists, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
   	<% end %>
