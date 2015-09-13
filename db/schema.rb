@@ -74,16 +74,6 @@ ActiveRecord::Schema.define(version: 20150910033037) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "user_dramas", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "drama_id"
-    t.integer  "rating"
-    t.text     "review"
-    t.string   "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
