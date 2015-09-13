@@ -37,7 +37,7 @@ Second Lead is a tool for exploring, tracking, and sharing Asian television dram
 use ```rspec```
 
 ## Schema
-![Current Schema](/schema01.png "current schema")
+![Current Schema](/schema02.png "current schema")
 
 ## Contributors
 * Lola Adekunle
