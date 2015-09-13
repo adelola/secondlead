@@ -2,6 +2,6 @@
 
 <%= link_to "Add New List", new_user_list_path(@user) %>
 
-<div class="container">
+<div>
   <%= render partial: "lists/all_lists", locals: {lists: @lists, user: @user} %>
 </div>
