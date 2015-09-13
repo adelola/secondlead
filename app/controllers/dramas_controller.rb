@@ -5,7 +5,9 @@ class DramasController < ApplicationController
   end
 
   def add
-  	@list = current_user.lists.find_by(name: "Watched")
+    if current_user
+    @list = current_user.lists.find_by(name: "Watched")
+    end
   	if @list
 	  @drama = Drama.find_by(id: params[:drama_id])
 	  	unless @list.dramas.find_by(id: @drama.id)
