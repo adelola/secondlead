@@ -4,9 +4,13 @@ Rails.application.routes.draw do
   
   resources :genres
   resources :casts
+  
   resources :sessions, :only => [:new, :create]
   delete '/sessions' => 'sessions#destroy'
+  
   resources :dramas, only: [:index, :show]
+  post '/dramas/:drama_id/add' => 'dramas#add', as: 'add_to_list'
+ 
   resources :users, only: [:show, :new, :create, :edit, :update, :destroy] do
     resources :lists
   end 
