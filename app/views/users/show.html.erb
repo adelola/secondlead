@@ -1,7 +1,7 @@
 <h1> <%= @user.first_name %>'s Page! </h1>
-
-<%= link_to "Add New List", new_user_list_path(@user) %>
-
+<% if current_user == @user %>
+ <%= link_to "Add New List", new_user_list_path(@user) %>
+<% end %>
 <div>
   <%= render partial: "lists/all_lists", locals: {lists: @lists, user: @user} %>
 </div>
