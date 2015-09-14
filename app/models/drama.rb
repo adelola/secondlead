@@ -13,4 +13,8 @@ class Drama < ActiveRecord::Base
     self.poster = URI.parse(url_value).open unless url_value.blank?
     @poster_remote_url = url_value
   end
+
+  def add_to_list(list)
+    ListDrama.create(drama: self, list: list)
+  end
 end

@@ -15,7 +15,7 @@
                   &#40;<%= drama.release_date %>&#41;
                 </h3>
                 <span><%= truncate drama.plot, length: 100 %></span>
-                <%= link_to raw("<strong>+</strong> to watched list"), "#", class: 'add-to-list', title: 'add this drama to your watched list' %>
+                <%= link_to raw("<strong>+</strong> to watched list"), add_to_list_path(drama),{method: :post}  %>
               </figcaption>
             </figure>
           </li>
