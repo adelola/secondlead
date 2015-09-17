@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150910033037) do
+ActiveRecord::Schema.define(version: 20150917213147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,32 @@ ActiveRecord::Schema.define(version: 20150910033037) do
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "reviewable_id"
+    t.string   "reviewable_type"
+    t.integer  "reviewer_id"
+    t.string   "reviewer_type"
+    t.float    "rating"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviews", ["reviewable_id", "reviewable_type"], name: "index_reviews_on_reviewable_id_and_reviewable_type", using: :btree
+  add_index "reviews", ["reviewer_id", "reviewer_type"], name: "index_reviews_on_reviewer_id_and_reviewer_type", using: :btree
+  add_index "reviews", ["reviewer_id"], name: "index_reviews_on_reviewer_id", using: :btree
+  add_index "reviews", ["reviewer_type"], name: "index_reviews_on_reviewer_type", using: :btree
+
+  create_table "user_dramas", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "drama_id"
+    t.integer  "rating"
+    t.text     "review"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
