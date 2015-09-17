@@ -16,6 +16,7 @@ gem 'materialize-sass'
 gem 'nokogiri'
 gem 'paperclip'
 gem 'buttercms'
+gem 'is_reviewable'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'
