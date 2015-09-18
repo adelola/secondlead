@@ -4,6 +4,9 @@ class Drama < ActiveRecord::Base
   has_many :drama_casts
   has_many :casts, through: :drama_casts
 
+  acts_as_reviewable :scale => 0..5
+  has_many :reviews, through: :acts_as_reviewable
+
   has_attached_file :poster, styles: { medium: "400x400>", small: "200x200#", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :poster, content_type: /\Aimage\/.*\Z/
 
