@@ -2,7 +2,7 @@ module ActsAsReviewable
   # The named scopes are:
   # in_order: Returns reviews in the order they were created (created_at ASC).
   # recent: Returns reviews by how recently they were created (created_at DESC).
-  # limit(N): Return no more than N reviews.
+  
   module Review
 
     def self.included(review_model)
@@ -13,14 +13,19 @@ module ActsAsReviewable
     end
 
     module Finders
-      # Helper class method to lookup all reviews assigned to a given user.
+      # All reviews assigned to a given user.
       def find_reviews_by_user(user_id)
         where(["reviewer_id = ?", user_id]).order("created_at DESC")
       end
 
-      # Helper class method to lookup all reviews assigned to a given drama.
+      # All reviews assigned to a given drama.
       def find_reviews_for_drama(drama_id)
         where(["drama_id = ?", drama_id]).order("created_at DESC")
+      end
+
+      #Reviews with a rating
+      def with_rating
+        where('rating is not null')
       end
 
     end
