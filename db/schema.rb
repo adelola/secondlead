@@ -75,30 +75,16 @@ ActiveRecord::Schema.define(version: 20150917213147) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer  "reviewable_id"
-    t.string   "reviewable_type"
-    t.integer  "reviewer_id"
-    t.string   "reviewer_type"
-    t.float    "rating"
-    t.text     "comment"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "reviews", ["reviewable_id", "reviewable_type"], name: "index_reviews_on_reviewable_id_and_reviewable_type", using: :btree
-  add_index "reviews", ["reviewer_id", "reviewer_type"], name: "index_reviews_on_reviewer_id_and_reviewer_type", using: :btree
-  add_index "reviews", ["reviewer_id"], name: "index_reviews_on_reviewer_id", using: :btree
-  add_index "reviews", ["reviewer_type"], name: "index_reviews_on_reviewer_type", using: :btree
-
-  create_table "user_dramas", force: :cascade do |t|
-    t.integer  "user_id"
     t.integer  "drama_id"
-    t.integer  "rating"
-    t.text     "review"
-    t.string   "status"
+    t.integer  "reviewer_id"
+    t.float    "rating"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "reviews", ["drama_id"], name: "index_reviews_on_drama_id", using: :btree
+  add_index "reviews", ["reviewer_id"], name: "index_reviews_on_reviewer_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
