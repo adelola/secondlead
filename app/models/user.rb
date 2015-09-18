@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :lists
 
   has_many :reviews, foreign_key: :reviewer_id
-  has_many :reviewed_dramas,  through: :reviews, source: :reviewable
+  has_many :reviewed_dramas,  through: :reviews, source: :dramas
 
 
   validates :first_name, presence: true
