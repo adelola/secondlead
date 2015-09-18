@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :find_review, only: [:update, :destroy]
+  before_action :set_review, only: [:update, :destroy]
 
   def create
     @drama = Drama.find_by(id: params[:drama_id])
@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
 
   private
 
-   def find_review
+    def set_review
       @review = Review.find_by(id: params[:review_id])
     end
 
