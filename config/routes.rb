@@ -12,8 +12,13 @@ Rails.application.routes.draw do
   post '/dramas/:drama_id/add' => 'dramas#add', as: 'add_to_list'
  
   resources :users, only: [:show, :new, :create, :edit, :update, :destroy] do
+    member do
+      get :following, :followers
+    end
     resources :lists
   end 
+
+  resources :relationships, :only => [:create, :destroy]
 
 end
 
