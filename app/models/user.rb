@@ -18,7 +18,22 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }
  
   after_create :create_watch_list, :create_watching_list, :create_watched_list
-  
+   
+  def follow(other_user)
+    active_relationships.create(followed_id: other_user.id)
+  end
+
+
+  def unfollow(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+
+  def following?(other_user)
+    following.include?(other_user)
+  end
+
+
   private
 
   def create_watch_list
