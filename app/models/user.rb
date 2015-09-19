@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
 
   has_many :lists
 
+  has_many :reviews, foreign_key: :reviewer_id
+  has_many :reviewed_dramas,  through: :reviews, source: :drama
+
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :username, presence: true, length: { maximum: 50 }, uniqueness: true
