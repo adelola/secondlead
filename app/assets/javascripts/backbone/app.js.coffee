@@ -4,7 +4,7 @@
 #= require_tree ./views
 #= require_tree ./routers
 
-window.Secondlead =
+window.App =
   Models: {}
   Collections: {}
   Routers: {}
