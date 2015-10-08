@@ -248,6 +248,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   coveralls
   database_cleaner
+  ejs
   factory_girl_rails (~> 4.0)
   faker
   jbuilder (~> 2.0)
