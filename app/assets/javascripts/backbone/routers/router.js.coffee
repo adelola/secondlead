@@ -11,8 +11,6 @@ class App.UsersRouter extends Backbone.Router
     users = new App.Models.Users
     users.fetch()
 
-    collectionView = new App.Views.Users
-      collection: users
-    $("#users").html(collectionView.render().el)
+    
 
 
