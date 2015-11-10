@@ -10,11 +10,10 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require modernizr.custom
-//= require toucheffects
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+
 //= require angular
 //= require angular-route
 //= require angular-rails-templates
@@ -31,4 +30,8 @@
 //= require_tree ./angular/main
 //= require_tree ./angular/reviews
 //= require_tree ./angular/users
+
+//= require modernizr.custom
+//= require toucheffects
+//= require freewall
 
