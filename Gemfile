@@ -15,6 +15,8 @@ gem 'materialize-sass'
 gem 'nokogiri'
 gem 'paperclip'
 gem 'buttercms'
+gem 'angular-rails-templates'
+gem 'bower-rails'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'

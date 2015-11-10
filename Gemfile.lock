@@ -36,6 +36,10 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    angular-rails-templates (0.1.4)
+      railties (>= 3.1)
+      sprockets
+      tilt
     arel (6.0.3)
     bcrypt (3.1.10)
     better_errors (2.1.1)
@@ -44,6 +48,7 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bower-rails (0.10.0)
     builder (3.2.2)
     buttercms (0.2.4)
       json (~> 1.8)
@@ -233,8 +238,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  angular-rails-templates
   bcrypt (~> 3.1.7)
   better_errors
+  bower-rails
   buttercms
   capybara
   coffee-rails (~> 4.1.0)
