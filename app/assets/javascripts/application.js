@@ -16,6 +16,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+<<<<<<< HEAD
 //= require underscore
 //= require backbone
 //= require backbone_rails_sync
@@ -42,4 +43,6 @@
 //= require angular-dragdrop
 
 >>>>>>> 9d250835ba1aabc793b6679f1d7e32ef47e92246
+=======
+>>>>>>> master
 //= require_tree .
