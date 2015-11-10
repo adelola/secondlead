@@ -16,8 +16,6 @@ gem 'materialize-sass'
 gem 'nokogiri'
 gem 'paperclip'
 gem 'buttercms'
-gem 'rails-backbone'
-
 
 group :development, :test do
   gem 'web-console', '~> 2.0'
