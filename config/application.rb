@@ -25,5 +25,6 @@ module Secondlead
 
     config.autoload_paths += %W(#{config.root}/lib/tasks)
     config.autoload_paths += %W(#{config.root}/lib)
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'javascripts')
   end
 end
