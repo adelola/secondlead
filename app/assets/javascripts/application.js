@@ -21,13 +21,14 @@
 //= require angular-dragdrop
 //= require angular-gridster
 //= require angular-ui-router
+//= require angular-ui-select
 
 //= require angular/app
-//= require_tree ./angular/templates
-//= require_tree ./angular/modules
-//= require_tree ./angular/filters
-//= require_tree ./angular/directives
-//= require_tree ./angular/models
-//= require_tree ./angular/services
-//= require_tree ./angular/controllers
+//= require_tree ./angular/common
+//= require_tree ./angular/dramas
+//= require_tree ./angular/lists
+//= require_tree ./angular/login
+//= require_tree ./angular/main
+//= require_tree ./angular/reviews
+//= require_tree ./angular/users
 

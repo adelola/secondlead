@@ -15,6 +15,7 @@
       "angular-dragdrop": "latest",
       "angular-gridster": "latest",
       "angular-ui-router": "latest",
+      "angular-ui-select": "latest",
       "jquery": "latest",
       "jquery-ui": "latest",
       "javascript-detect-element-resize": "latest"
