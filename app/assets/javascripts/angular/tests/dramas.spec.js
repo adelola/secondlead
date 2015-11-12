@@ -11,21 +11,23 @@ describe('Unit: Drama', function () {
         // Instantiate global variables (global to all tests in this describe block).
         var $state,
             $rootScope,
-            state = 'app';
+            state = 'dramas';
 
         // Inject dependencies
         beforeEach(inject(function (_$state_, $templateCache, _$rootScope_) {
             $state = _$state_;
             $rootScope = _$rootScope_;
-            $templateCache.put('app/assets/javascripts/angular/dramas/drama.tmpl.html', '');
+            $templateCache.put('app/assets/javascripts/angular/dramas/dramas-index.tmpl.html', '');
         }));
 
-        // It block (or "spec") to test expectations for the
-        // Expectations return true or false.
         it('verifies state configuration', function () {
             var config = $state.get(state);
             expect(config.abstract).toBeTruthy();
             expect(config.url).toBeUndefined();
         });
+
+        it('should respond to URL', function(){
+            expect($state.href(state)).toEqual('#/dramas');
+        })
     });
 });
