@@ -18,6 +18,6 @@ class DramasController < ApplicationController
   end
 
   def show
-
+    @drama = Drama.find_by(id: params[:id])
   end
 end
