@@ -26,5 +26,11 @@ module Secondlead
     config.autoload_paths += %W(#{config.root}/lib/tasks)
     config.autoload_paths += %W(#{config.root}/lib)
     config.assets.paths << Rails.root.join('vendor', 'assets', 'javascripts')
+    
+    config.angular_templates.module_name    = 'templates'
+    config.angular_templates.ignore_prefix  = %w(templates/)
+    config.angular_templates.inside_paths   = [Rails.root.join('app', 'assets', 'templates')]
+
+
   end
 end

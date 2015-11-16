@@ -21,6 +21,8 @@
 //= require angular-gridster
 //= require angular-ui-router
 //= require angular-ui-select
+//= require angular-bootstrap
+//= require_tree ../templates
 
 //= require angular/app
 //= require_tree ./angular/common
@@ -35,3 +37,4 @@
 //= require toucheffects
 //= require freewall
 
+//= require_tree .
