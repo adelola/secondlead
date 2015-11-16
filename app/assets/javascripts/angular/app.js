@@ -1,4 +1,4 @@
-var App = angular.module('drag-and-drop', ['ngDragDrop', 'ui.bootstrap']);
+var App = angular.module('drag-and-drop', ['ngDragDrop','templates', 'ui.bootstrap','ui.router']);
 App.controller('oneCtrl', function($scope, $q) {
   $scope.list1 = {title: 'Drag and Drop with default confirmation'};
   $scope.list2 = {};
@@ -31,3 +31,17 @@ App.controller('twoCtrl', function($scope, $q, $modal) {
     $modalInstance.dismiss('cancel');
   };
 });
+
+App.config(function($stateProvider, $urlRouterProvider) {
+  $stateProvider
+
+    .state('dramatest', {
+      url:'/dramatest',
+      templateUrl: 'dramas-index.html',
+      controller:'testCtrl',
+      controllerAs: 'test'
+    });
+
+  $urlRouterProvider.otherwise('/');
+ });
+

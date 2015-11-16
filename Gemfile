@@ -17,6 +17,7 @@ gem 'paperclip'
 gem 'buttercms'
 gem 'angular-rails-templates'
 gem 'bower-rails'
+gem 'sprockets'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'

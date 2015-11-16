@@ -10,7 +10,7 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
+  <body ng-app="drag-and-drop">
     <nav>
        <div class="nav-wrapper">
          <div class="row">
@@ -32,6 +32,7 @@
           </div>
         </div>
     </nav>
+    <ui-view></ui-view>
 
     <%= yield %>
 

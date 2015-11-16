@@ -4,7 +4,7 @@
   "private": true,
   "ignore": [
     "**/.*",
-    "bower_components",
+    "node_modules",
     "test",
     "tests"
   ],
@@ -16,6 +16,8 @@
       "angular-gridster": "latest",
       "angular-ui-router": "latest",
       "angular-ui-select": "latest",
+      "angular-mocks":"latest",
+      "angular-bootstrap":"latest",
       "jquery": "latest",
       "jquery-ui": "latest",
       "javascript-detect-element-resize": "latest"

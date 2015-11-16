@@ -21,6 +21,8 @@
 //= require angular-gridster
 //= require angular-ui-router
 //= require angular-ui-select
+//= require angular-bootstrap
+//= require_tree ../templates
 
 //= require angular/app
 // require_tree ./angular/common
@@ -30,7 +32,9 @@
 // require_tree ./angular/main
 //= require_tree ./angular/reviews
 //= require_tree ./angular/users
+//= require_tree .
 
 //= require modernizr.custom
 //= require toucheffects
 //= require freewall
+
