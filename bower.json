@@ -17,7 +17,7 @@
       "angular-ui-router": "latest",
       "angular-ui-select": "latest",
       "angular-mocks":"latest",
-      "angular-ui-bootstrap":"latest",
+      "angular-bootstrap":"latest",
       "jquery": "latest",
       "jquery-ui": "latest",
       "javascript-detect-element-resize": "latest"
