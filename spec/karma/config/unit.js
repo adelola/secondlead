@@ -5,7 +5,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: '../',
 
 
     // frameworks to use
@@ -15,19 +15,21 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        'vendor/javascripts/angular/angular.min.js',
-        'vendor/javascripts/angular-gridster/dist/angular-gridster.min.js',
-        'vendor/javascripts/angular-ui-router/release/angular-ui-router.min.js',
-        'vendor/javascripts/angular-ui-select/dist/select.min.js'
-        'app/assets/javascripts/angular/tests/unit-test-helpers.js',
-        'app/assets/javascripts/angular/app.js',
-        'app/assets/javascripts/angular/**/*.spec.js',
+        APPLICATION_SPEC,
         'app/assets/javascripts/angular/**/*.html',
-        'app/assets/javascripts/angular/**/*.js'
+        'app/assets/javascripts/angular/**/*.js',
+        'app/assets/javascripts/angular/*.js',
+        'vendor/assets/javascripts/angular/angular.min.js',
+        'vendor/assets/javascripts/angular-mocks/angular-mocks.js',
+        'vendor/assets/javascripts/angular-gridster/dist/angular-gridster.min.js',
+        'vendor/assets/javascripts/angular-ui-router/release/angular-ui-router.min.js',
+        'vendor/assets/javascripts/angular-ui-select/dist/select.min.js',
+        'spec/javascripts/**/*.spec.js'
     ],
 
     ngHtml2JsPreprocessor: {
-        stripPrefix: 'src/',
+        stripPrefix: 'app/assets/javascripts/angular/',
+        
         //stripSufix: '.ext',
 
         // setting this option will create only a single module that contains templates
@@ -43,7 +45,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        'app/assets/javascripts/angular/**/*.html': ['ng-html2js']
+        '**/*.html': ['ng-html2js']
     },
 
 
@@ -81,6 +83,16 @@ module.exports = function(config) {
 
     // Concurrency level
     // how many browser should be started simultanous
-    concurrency: Infinity
+    concurrency: Infinity,
+
+    // plugins : [
+    // 'karma',
+    //   'karma-jasmine',
+    //   'karma-chrome-launcher', 
+    //   'karma-coverage',
+    //   'jasmine-core',
+    //   'karma-ng-html2js-preprocessor'    
+    // ]
+
   })
 }
