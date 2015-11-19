@@ -1,4 +1,4 @@
-var App = angular.module('drag-and-drop', ['ngDragDrop','templates', 'ui.bootstrap','ui.router']);
+var App = angular.module('secondleadApp', ['ngDragDrop','templates', 'ui.bootstrap','ui.router']);
 
 App.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
