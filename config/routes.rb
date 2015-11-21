@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :sessions, :only => [:new, :create]
   delete '/sessions' => 'sessions#destroy'
   
-  resources :dramas, only: [:index, :show]
+  resources :dramas, only: [:index, :show],:defaults => {:format => "json"}
   post '/dramas/:drama_id/add' => 'dramas#add', as: 'add_to_list'
  
   resources :users, only: [:show, :new, :create, :edit, :update, :destroy] do
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   resources :reviews, only: [:create, :update, :destroy]
 
+  get '/example' => 'example#index'
 
 end
 
