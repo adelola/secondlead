@@ -1,8 +1,20 @@
-    <h2>Default window.confirmation </h2>
-    <div ng-controller="DramasCtrl as dramas">
+<h2>Dramas Index </h2>
+  <div ng-controller="DramasCtrl as dramas">
+    <ul>
       <div ng-repeat= "drama in dramas.items">
-    		<div> {{drama.name}} </div>
-    </div>
+          <div class='cover'>
+          <li>
+            <figure>
+              <img src="/drama_thumbnails/{{drama.poster_file_name}}" alt="{{drama.poster_file_name}}">
+              <figcaption>
+                  {{drama.name}} <br/>
+                  {{drama.release_date}}
+              </figcaption>
+            </figure>
+          </li>
+          </div>
+      </div>
+  	</ul>
 
       <div class="row-fluid">
         <div class="span6">
@@ -12,8 +24,8 @@
           <div class="thumbnail" data-drop="true" ng-model="list2" jqyoui-droppable="{beforeDrop: 'beforeDrop'}" ng-bind="list2.title ? 'Dropped successfully..!' : 'Drop here...'"></div>
         </div>
       </div>
-    </div>
-    <br><br>
+  </div>
+    <br/><br/>
     
     <script type="text/ng-template" id="myModalContent.html">
       <div class="modal-body">

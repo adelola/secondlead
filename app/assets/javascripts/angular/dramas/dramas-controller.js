@@ -5,7 +5,7 @@ App.controller('DramasCtrl', [ '$http', function($http, $q) {
   dramas.items = [];
   $http.get('/dramas').then(function(response) {
     dramas.items = response.data;
-    console.log(dramas.items);
+    console.log(response.data);
       }, function(errResponse) {
     console.error('Error while fetching dramas')
   });
