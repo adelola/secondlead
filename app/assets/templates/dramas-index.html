@@ -1,5 +1,9 @@
     <h2>Default window.confirmation </h2>
     <div ng-controller="DramasCtrl as dramas">
+      <div ng-repeat= "drama in dramas.items">
+    		<div> {{drama.name}} </div>
+    </div>
+
       <div class="row-fluid">
         <div class="span6">
           <div class="btn btn-primary" data-drag="true" jqyoui-draggable="{animate: true}" >{{dramas.list1}}</div>
