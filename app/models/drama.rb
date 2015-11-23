@@ -1,5 +1,5 @@
 class Drama < ActiveRecord::Base
-  
+
   has_many :drama_genres
   has_many :genres, through: :drama_genres
   has_many :drama_casts
@@ -21,4 +21,6 @@ class Drama < ActiveRecord::Base
   def add_to_list(list)
     ListDrama.create(drama: self, list: list)
   end
+
+  include Elasticsearch::Model
 end
