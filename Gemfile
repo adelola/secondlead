@@ -18,8 +18,7 @@ gem 'buttercms'
 gem 'angular-rails-templates'
 gem 'bower-rails'
 gem 'sprockets'
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
+gem 'searchkick'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'

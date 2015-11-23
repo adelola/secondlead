@@ -1,4 +1,5 @@
 class Drama < ActiveRecord::Base
+  searchkick
 
   has_many :drama_genres
   has_many :genres, through: :drama_genres
@@ -21,7 +22,4 @@ class Drama < ActiveRecord::Base
   def add_to_list(list)
     ListDrama.create(drama: self, list: list)
   end
-
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
 end

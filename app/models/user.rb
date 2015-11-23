@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  searchkick
+
   has_secure_password
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -12,9 +14,6 @@ class User < ActiveRecord::Base
 
   has_many :reviews, foreign_key: :reviewer_id
   has_many :reviewed_dramas,  through: :reviews, source: :drama
-
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -51,5 +50,4 @@ class User < ActiveRecord::Base
   def create_watched_list
   	List.create(name: 'Watched', description:'Dramas completed', user_id: self.id)
   end
-
 end
