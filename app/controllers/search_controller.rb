@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
   def search
-    if params[:q].nil?
+    if params[:q].present?
     end
   end
 end

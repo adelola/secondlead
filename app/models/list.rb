@@ -1,6 +1,10 @@
 class List < ActiveRecord::Base
   searchkick
 
+  def search_data
+    as_json only: [:name, :description]
+  end
+
   belongs_to :user
   has_many :list_dramas
   has_many :dramas, through: :list_dramas

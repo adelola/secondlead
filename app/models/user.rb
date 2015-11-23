@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
   searchkick
 
+  def search_data
+    as_json only: [:first_name, :last_name, :email, :username]
+  end
+
   has_secure_password
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
