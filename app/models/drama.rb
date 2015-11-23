@@ -23,4 +23,5 @@ class Drama < ActiveRecord::Base
   end
 
   include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
 end

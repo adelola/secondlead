@@ -3,6 +3,8 @@ class List < ActiveRecord::Base
   has_many :list_dramas
   has_many :dramas, through: :list_dramas
 
-
   validates :name, presence: true
+
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
 end
