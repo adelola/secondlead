@@ -18,6 +18,8 @@ gem 'buttercms'
 gem 'angular-rails-templates'
 gem 'bower-rails'
 gem 'sprockets'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'
@@ -31,6 +33,3 @@ group :development, :test do
   gem 'pry'
   gem 'better_errors'
 end
-
-
-
