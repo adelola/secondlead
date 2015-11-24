@@ -42,6 +42,13 @@ App.config(function($stateProvider, $urlRouterProvider) {
       controllerAs: 'test'
     });
 
+    .state('casts', {
+      url:'/casts',
+      templateUrl: 'casts-show.html',
+      controller:'castsCtrl',
+      controllerAs: 'casts'
+    });
+
   $urlRouterProvider.otherwise('/');
  });
 
