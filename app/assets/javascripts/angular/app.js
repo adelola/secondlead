@@ -40,13 +40,13 @@ App.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'dramas-index.html',
       controller:'testCtrl',
       controllerAs: 'test'
-    });
+    })
 
     .state('casts', {
       url:'/casts',
       templateUrl: 'casts-show.html',
       controller:'castsCtrl',
-      controllerAs: 'casts'
+      controllerAs: 'cast'
     });
 
   $urlRouterProvider.otherwise('/');
