@@ -4,7 +4,10 @@ class CastsController < ApplicationController
   # GET /casts
   # GET /casts.json
   def index
-    @casts = Cast.all
+    respond_to do |format|
+      format.json { render json: Cast.all }
+      format.html
+    end
   end
 
   # GET /casts/1

@@ -44,7 +44,7 @@ App.config(function($stateProvider, $urlRouterProvider) {
 
     .state('casts', {
       url:'/casts',
-      templateUrl: 'casts-show.html',
+      templateUrl: 'casts-index.html',
       controller:'castsCtrl',
       controllerAs: 'cast'
     });
