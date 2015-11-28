@@ -22,10 +22,12 @@
 //= require angular-ui-router
 //= require angular-ui-select
 //= require angular-bootstrap
+//= require restangular
+//= require lodash
 //= require_tree ../templates
 
 //= require angular/app
-// require_tree ./angular/common
+//= require_tree ./angular/common
 //= require_tree ./angular/dramas
 //= require_tree ./angular/lists
 //= require_tree ./angular/login

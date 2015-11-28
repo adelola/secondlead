@@ -1,15 +1,29 @@
-var App = angular.module('secondleadApp', ['ngDragDrop','templates', 'ui.bootstrap','ui.router']);
+(function(){
+'use strict';
 
-App.config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider
+angular
+  .module('secondLead', 
+  	['ngDragDrop', 
+  	'ui.bootstrap',
+  	'ui.router', 
+  	'gridster',
+  	'restangular',
+    'secondLead.common',
+  	'templates'])
 
-    .state('dramas-model', {
-      url:'/dramas',
-      templateUrl: 'dramas-index.html',
-      controller:'DramasCtrl',
-      controllerAs: 'dramas'
-    });
+  .config(['$stateProvider', 
+    '$urlRouterProvider',
+    function($stateProvider, $urlRouterProvider) {
+    $stateProvider
 
-  $urlRouterProvider.otherwise('/');
- });
+      .state('dramas-model', {
+        url:'/dramas',
+        templateUrl: 'dramas-index.html',
+        controller:'DramasCtrl',
+        controllerAs: 'dramas'
+      });
 
+    $urlRouterProvider.otherwise('/');
+  }]);
+
+})();
