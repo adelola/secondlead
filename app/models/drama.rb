@@ -26,4 +26,10 @@ class Drama < ActiveRecord::Base
   def add_to_list(list)
     ListDrama.create(drama: self, list: list)
   end
+
+  def add_image_url
+    self.image_url = self.poster.url
+    self
+  end
+
 end

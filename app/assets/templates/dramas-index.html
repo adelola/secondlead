@@ -3,7 +3,7 @@
     <div gridster= "dramas.gridsterOpts">
         <div gridster-item="items" ng-repeat= "drama in dramas.items">
           <figure>
-            <img src="/drama_thumbnails/{{drama.poster_file_name}}" alt="{{drama.poster_file_name}}">
+            <img src="{{drama.image_url}}" alt="{{drama.poster_file_name}}">
             <figcaption>
               {{drama.name}} <br/>
               {{drama.release_date}}
