@@ -19,6 +19,8 @@ gem 'angular-rails-templates'
 gem 'bower-rails'
 gem 'sprockets'
 gem 'responders', '~> 2.0'
+gem 'searchkick'
+
 
 group :development, :test do
   gem 'web-console', '~> 2.0'
@@ -32,6 +34,3 @@ group :development, :test do
   gem 'pry'
   gem 'better_errors'
 end
-
-
-

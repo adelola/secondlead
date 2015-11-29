@@ -1,5 +1,10 @@
 class Drama < ActiveRecord::Base
-  
+  searchkick
+
+  def search_data
+    as_json only: [:name, :non_english_name, :plot]
+  end
+
   has_many :drama_genres
   has_many :genres, through: :drama_genres
   has_many :drama_casts

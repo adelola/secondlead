@@ -13,25 +13,29 @@
 
   <body ng-app="secondLead">
     <nav>
-       <div class="nav-wrapper">
-         <div class="row">
-           <div class="col s12">
-              <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <% if logged_in? %>
-                  <li> <%= link_to "Home", root_path %> </li>
-                  <li> <%= link_to "Browse", dramas_path %> </li>
-                  <li> <%= link_to "My Lists", user_path(current_user) %> </li>
-                  <li><%= link_to "Log Out", sessions_path, :method => :delete %></li>
-                <% else %>
-                  <li> <%= link_to "Home", root_path %> </li>
-                  <li> <%= link_to "Browse", dramas_path %> </li>
-                  <li><a href="<%= new_user_path %>">Sign Up</a></li>
-                  <li><a href="<%= new_session_path %>">Log In</a></li>
-                <% end %>
-              </ul>
-            </div>
+      <div class="nav-wrapper">
+       <div class="row">
+         <div class="col s12">
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <% if logged_in? %>
+                <li> <%= link_to "Home", root_path %> </li>
+                <li> <%= link_to "Browse", dramas_path %> </li>
+                <li> <%= link_to "My Lists", user_path(current_user) %> </li>
+                <li><%= link_to "Log Out", sessions_path, :method => :delete %></li>
+              <% else %>
+                <li> <%= link_to "Home", root_path %> </li>
+                <li> <%= link_to "Browse", dramas_path %> </li>
+                <li><a href="<%= new_user_path %>">Sign Up</a></li>
+                <li><a href="<%= new_session_path %>">Log In</a></li>
+              <% end %>
+            </ul>
           </div>
         </div>
+      </div>
+      <%= form_tag search_path, method: :get do %>
+        <%= text_field_tag :q, params[:q], placeholder: 'Search' %>
+        <%= submit_tag "Go", name: nil %>
+      <% end %>
     </nav>
     <ui-view></ui-view>
 
