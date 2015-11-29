@@ -2,7 +2,7 @@
 
 'use strict';
 
-angular.module('secondLead.common',[])
+angular.module('secondLead.common')
   .factory('Gridster', function() {
     var options = {
       columns: 4, // the width of the grid, in columns
@@ -21,7 +21,7 @@ angular.module('secondLead.common',[])
       minRows: 1, // the minimum height of the grid, in rows
       maxRows: 100,
       defaultSizeX: 2, // the default width of a gridster item, if not specifed
-      defaultSizeY: 1, // the default height of a gridster item, if not specified
+      defaultSizeY: 2, // the default height of a gridster item, if not specified
       minSizeX: 1, // minimum column width of an item
       maxSizeX: null, // maximum column width of an item
       minSizeY: 1, // minumum row height of an item
