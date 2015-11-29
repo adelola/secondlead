@@ -1,3 +1,5 @@
+(function(){
+
 'use strict';
 
 angular.module('secondLead.common',[])
@@ -48,3 +50,5 @@ angular.module('secondLead.common',[])
       getOptions: getOptions
     };
 });
+
+})();
