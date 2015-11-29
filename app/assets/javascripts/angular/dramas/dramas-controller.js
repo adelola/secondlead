@@ -5,16 +5,20 @@ angular
   .module('secondLead')
 
   .controller('DramasCtrl', [
-    'DramaModel', 
+    'DramaModel',
+    'Gridster', 
     'Restangular', 
-    function(DramaModel, Restangular, $q) {
-    var dramas = this;
+    function(DramaModel, Gridster, Restangular, $q) {
+    var ctrl = this;
     
-    dramas.items = DramaModel.getAll;
+    ctrl.items = DramaModel.getAll;
    
-    dramas.setCurrentDrama = function(item){
-      dramas.currentDrama = item;
+    ctrl.setCurrentDrama = function(item){
+      ctrl.currentDrama = item;
     };
+
+    ctrl.gridsterOpts = Gridster.getOptions();
   }])
+
 })();
   

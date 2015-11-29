@@ -5,7 +5,7 @@
 angular.module('secondLead.common')
   .factory('Gridster', function() {
     var options = {
-      columns: 4, // the width of the grid, in columns
+      columns: 5, // the width of the grid, in columns
       pushing: true, // whether to push other items out of the way on move or resize
       floating: true, // whether to automatically float items up so they stack (you can temporarily disable if you are adding unsorted items with ng-repeat)
       swapping: true, // whether or not to have items of the same size switch places instead of pushing down if they are the same size
@@ -20,8 +20,8 @@ angular.module('secondLead.common')
       minColumns: 1, // the minimum columns the grid must have
       minRows: 1, // the minimum height of the grid, in rows
       maxRows: 100,
-      defaultSizeX: 2, // the default width of a gridster item, if not specifed
-      defaultSizeY: 2, // the default height of a gridster item, if not specified
+      defaultSizeX: 1, // the default width of a gridster item, if not specifed
+      defaultSizeY: 1, // the default height of a gridster item, if not specified
       minSizeX: 1, // minimum column width of an item
       maxSizeX: null, // maximum column width of an item
       minSizeY: 1, // minumum row height of an item

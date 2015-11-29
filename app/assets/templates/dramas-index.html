@@ -1,8 +1,7 @@
 <h2>Dramas Index </h2>
   <div ng-controller="DramasCtrl as dramas">
     <div gridster= "dramas.gridsterOpts">
-      <ul>
-        <li gridster-item="items" ng-repeat= "drama in dramas.items">
+        <div gridster-item="items" ng-repeat= "drama in dramas.items">
           <figure>
             <img src="/drama_thumbnails/{{drama.poster_file_name}}" alt="{{drama.poster_file_name}}">
             <figcaption>
@@ -10,8 +9,7 @@
               {{drama.release_date}}
             </figcaption>
           </figure>
-        </li>
-  	  </ul>
+        </div>
     </div>
   </div>
 
