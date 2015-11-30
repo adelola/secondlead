@@ -7,7 +7,7 @@ angular
   .controller('DramasCtrl', [
     'DramaModel',
     'Gridster', 
-    'Restangular', 
+    'Restangular',
     function(DramaModel, Gridster, Restangular, $q) {
     var ctrl = this;
     
@@ -18,6 +18,9 @@ angular
     };
 
     ctrl.gridsterOpts = Gridster.getOptions();
+
+    ctrl.currentPage = 1;
+    ctrl.pageSize = 20;
   }])
 
 })();

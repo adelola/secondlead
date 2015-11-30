@@ -24,6 +24,7 @@
 //= require angular-bootstrap
 //= require restangular
 //= require lodash
+//= require angularUtils-pagination
 //= require_tree ../templates
 
 //= require angular/app

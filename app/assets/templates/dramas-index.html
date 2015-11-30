@@ -1,17 +1,17 @@
-<h2>Dramas Index </h2>
-  <div ng-controller="DramasCtrl as dramas">
-    <div gridster= "dramas.gridsterOpts">
-        <div gridster-item="items" ng-repeat= "drama in dramas.items">
-          <figure>
-            <img src="{{drama.image_url}}" alt="{{drama.poster_file_name}}">
-            <figcaption>
-              {{drama.name}} <br/>
-              {{drama.release_date}}
-            </figcaption>
-          </figure>
-        </div>
-    </div>
+<div ng-controller="DramasCtrl as dramas">
+  <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="/dirPagination.html"> </dir-pagination-controls>
+  <div gridster= "dramas.gridsterOpts">
+      <div gridster-item="items" dir-paginate= "drama in dramas.items | itemsPerPage: dramas.pageSize" current-page="dramas.currentPage">
+        <figure>
+          <img src="{{drama.image_url}}" alt="{{drama.poster_file_name}}">
+          <figcaption>
+            {{drama.name}} <br/>
+            {{drama.release_date}}
+          </figcaption>
+        </figure>
+      </div>
   </div>
+</div>
 
      
  

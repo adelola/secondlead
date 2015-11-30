@@ -8,9 +8,14 @@ angular
   	'ui.router', 
   	'gridster',
   	'restangular',
+    'angularUtils.directives.dirPagination',
     'secondLead.common',
   	'templates'])
 
+  .config(function(paginationTemplateProvider) {
+    paginationTemplateProvider.setPath('/dirPagination.html');
+  })
+  
   .config(['$stateProvider', 
     '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
