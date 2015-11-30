@@ -1,5 +1,5 @@
 <div ng-controller="DramasCtrl as dramas">
-  <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="/dirPagination.html"> </dir-pagination-controls>
+  <dir-pagination-controls boundary-links="true" template-url="/dirPagination.html"> </dir-pagination-controls>
   <div gridster= "dramas.gridsterOpts">
       <div gridster-item="items" dir-paginate= "drama in dramas.items | itemsPerPage: dramas.pageSize" current-page="dramas.currentPage">
         <figure>

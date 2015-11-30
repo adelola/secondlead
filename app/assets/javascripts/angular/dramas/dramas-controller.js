@@ -8,7 +8,7 @@ angular
     'DramaModel',
     'Gridster', 
     'Restangular',
-    function(DramaModel, Gridster, Restangular, $q) {
+    function(DramaModel, Gridster, Restangular) {
     var ctrl = this;
     
     ctrl.items = DramaModel.getAll;
