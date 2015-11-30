@@ -24,7 +24,7 @@
                 <li><%= link_to "Log Out", sessions_path, :method => :delete %></li>
               <% else %>
                 <li> <%= link_to "Home", root_path %> </li>
-                <li> <%= link_to "Browse", dramas_path %> </li>
+                <li> <a href="/#/dramas">Browse</a> </li>
                 <li><a href="<%= new_user_path %>">Sign Up</a></li>
                 <li><a href="<%= new_session_path %>">Log In</a></li>
               <% end %>
