@@ -1,47 +1,34 @@
-var App = angular.module('drag-and-drop', ['ngDragDrop','templates', 'ui.bootstrap','ui.router']);
-App.controller('oneCtrl', function($scope, $q) {
-  $scope.list1 = {title: 'Drag and Drop with default confirmation'};
-  $scope.list2 = {};
-  $scope.beforeDrop = function() {
-    var deferred = $q.defer();
-    if (confirm('Are you sure???')) {
-      deferred.resolve();
-    } else {
-      deferred.reject();
-    }
-    return deferred.promise;
-  };
-});
-App.controller('twoCtrl', function($scope, $q, $modal) {
-  $scope.list1 = {title: 'Drag and Drop with custom confirmation'};
-  $scope.list2 = {};
-  $scope.beforeDrop = function() {
-    var modalInstance = $modal.open({
-      templateUrl: 'myModalContent.html',
-      controller: 'ModalInstanceCtrl'
-    });
+(function(){
+'use strict';
 
-    return modalInstance.result;
-  };
-}).controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
-  $scope.ok = function () {
-    $modalInstance.close();
-  };
-  $scope.cancel = function () {
-    $modalInstance.dismiss('cancel');
-  };
-});
+angular
+  .module('secondLead', 
+  	['ngDragDrop', 
+  	'ui.bootstrap',
+  	'ui.router', 
+  	'gridster',
+  	'restangular',
+    'angularUtils.directives.dirPagination',
+    'secondLead.common',
+  	'templates'])
 
-App.config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider
+  .config(function(paginationTemplateProvider) {
+    paginationTemplateProvider.setPath('/dirPagination.html');
+  })
+  
+  .config(['$stateProvider', 
+    '$urlRouterProvider',
+    function($stateProvider, $urlRouterProvider) {
+    $stateProvider
 
-    .state('dramatest', {
-      url:'/dramatest',
-      templateUrl: 'dramas-index.html',
-      controller:'testCtrl',
-      controllerAs: 'test'
-    });
+      .state('dramas-model', {
+        url:'/dramas',
+        templateUrl: 'dramas-index.html',
+        controller:'DramasCtrl',
+        controllerAs: 'dramas'
+      });
 
-  $urlRouterProvider.otherwise('/');
- });
+    $urlRouterProvider.otherwise('/');
+  }]);
 
+})();

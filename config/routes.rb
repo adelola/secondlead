@@ -7,8 +7,9 @@ Rails.application.routes.draw do
 
   resources :sessions, :only => [:new, :create]
   delete '/sessions' => 'sessions#destroy'
+  
+  resources :dramas, only: [:index, :show],:defaults => {:format => "json"}
 
-  resources :dramas, only: [:index, :show]
   post '/dramas/:drama_id/add' => 'dramas#add', as: 'add_to_list'
 
   resources :users, only: [:show, :new, :create, :edit, :update, :destroy] do
@@ -22,6 +23,9 @@ Rails.application.routes.draw do
 
   resources :reviews, only: [:create, :update, :destroy]
 
+  get '/example' => 'example#index'
+
   get 'search', to: 'search#search'
+
 end
 
