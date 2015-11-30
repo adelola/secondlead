@@ -28,6 +28,13 @@ angular
         controllerAs: 'dramas'
       });
 
+      .state('lists', {
+        url:'/users/:userId/lists',
+        templateUrl: 'lists-index.html',
+        controller:'ListsCtrl',
+        controllerAs: 'lists'
+      });
+
     $urlRouterProvider.otherwise('/');
   }]);
 
