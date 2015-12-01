@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  respond_to :json, :html
 
   def new
     @user = User.new
@@ -17,6 +18,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @lists = @user.lists
+    respond_with({user: @user, lists: @lists})
   end
   
   def following
