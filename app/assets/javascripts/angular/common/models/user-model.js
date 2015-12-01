@@ -9,7 +9,7 @@ angular
 
      return {
       getAll: baseUsers.getList().$object,
-      getOne: function(dramaId) {
+      getOne: function(userId) {
         return Restangular.one('user', userId).get()
       }
     };

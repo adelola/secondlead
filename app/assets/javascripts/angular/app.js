@@ -26,13 +26,13 @@ angular
         templateUrl: 'dramas-index.html',
         controller:'DramasCtrl',
         controllerAs: 'dramas'
-      });
+      })
 
       .state('users-model', {
         url:'/users',
         templateUrl: 'user-show.html',
         controller:'UserCtrl',
-        controllerAs: 'user'
+        controllerAs: 'users'
       });
 
     $urlRouterProvider.otherwise('/');
