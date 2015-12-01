@@ -28,6 +28,13 @@ angular
         controllerAs: 'dramas'
       });
 
+      .state('users-model', {
+        url:'/users',
+        templateUrl: 'user-show.html',
+        controller:'UserCtrl',
+        controllerAs: 'user'
+      });
+
     $urlRouterProvider.otherwise('/');
   }]);
 
