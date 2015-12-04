@@ -8,11 +8,11 @@ angular
      var baseUsers = Restangular.all('users');
 
      return {
-      getAll: baseUsers.getList().$object,
+      getAll: baseUsers.getList().$object,  
       getOne: function(userId) {
-        return Restangular.one('user', userId).get()
+        return Restangular.one('users', userId).get()
       }
-    };
+     };
   }])
 })();
   

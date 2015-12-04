@@ -10,7 +10,7 @@ angular
      return {
       getAll: baseDramas.getList().$object,
       getOne: function(dramaId) {
-        return Restangular.one('drama', dramaId).get()
+        return Restangular.one('dramas', dramaId).get()
       }
     };
   }])
