@@ -34,7 +34,7 @@ angular
         controller:'UserCtrl',
         controllerAs: 'user',
         resolve: {
-          auser: ['$stateParams','UserModel','Restangular', function($stateParams,UserModel,Restangular) {
+          user: ['$stateParams','UserModel','Restangular', function($stateParams,UserModel,Restangular) {
                 return UserModel.getOne($stateParams.userID);
           }]
         }

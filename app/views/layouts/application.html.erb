@@ -19,7 +19,7 @@
             <ul id="nav-mobile" class="right hide-on-med-and-down">
               <% if logged_in? %>
                 <li> <%= link_to "Home", root_path %> </li>
-                <li> <a ui-sref='dramas'>Browse</a> </li>
+                <li> <a ui-sref='dramas' ui-sref-active="active">Browse</a> </li>
                 <li> <%= link_to "My Lists", user_path(current_user) %> </li>
                 <li><%= link_to "Log Out", sessions_path, :method => :delete %></li>
               <% else %>
