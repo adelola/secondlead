@@ -20,7 +20,7 @@
               <% if logged_in? %>
                 <li> <%= link_to "Home", root_path %> </li>
                 <li> <a ui-sref='dramas' ui-sref-active="active">Browse</a> </li>
-                <li> <%= link_to "My Lists", user_path(current_user) %> </li>
+                <li> <a ui-sref='user.lists({userID: 1})' ui-sref-active="active"> Lists </li>
                 <li><%= link_to "Log Out", sessions_path, :method => :delete %></li>
               <% else %>
                 <li> <%= link_to "Home", root_path %> </li>
