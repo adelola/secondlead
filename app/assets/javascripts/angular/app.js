@@ -21,11 +21,23 @@ angular
     function($stateProvider, $urlRouterProvider) {
     $stateProvider
 
-      .state('dramas-model', {
+      .state('dramas', {
         url:'/dramas',
         templateUrl: 'dramas-index.html',
         controller:'DramasCtrl',
         controllerAs: 'dramas'
+      })
+
+      .state('user', {
+        url:'/users/:userID',
+        templateUrl: 'user-show.html',
+        controller:'UserCtrl',
+        controllerAs: 'user',
+        resolve: {
+          user: ['$stateParams','UserModel','Restangular', function($stateParams,UserModel,Restangular) {
+                return UserModel.getOne($stateParams.userID);
+          }]
+        }
       });
 
       .state('lists', {
