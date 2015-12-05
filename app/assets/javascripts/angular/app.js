@@ -38,10 +38,10 @@ angular
                 return UserModel.getOne($stateParams.userID);
           }]
         }
-      });
+      })
 
-      .state('lists', {
-        url:'/users/:userId/lists',
+      .state('user.lists', {
+        url:'/lists',
         templateUrl: 'lists-index.html',
         controller:'ListsCtrl',
         controllerAs: 'lists'
