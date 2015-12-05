@@ -50,7 +50,19 @@ angular
               return user["lists"];
             }]
           }
-        });
+        })
+
+        .state('user.list', {
+        url:'/lists/:listID',
+        templateUrl: 'list-show.html',
+        controller:'ListCtrl',
+        controllerAs: 'list',
+        resolve: {
+          list: ['$stateParams','ListModel','Restangular', function($stateParams,ListModel,Restangular) {
+              return ListModel.getOne($stateParams.userID, $stateParams.listID);
+          }]
+        }
+      })
 
     $urlRouterProvider.otherwise('/');
   }]);
