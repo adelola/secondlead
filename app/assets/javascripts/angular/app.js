@@ -40,12 +40,17 @@ angular
         }
       })
 
-      .state('user.lists', {
-        url:'/lists',
-        templateUrl: 'lists-index.html',
-        controller:'ListsCtrl',
-        controllerAs: 'lists'
-      });
+        .state('user.lists', {
+          url:'/lists',
+          templateUrl: 'lists-index.html',
+          controller:'ListsCtrl',
+          controllerAs: 'lists',
+          resolve: {
+            lists: ['user', function(user) {
+              return user["lists"];
+            }]
+          }
+        });
 
     $urlRouterProvider.otherwise('/');
   }]);
