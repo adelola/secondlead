@@ -4,15 +4,20 @@
 angular
   .module('secondLead')
 
-  .controller('ListsCtrl', [
+  .controller('ListCtrl', [
     'Gridster',
-    'lists',
-    function(Gridster,lists) {
+    'user',
+    'list',
+    function(Gridster, user, list) {
     var ctrl = this;
     
-    ctrl.items = lists;
+    ctrl.items = list.dramas;
+  
+    ctrl.userID = user.user.id;
+
     
     ctrl.gridsterOpts = Gridster.getOptions();
+
   }])
 
 })();

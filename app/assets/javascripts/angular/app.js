@@ -1,54 +1,77 @@
-var App = angular.module('drag-and-drop', ['ngDragDrop','templates', 'ui.bootstrap','ui.router']);
-App.controller('oneCtrl', function($scope, $q) {
-  $scope.list1 = {title: 'Drag and Drop with default confirmation'};
-  $scope.list2 = {};
-  $scope.beforeDrop = function() {
-    var deferred = $q.defer();
-    if (confirm('Are you sure???')) {
-      deferred.resolve();
-    } else {
-      deferred.reject();
-    }
-    return deferred.promise;
-  };
-});
-App.controller('twoCtrl', function($scope, $q, $modal) {
-  $scope.list1 = {title: 'Drag and Drop with custom confirmation'};
-  $scope.list2 = {};
-  $scope.beforeDrop = function() {
-    var modalInstance = $modal.open({
-      templateUrl: 'myModalContent.html',
-      controller: 'ModalInstanceCtrl'
-    });
+(function(){
+'use strict';
 
-    return modalInstance.result;
-  };
-}).controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
-  $scope.ok = function () {
-    $modalInstance.close();
-  };
-  $scope.cancel = function () {
-    $modalInstance.dismiss('cancel');
-  };
-});
+angular
+  .module('secondLead',
+  	['ngDragDrop',
+  	'ui.bootstrap',
+  	'ui.router',
+  	'gridster',
+  	'restangular',
+    'angularUtils.directives.dirPagination',
+    'secondLead.common',
+  	'templates'])
 
-App.config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider
+  .config(function(paginationTemplateProvider) {
+    paginationTemplateProvider.setPath('/dirPagination.html');
+  })
 
-    .state('dramatest', {
-      url:'/dramatest',
-      templateUrl: 'dramas-index.html',
-      controller:'testCtrl',
-      controllerAs: 'test'
-    })
+  .config(['$stateProvider',
+    '$urlRouterProvider',
+    function($stateProvider, $urlRouterProvider) {
+    $stateProvider
 
-    .state('casts', {
-      url:'/casts',
-      templateUrl: 'casts-index.html',
-      controller:'castsCtrl',
-      controllerAs: 'cast'
-    });
+      .state('dramas', {
+        url:'/dramas',
+        templateUrl: 'dramas-index.html',
+        controller:'DramasCtrl',
+        controllerAs: 'dramas'
+      })
 
-  $urlRouterProvider.otherwise('/');
- });
+      .state('casts', {
+        url:'/casts',
+        templateUrl: 'casts-index.html',
+        controller:'castsCtrl',
+        controllerAs: 'cast'
+      })
 
+      .state('user', {
+        url:'/users/:userID',
+        templateUrl: 'user-show.html',
+        controller:'UserCtrl',
+        controllerAs: 'user',
+        resolve: {
+          user: ['$stateParams','UserModel','Restangular', function($stateParams,UserModel,Restangular) {
+                return UserModel.getOne($stateParams.userID);
+          }]
+        }
+      })
+
+        .state('user.lists', {
+          url:'/lists',
+          templateUrl: 'lists-index.html',
+          controller:'ListsCtrl',
+          controllerAs: 'lists',
+          resolve: {
+            lists: ['user', function(user) {
+              return user["lists"];
+            }]
+          }
+        })
+
+        .state('user.list', {
+        url:'/lists/:listID',
+        templateUrl: 'list-show.html',
+        controller:'ListCtrl',
+        controllerAs: 'list',
+        resolve: {
+          list: ['$stateParams','ListModel','Restangular', function($stateParams,ListModel,Restangular) {
+              return ListModel.getOne($stateParams.userID, $stateParams.listID);
+          }]
+        }
+      })
+
+    $urlRouterProvider.otherwise('/');
+  }]);
+
+})();

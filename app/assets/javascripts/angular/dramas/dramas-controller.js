@@ -1,6 +1,27 @@
+(function(){
+'use strict';
 
+angular
+  .module('secondLead')
 
-App.controller('testCtrl', function(){
-   var dramas = this;
-   dramas.test = 'WORKING!';  
-});
+  .controller('DramasCtrl', [
+    'DramaModel',
+    'Gridster', 
+    'Restangular',
+    function(DramaModel, Gridster, Restangular) {
+    var ctrl = this;
+    
+    ctrl.items = DramaModel.getAll;
+   
+    ctrl.setCurrentDrama = function(item){
+      ctrl.currentDrama = item;
+    };
+
+    ctrl.gridsterOpts = Gridster.getOptions();
+
+    ctrl.currentPage = 1;
+    ctrl.pageSize = 20;
+  }])
+
+})();
+  
