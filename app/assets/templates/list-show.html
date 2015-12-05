@@ -1,0 +1,12 @@
+
+<div gridster= "list.gridsterOpts">
+  <div gridster-item="items" ng-repeat= "drama in list.items" >
+    <figure>
+      <img src="{{drama.image_url}}" alt="{{drama.poster_file_name}}">
+      <figcaption>
+        {{drama.name}} <br/>
+        {{drama.release_date}}
+      </figcaption>
+    </figure>
+  </div>
+</div>
