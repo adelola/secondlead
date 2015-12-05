@@ -12,12 +12,11 @@ angular
     var ctrl = this;
     
     ctrl.items = list.dramas;
-    console.log(user.user);
+  
     ctrl.userID = user.user.id;
 
     
     ctrl.gridsterOpts = Gridster.getOptions();
- 	  ctrl.pageSize = 20;
 
   }])
 
