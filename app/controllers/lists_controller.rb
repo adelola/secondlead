@@ -9,7 +9,8 @@ class ListsController < ApplicationController
   end
   
   def show
-    respond_with({list: @list, dramas: @list.dramas})
+    @dramas = @list.dramas.map { |drama| drama.add_image_url }
+    respond_with({list: @list, dramas: @dramas})
   end
 
   def new
