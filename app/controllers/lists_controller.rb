@@ -1,12 +1,16 @@
 class ListsController < ApplicationController
   before_action :find_list, only: [:show, :edit, :update, :destroy]
-  
+  respond_to :json, :html
+
   def index
   	find_user
   	@lists = @user.lists
+    respond_with(@lists)
   end
   
   def show
+    @dramas = @list.dramas.map { |drama| drama.add_image_url }
+    respond_with({list: @list, dramas: @dramas})
   end
 
   def new
