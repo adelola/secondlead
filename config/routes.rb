@@ -27,5 +27,7 @@ Rails.application.routes.draw do
 
   get 'search', to: 'search#search'
 
+  post 'auth' => 'auth#authenticate'
+
 end
 

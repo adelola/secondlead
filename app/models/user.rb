@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  require 'auth_token'
   searchkick
 
   def search_data
@@ -39,6 +40,11 @@ class User < ActiveRecord::Base
 
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  def generate_auth_token
+    payload = { user_id: self.id }
+    AuthToken.encode(payload)
   end
 
   private
