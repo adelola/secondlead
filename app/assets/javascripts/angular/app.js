@@ -31,7 +31,7 @@ angular
       .state('casts', {
         url:'/casts',
         templateUrl: 'casts-index.html',
-        controller:'castsCtrl',
+        controller:'CastsCtrl',
         controllerAs: 'cast'
       })
 
