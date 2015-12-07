@@ -1,18 +1,14 @@
 class CastsController < ApplicationController
   before_action :set_cast, only: [:show, :edit, :update, :destroy]
+  respond_to :json, :html
 
-  # GET /casts
-  # GET /casts.json
   def index
-    respond_to do |format|
-      format.json { render json: Cast.all }
-      format.html
-    end
+    @casts = Cast.fetch
+    respond_with(@casts)
   end
 
-  # GET /casts/1
-  # GET /casts/1.json
   def show
+    @cast = Cast.find_by(id: params[:id])
   end
 
   # GET /casts/new

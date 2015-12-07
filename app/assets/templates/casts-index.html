@@ -1,7 +1,14 @@
-<div >
-
-<h1> This is the casts index page </h1>
-
-<div ng-repeat="cast in casts">
-  Name: {{cast.name}}
+<div ng-controller="CastsCtrl as casts">
+  <dir-pagination-controls boundary-links="true" template-url="/dirPagination.html"> </dir-pagination-controls>
+  <div gridster= "casts.gridsterOpts">
+    <div gridster-item="items" dir-paginate= "cast in casts.items | itemsPerPage: casts.pageSize" current-page="casts.currentPage">
+      <figure>
+        <img src="{{cast.image_url}}" alt="{{cast.poster_file_name}}">
+        <figcaption>
+          {{cast.name}} <br/>
+          {{cast.release_date}}
+        </figcaption>
+      </figure>
+    </div>
+  </div>
 </div>
