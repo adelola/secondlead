@@ -4,7 +4,7 @@
     <div gridster-item="items" dir-paginate= "cast in casts.items | itemsPerPage: casts.pageSize" current-page="casts.currentPage">
       <figure>
         <figcaption>
-          {{cast.name}} <br/>
+          <a ui-sref='cast({castID: cast.id})'> {{cast.name}} </a>
         </figcaption>
       </figure>
     </div>
