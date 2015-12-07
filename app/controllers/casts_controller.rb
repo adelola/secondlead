@@ -3,7 +3,7 @@ class CastsController < ApplicationController
   respond_to :json, :html
 
   def index
-    @casts = Cast.fetch
+    @casts = Cast.all
     respond_with(@casts)
   end
 

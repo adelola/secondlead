@@ -5,7 +5,7 @@ angular
   .module('secondLead')
 
   .factory('CastModel',['Restangular', function(Restangular) {
-     var baseDramas = Restangular.all('casts');
+     var baseCasts = Restangular.all('casts');
 
      return {
       getAll: baseCasts.getList().$object,

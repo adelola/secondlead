@@ -3,10 +3,8 @@
   <div gridster= "casts.gridsterOpts">
     <div gridster-item="items" dir-paginate= "cast in casts.items | itemsPerPage: casts.pageSize" current-page="casts.currentPage">
       <figure>
-        <img src="{{cast.image_url}}" alt="{{cast.poster_file_name}}">
         <figcaption>
           {{cast.name}} <br/>
-          {{cast.release_date}}
         </figcaption>
       </figure>
     </div>
