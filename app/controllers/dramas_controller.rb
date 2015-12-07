@@ -22,5 +22,6 @@ class DramasController < ApplicationController
 
   def show
     @drama = Drama.find_by(id: params[:id])
+    respond_with(@drama)
   end
 end

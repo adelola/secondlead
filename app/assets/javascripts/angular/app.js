@@ -28,6 +28,18 @@ angular
         controllerAs: 'dramas'
       })
 
+      .state('drama', {   
+      url:'/dramas/:dramaID',
+      templateUrl: 'drama-show.html',
+      controller:'DramaCtrl',
+      controllerAs: 'drama',
+      resolve: {
+        drama: ['$stateParams','DramaModel','Restangular', function($stateParams,DramaModel,Restangular) {
+            return DramaModel.getOne($stateParams.dramaID);
+        }]
+      }
+      })
+
       .state('casts', {
         url:'/casts',
         templateUrl: 'casts-index.html',
@@ -37,7 +49,7 @@ angular
 
       .state('cast', {
         url:'/casts/:castID',
-        templateUrl: 'casts-show.html',
+        templateUrl: 'cast-show.html',
         controller:'CastCtrl',
         controllerAs: 'cast',
         resolve: {
@@ -58,30 +70,30 @@ angular
           }]
         }
       })
+        
+        .state('user.lists', {     //Indented because nested under user
+          url:'/lists',
+          templateUrl: 'lists-index.html',
+          controller:'ListsCtrl',
+          controllerAs: 'lists',
+          resolve: {
+            lists: ['user', function(user) {
+              return user["lists"];
+            }]
+          }
+        })
 
-      .state('user.lists', {
-        url:'/lists',
-        templateUrl: 'lists-index.html',
-        controller:'ListsCtrl',
-        controllerAs: 'lists',
+        .state('user.list', {       //Indented because nested under user
+        url:'/lists/:listID',
+        templateUrl: 'list-show.html',
+        controller:'ListCtrl',
+        controllerAs: 'list',
         resolve: {
-          lists: ['user', function(user) {
-            return user["lists"];
+          list: ['$stateParams','ListModel','Restangular', function($stateParams,ListModel,Restangular) {
+              return ListModel.getOne($stateParams.userID, $stateParams.listID);
           }]
         }
       })
-
-      .state('user.list', {
-      url:'/lists/:listID',
-      templateUrl: 'list-show.html',
-      controller:'ListCtrl',
-      controllerAs: 'list',
-      resolve: {
-        list: ['$stateParams','ListModel','Restangular', function($stateParams,ListModel,Restangular) {
-            return ListModel.getOne($stateParams.userID, $stateParams.listID);
-        }]
-      }
-    })
 
     $urlRouterProvider.otherwise('/');
   }]);
