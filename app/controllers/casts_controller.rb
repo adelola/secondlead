@@ -3,7 +3,7 @@ class CastsController < ApplicationController
   respond_to :json, :html
 
   def index
-    @casts = Cast.all
+    @casts = Cast.order(:name)
     respond_with(@casts)
   end
 
