@@ -9,8 +9,8 @@ angular
 
      return {
       getAll: baseCasts.getList().$object,
-      getOne: function(castId) {
-        return Restangular.one('casts', castId).get()
+      getOne: function(castID) {
+        return Restangular.one('casts', castID).get()
       }
     };
   }])

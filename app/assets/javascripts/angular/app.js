@@ -32,7 +32,19 @@ angular
         url:'/casts',
         templateUrl: 'casts-index.html',
         controller:'CastsCtrl',
-        controllerAs: 'cast'
+        controllerAs: 'casts'
+      })
+
+      .state('cast', {
+        url:'/casts/:castID',
+        templateUrl: 'casts-show.html',
+        controller:'CastCtrl',
+        controllerAs: 'cast',
+        resolve: {
+          cast: ['$stateParams','CastModel','Restangular', function($stateParams,CastModel,Restangular) {
+              return CastModel.getOne($stateParams.castID);
+          }]
+        }
       })
 
       .state('user', {
@@ -42,7 +54,7 @@ angular
         controllerAs: 'user',
         resolve: {
           user: ['$stateParams','UserModel','Restangular', function($stateParams,UserModel,Restangular) {
-                return UserModel.getOne($stateParams.userID);
+              return UserModel.getOne($stateParams.userID);
           }]
         }
       })

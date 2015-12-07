@@ -9,6 +9,7 @@ class CastsController < ApplicationController
 
   def show
     @cast = Cast.find_by(id: params[:id])
+    respond_with(@cast)
   end
 
   # GET /casts/new
