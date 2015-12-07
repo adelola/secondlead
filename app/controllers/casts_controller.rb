@@ -1,15 +1,15 @@
 class CastsController < ApplicationController
   before_action :set_cast, only: [:show, :edit, :update, :destroy]
+  respond_to :json, :html
 
-  # GET /casts
-  # GET /casts.json
   def index
-    @casts = Cast.all
+    @casts = Cast.order(:name)
+    respond_with(@casts)
   end
 
-  # GET /casts/1
-  # GET /casts/1.json
   def show
+    @cast = Cast.find_by(id: params[:id])
+    respond_with(@cast)
   end
 
   # GET /casts/new
