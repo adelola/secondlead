@@ -1,31 +1,33 @@
 class AuthController < ApplicationController
-  before_action :validate_token
+  require 'auth_token'
 
-  class InvalidTokenError < StandardError; end
-
-  private
+  def register
+    user = User.new(user_params)
+    if user.save
+      token = AuthToken.issue_token({ user_id: user.id })
+      render json: { user: user,
+                   token: token }
+    else
+      render json: { errors: user.errors }
+    end
+  end
 
   def authenticate
-
-  	user = User.find_by_credentials(params[:username], params[:password]) # you'll need to implement this
-    if user
+  	user = User.find_by(username: params[:username]) 
+    if user && user.authenticate(params[:password])
       render json: { auth_token: user.generate_auth_token }
     else
-      render json: { error: 'Invalid username or password' }, status: :unauthorized
+      render json: { error: 'Invalid username/password combination' }, status: :unauthorized
     end
-  	# begin
-   #    authorization = request.headers['Authorization']
-   #    raise InvalidTokenError if authorization.nil?
-
-   #    token = request.headers['Authorization'].split('').last
-   #    decoded_token = AuthToken.valid?(token)
-
-   #    raise InvalidTokenError if Rails.application.secrets.client_id != decoded_token[0]['aud']
-
-   #    @user = decoded_token
-   #  rescue JWT::DecodeError, InvalidTokenError
-   #    render :json => {:error => "Unauthorized: Invalid token."}, status: :unauthorized
-   #  end
+  end
+  
+  def token_status
+    token = params[:token]
+    if AuthToken.valid? token
+      head 200
+    else
+      head 401
+    end
   end
 
 end 
