@@ -23,11 +23,10 @@ Rails.application.routes.draw do
 
   resources :reviews, only: [:create, :update, :destroy]
 
-  get '/example' => 'example#index'
-
-  get 'search', to: 'search#search'
-
-  post 'auth' => 'auth#authenticate'
+  match 'search', to: 'search#search', via: 'get'
+  match '/auth/register',     to: 'auth#register',     via: 'post'
+  match '/auth/authenticate', to: 'auth#authenticate', via: 'post'
+  match '/auth/token_status', to: 'auth#token_status', via: 'get'
 
 end
 
