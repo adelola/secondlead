@@ -1,16 +1,10 @@
+(function(){
+
 'use strict';
 
 angular.module('secondLead.common')
-  .factory('Auth', function($http, LocalService, AccessLevels) {
+  .factory('Auth', ['$http', 'LocalService', function($http, LocalService) {
 	return {
-	  authorize: function(access) {
-	    if (access === AccessLevels.user) {
-	      return this.isAuthenticated();
-	    } else {
-	      return true;
-	    }
-	  },
-
 	  isAuthenticated: function() {
 	    return LocalService.get('auth_token');
 	  },
@@ -18,14 +12,19 @@ angular.module('secondLead.common')
 	  login: function(credentials) {
 	    var login = $http.post('/auth/authenticate', credentials);
 	    login.success(function(result) {
-	      LocalService.set('auth_token', JSON.stringify(result));
+	      LocalService.set('auth_token', result.token);
+	      var user = { 
+          id: result.id, 
+          username: result.username
+        }
+        LocalService.set('user', JSON.stringify(user)); 
 	    });
 	    return login;
 	  },
 
 	  logout: function() {
-	    // The backend doesn't care about logouts, delete the token and you're good to go.
 	    LocalService.unset('auth_token');
+	    LocalService.unset('user');
 	  },
 
 	  register: function(formData) {
@@ -38,4 +37,6 @@ angular.module('secondLead.common')
 	  }
 
 	};
-  });
+  }])
+
+})();
