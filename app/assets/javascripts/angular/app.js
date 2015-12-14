@@ -4,13 +4,26 @@
 angular
   .module('secondLead', 
   	['ngDragDrop', 
-  	'ui.bootstrap',
-  	'ui.router', 
-  	'gridster',
-  	'restangular',
+    'ui.bootstrap',
+    'ui.router', 
+    'gridster',
+    'angular-jwt',
+    'restangular',
     'angularUtils.directives.dirPagination',
     'secondLead.common',
   	'templates'])
+
+  .config(function Config($httpProvider, jwtInterceptorProvider) {
+    jwtInterceptorProvider.tokenGetter = ['config', function(config) {
+    // Skip authentication for any requests ending in .html
+    if (config.url.substr(config.url.length - 5) == '.html') {
+      return null;
+    }
+      return localStorage.getItem('auth_token');
+    }];
+
+    $httpProvider.interceptors.push('jwtInterceptor');
+  }) 
 
   .config(function(paginationTemplateProvider) {
     paginationTemplateProvider.setPath('/dirPagination.html');
