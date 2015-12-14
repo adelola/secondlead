@@ -22,6 +22,7 @@
 //= require angular-ui-router
 //= require angular-ui-select
 //= require angular-bootstrap
+//= require angular-jwt
 //= require restangular
 //= require lodash
 //= require angularUtils-pagination
