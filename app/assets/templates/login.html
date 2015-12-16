@@ -1,0 +1,48 @@
+<div class="login-wrap">
+  <form
+    class="form-signin"
+    role="form"
+    name="login.loginForm"
+    ng-submit="login.submit(login.user, login.loginForm.$valid, login.user.register)"
+    novalidate>
+    <p class="large">Please Sign In</p>
+
+    <div class="alert alert-danger" ng-if="login.error" role="alert">
+      <p>{{login.error}}</p>
+    </div>
+
+    <fieldset>
+
+      <div>
+        <input
+          type="email"
+          ng-model="login.user.email"
+          name="email"
+          placeholder="Enter Email"
+          required>
+      </div>
+
+      <div>
+        <input
+          type="password"
+          ng-model="login.user.password"
+          placeholder="Enter Password"
+          required>
+      </div>
+
+      <div class="bottom x-small">
+        <label>
+          <input
+            type="checkbox"
+            ng-model="login.user.register">
+          New User?
+        </label>
+      </div>
+
+      <button type="submit" ng-disabled="login.loading">
+        Sign In
+        <span ng-show="login.loading"></span>
+      </button>
+    </fieldset>
+  </form>
+</div>
