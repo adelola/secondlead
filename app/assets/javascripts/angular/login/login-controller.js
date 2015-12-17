@@ -7,10 +7,9 @@ angular
  
   .controller('LoginCtrl', [
     'UserModel',
-    'Auth',
     'jwtHelper',
     '$state', 
-    function (UserModel, Auth, jwtHelper,$state) {
+    function (UserModel,jwtHelper,$state) {
     var login = this;
 
     login.loading = false;
@@ -32,7 +31,7 @@ angular
     }
 
     function onLogin() {
-      Auth.login({
+      UserModel.login({
           username: login.user.username,
           password: login.user.password
       })
