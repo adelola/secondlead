@@ -16,19 +16,8 @@ angular
 
     login.user = {
       username: '',
-      password: '',
-      register: false
+      password: ''
     };
-
-    function register() {
-      UserModel.register({
-          username: login.user.username,
-          password: login.user.password
-      })
-      .then(onLogin)
-      .catch(onError)
-      .finally(onCompletion);
-    }
 
     function onLogin() {
       UserModel.login({
@@ -41,7 +30,7 @@ angular
     }
 
     function onSuccess(result) {
-      $state.go('user');
+      $state.go('user(user: login.user.id)');
     }
 
     function onError(reason) {
@@ -55,12 +44,6 @@ angular
     login.submit = function (user, isValid, isRegistering) {
       if (isValid) {
         login.loading = true;
-
-        if (isRegistering) {
-          register();
-        } else {
-          onLogin();
-        }
       }
     };
 
@@ -68,8 +51,7 @@ angular
       login.loading = false;
       login.user = {
         username: '',
-        password: '',
-        register: false
+        password: ''
       };
     };
 

@@ -40,6 +40,13 @@ angular
         controllerAs: 'login'
       })
 
+      .state('register', {
+        url:'/register',
+        templateUrl: 'register.html',
+        controller:'RegisterCtrl',
+        controllerAs: 'register'
+      })
+
       .state('dramas', {
         url:'/dramas',
         templateUrl: 'dramas-index.html',
