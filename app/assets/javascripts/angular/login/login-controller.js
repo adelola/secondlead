@@ -7,21 +7,23 @@ angular
  
   .controller('LoginCtrl', [
     'UserModel',
+    'Auth',
+    'jwtHelper',
     '$state', 
-    function (UserModel, $state) {
+    function (UserModel, Auth, jwtHelper,$state) {
     var login = this;
 
     login.loading = false;
 
     login.user = {
-      email: '',
+      username: '',
       password: '',
       register: false
     };
 
     function register() {
       UserModel.register({
-          email: login.user.email,
+          username: login.user.username,
           password: login.user.password
       })
       .then(onLogin)
@@ -30,8 +32,8 @@ angular
     }
 
     function onLogin() {
-      UserModel.login({
-          email: login.user.email,
+      Auth.login({
+          username: login.user.username,
           password: login.user.password
       })
       .then(onSuccess)
@@ -40,7 +42,7 @@ angular
     }
 
     function onSuccess(result) {
-      $state.go('boards');
+      $state.go('user');
     }
 
     function onError(reason) {
@@ -66,7 +68,7 @@ angular
     login.reset = function () {
       login.loading = false;
       login.user = {
-        email: '',
+        username: '',
         password: '',
         register: false
       };
