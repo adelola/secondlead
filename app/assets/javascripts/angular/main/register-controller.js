@@ -7,25 +7,47 @@ angular
  
   .controller('RegisterCtrl', [
     'UserModel',
-    'jwtHelper',
+    'Restangular',
     '$state', 
-    function (UserModel,jwtHelper,$state) {
+    function (UserModel, Restangular, $state) {
     var register = this;
+    register.newUser = {};
 
-
-    function register() {
+    register.signUp = function () {
       UserModel.register({
-          username: login.user.username,
-          password: login.user.password
-      })
-      .then(onLogin)
-      .catch(onError)
-      .finally(onCompletion);
-    }
+      	first_name: register.newUser.firstName,
+      	last_name: register.newUser.lastName,
+      	email: register.newUser.email,
+      	username: register.newUser.username,
+      	password: register.newUser.password
 
-    function onSuccess(result) {
-      $state.go('user');
-    }
+      })
+      	.then(function(data){
+      	  $state.go('user.lists', {userID: data.id});
+      	})
+      	.finally(register.onCompletion());
+    };
+
+    register.onError = function () {
+      console.log("signUp marche pas")
+      // register.error = reason.message;
+    };
+
+    register.onCompletion = function () {
+      register.reset();
+    };
+
+    register.submit = function (isValid) {
+      if (isValid) {
+        register.signUp();
+      }
+      else
+      	{console.log("Trippin 2")}
+    };
+
+    register.reset = function () {
+      register.newUser = {};
+    };
 
 
   }])
