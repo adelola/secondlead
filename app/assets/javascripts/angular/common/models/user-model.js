@@ -19,6 +19,12 @@ angular
       currentUser = user;
       },
 
+      
+
+      register: function(newUser){
+        return baseUsers.post({"user": newUser});
+      },
+
       login: function (user) {
         return Auth.login({
           email: user.username,
