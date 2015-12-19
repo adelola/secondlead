@@ -32,8 +32,7 @@
 //= require_tree ./angular/common
 //= require_tree ./angular/dramas
 //= require_tree ./angular/lists
-//= require_tree ./angular/login
-// require_tree ./angular/main
+//= require_tree ./angular/main
 //= require_tree ./angular/reviews
 //= require_tree ./angular/users
 //= require_tree .
