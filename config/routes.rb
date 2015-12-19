@@ -10,8 +10,6 @@ Rails.application.routes.draw do
   
   resources :dramas, only: [:index, :show],:defaults => {:format => "json"}
 
-  post '/dramas/:drama_id/add' => 'dramas#add', as: 'add_to_list'
-
   resources :users,:defaults => {:format => "json"} do
     member do
       get :following, :followers
@@ -27,6 +25,7 @@ Rails.application.routes.draw do
   match '/auth/register',     to: 'auth#register',     via: 'post'
   match '/auth/authenticate', to: 'auth#authenticate', via: 'post'
   match '/auth/token_status', to: 'auth#token_status', via: 'get'
+  match '/dramas/:drama_id/add', to: 'dramas#add', as: 'add_to_list', via: 'post'
 
 end
 

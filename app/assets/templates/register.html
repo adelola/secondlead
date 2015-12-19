@@ -1,23 +1,37 @@
 <div>
     <h2>Register</h2>
-    <div ng-if="login.error" role="alert">{{login.error}}</div>
-    <form name="form" ng-submit="login.submit(login.user, login.loginForm.$valid, login.user.register)" role="form" novalidate>
+    <div ng-if="register.error" role="alert">{{register.error}}</div>
+    <form name="form" ng-controller="RegisterCtrl as register" ng-submit= "register.signUp()" role="form" novalidate>
+        <div>
+            <label for="firstName">First Name</label>
+            <input type="text" name="firstName" class="form-control" ng-model="register.newUser.firstName" required />
+        </div>
+
+        <div>
+            <label for="lastName">Last Name</label>
+            <input type="text" name="lastName" class="form-control" ng-model="register.newUser.lastName" required />
+        </div>
+
+        <div>
+            <label for="email">Email</label>
+            <input type="text" name="email" class="form-control" ng-model="register.newUser.email" required />
+        </div>
+
         <div>
             <label for="username">Username</label>
-            <input type="text" name="username" class="form-control" ng-model="login.user.username" required />
-            <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+            <input type="text" name="username" class="form-control" ng-model="register.newUser.username" required />
         </div>
+        
         <div>
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" class="form-control" ng-model="login.user.password" required />
+            <input name="password" id="password" class="form-control" ng-model="register.newUser.password" required />
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary">Register</button>
         </div>
         <div>
-            <button type="submit" ng-disabled="login.loading" class="btn btn-primary">Login</button>
-            <label>
-              <input type="checkbox" ng-model="login.user.register">
-              New User?
-            </label>
-            <a href="#/register" class="btn btn-link">Register</a>
+            <a href="#/login" class="btn btn-link">Cancel</a>
         </div>
     </form>
 </div>

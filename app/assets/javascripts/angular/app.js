@@ -33,13 +33,6 @@ angular
     '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('login', {
-        url:'/login',
-        templateUrl: 'login.html',
-        controller:'LoginCtrl',
-        controllerAs: 'login'
-      })
-
       .state('register', {
         url:'/register',
         templateUrl: 'register.html',
@@ -47,6 +40,13 @@ angular
         controllerAs: 'register'
       })
 
+      .state('login', {
+        url:'/login',
+        templateUrl: 'login.html',
+        controller:'LoginCtrl',
+        controllerAs: 'login'
+      })
+      
       .state('dramas', {
         url:'/dramas',
         templateUrl: 'dramas-index.html',
