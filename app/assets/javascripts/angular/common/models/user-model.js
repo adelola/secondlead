@@ -27,17 +27,9 @@ angular
         return Auth.login({
           username: user.username,
           password: user.password
-        }, function(error, authData) {
-          if (error) {
-            currentUser = null;
-            console.error('Authentication failed:', error);
-          } else {
-            // currentUser = authData.id;
-            console.log('Logged in as:', authData.user.username);
-
-          }
-        });
+        })
       }
+       
 
     };
 
