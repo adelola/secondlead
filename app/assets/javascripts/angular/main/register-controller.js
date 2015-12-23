@@ -6,31 +6,23 @@ angular
   .module('secondLead')
  
   .controller('RegisterCtrl', [
-    'UserModel',
+    'store',
     'Restangular',
     '$state', 
-    function (UserModel, Restangular, $state) {
+    'UserModel',
+    function (store, Restangular, $state, UserModel) {
     var register = this;
     register.newUser = {};
 
     register.signUp = function () {
-      UserModel.register({
-      	first_name: register.newUser.firstName,
-      	last_name: register.newUser.lastName,
-      	email: register.newUser.email,
-      	username: register.newUser.username,
-      	password: register.newUser.password
-
-      })
+      UserModel.register(
+        register.newUser
+      )
       	.then(function(data){
-      	  $state.go('user.lists', {userID: data.id});
+          store.set('jwt',data.token);
+      	  $state.go('user.lists', {userID: data.user.id});
       	})
-      	.finally(register.onCompletion());
-    };
-
-    register.onError = function () {
-      console.log("signUp marche pas")
-      // register.error = reason.message;
+        .finally(register.onCompletion());
     };
 
     register.onCompletion = function () {
@@ -42,7 +34,7 @@ angular
         register.signUp();
       }
       else
-      	{console.log("Trippin 2")}
+      	{alert("Invalid form entry")}
     };
 
     register.reset = function () {
