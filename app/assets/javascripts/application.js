@@ -1,3 +1,4 @@
+
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -30,6 +31,7 @@
 //= require_tree ../templates
 
 //= require angular/app
+//= require_tree ./angular/casts
 //= require_tree ./angular/common
 //= require_tree ./angular/dramas
 //= require_tree ./angular/lists
@@ -38,7 +40,7 @@
 //= require_tree ./angular/users
 //= require_tree .
 
+
 // require modernizr.custom
 // require toucheffects
 // require freewall
-

@@ -29,8 +29,8 @@ angular
   .config(function(paginationTemplateProvider) {
     paginationTemplateProvider.setPath('/dirPagination.html');
   })
-  
-  .config(['$stateProvider', 
+
+  .config(['$stateProvider',
     '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
@@ -57,6 +57,37 @@ angular
         controllerAs: 'dramas'
       })
 
+      .state('drama', {   
+      url:'/dramas/:dramaID',
+      templateUrl: 'drama-show.html',
+      controller:'DramaCtrl',
+      controllerAs: 'drama',
+      resolve: {
+        drama: ['$stateParams','DramaModel','Restangular', function($stateParams,DramaModel,Restangular) {
+            return DramaModel.getOne($stateParams.dramaID);
+        }]
+      }
+      })
+
+      .state('casts', {
+        url:'/casts',
+        templateUrl: 'casts-index.html',
+        controller:'CastsCtrl',
+        controllerAs: 'casts'
+      })
+
+      .state('cast', {
+        url:'/casts/:castID',
+        templateUrl: 'cast-show.html',
+        controller:'CastCtrl',
+        controllerAs: 'cast',
+        resolve: {
+          cast: ['$stateParams','CastModel','Restangular', function($stateParams,CastModel,Restangular) {
+              return CastModel.getOne($stateParams.castID);
+          }]
+        }
+      })
+
       .state('user', {
         url:'/users/:userID',
         templateUrl: 'user-show.html',
@@ -64,12 +95,12 @@ angular
         controllerAs: 'user',
         resolve: {
           user: ['$stateParams','UserModel','Restangular', function($stateParams,UserModel,Restangular) {
-                return UserModel.getOne($stateParams.userID);
+              return UserModel.getOne($stateParams.userID);
           }]
         }
       })
-
-        .state('user.lists', {
+        
+        .state('user.lists', {     //Indented because nested under user
           url:'/lists',
           templateUrl: 'lists-index.html',
           controller:'ListsCtrl',
@@ -81,7 +112,7 @@ angular
           }
         })
 
-        .state('user.list', {
+        .state('user.list', {       //Indented because nested under user
         url:'/lists/:listID',
         templateUrl: 'list-show.html',
         controller:'ListCtrl',

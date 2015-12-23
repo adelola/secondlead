@@ -3,12 +3,12 @@ Rails.application.routes.draw do
   mount Buttercms::Engine => '/blog'
 
   resources :genres
-  resources :casts
+  resources :casts, defaults: {:format => 'json'}
 
-  resources :sessions, :only => [:new, :create]
+  resources :sessions, only: [:new, :create]
   delete '/sessions' => 'sessions#destroy'
-  
-  resources :dramas, only: [:index, :show],:defaults => {:format => "json"}
+
+  resources :dramas, only: [:index, :show], defaults: {:format => 'json'}
 
   resources :users,:defaults => {:format => "json"} do
     member do
@@ -17,9 +17,10 @@ Rails.application.routes.draw do
     resources :lists
   end
 
-  resources :relationships, :only => [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
 
   resources :reviews, only: [:create, :update, :destroy]
+
 
   match 'search', to: 'search#search', via: 'get'
   match '/auth/register',     to: 'auth#register',     via: 'post'
