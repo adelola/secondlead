@@ -6,53 +6,49 @@ angular
   .module('secondLead')
  
   .controller('LoginCtrl', [
-    'UserModel',
-    'jwtHelper',
+    'Restangular',
     '$state', 
-    function (UserModel,jwtHelper,$state) {
+    'store',
+    'UserModel',
+    function (Restangular, $state, store, UserModel) {
     var login = this;
 
     login.loading = false;
+    
+    login.user = {};
 
-    login.user = {
-      username: '',
-      password: ''
-    };
-
-    function onLogin() {
-      UserModel.login({
-          username: login.user.username,
-          password: login.user.password
-      })
-      .then(onSuccess)
-      .catch(onError)
-      .finally(onCompletion);
+    login.onLogin = function() {
+      console.log("Submitted");
+      UserModel
+      .login(login.user)
+      .then(function(data){
+          var user = data.data.user;
+          $state.go('user.lists', {userID: user.id});
+        })
+      // .catch(onError)
+      // .finally(onCompletion);
     }
 
-    function onSuccess(result) {
-      $state.go('user(user: login.user.id)');
-    }
-
-    function onError(reason) {
+    login.onError = function(reason) {
       login.error = reason.message;
     }
 
-    function onCompletion() {
+    login.onCompletion = function() {
       login.reset();
     }
 
-    login.submit = function (user, isValid, isRegistering) {
+    login.submit = function (isValid) {
+      console.log("yeah?");
       if (isValid) {
-        login.loading = true;
+        login.onLogin();
       }
+      else
+        {alert("Invalid form entry")}
     };
 
     login.reset = function () {
       login.loading = false;
-      login.user = {
-        username: '',
-        password: ''
-      };
+      login.user = {};
     };
 
   }])

@@ -3,28 +3,29 @@
 
 angular
   .module('secondLead', 
-  	['ngDragDrop', 
-    'ui.bootstrap',
-    'ui.router', 
-    'gridster',
-    'angular-jwt',
-    'restangular',
+  	['angular-jwt',
+    'angular-storage',
     'angularUtils.directives.dirPagination',
+    'gridster',
+    'restangular',
     'secondLead.common',
-  	'templates'])
+  	'templates',
+    'ui.bootstrap',
+    'ui.router' ])
 
   .config(function Config($httpProvider, jwtInterceptorProvider) {
-    jwtInterceptorProvider.tokenGetter = ['config', function(config) {
+    jwtInterceptorProvider.tokenGetter = ['config', 'store', function(config, store) {
     // Skip authentication for any requests ending in .html
     if (config.url.substr(config.url.length - 5) == '.html') {
       return null;
     }
-      return localStorage.getItem('auth_token');
+      return store.get('jwt');;
     }];
 
     $httpProvider.interceptors.push('jwtInterceptor');
-  }) 
+  })
 
+   
   .config(function(paginationTemplateProvider) {
     paginationTemplateProvider.setPath('/dirPagination.html');
   })
@@ -32,6 +33,8 @@ angular
   .config(['$stateProvider', 
     '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/');
+    
     $stateProvider
       .state('register', {
         url:'/register',
@@ -90,7 +93,8 @@ angular
         }
       })
 
-    $urlRouterProvider.otherwise('/');
+
+
   }]);
 
 })();

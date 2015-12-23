@@ -13,14 +13,14 @@ angular.module('secondLead.common')
 	    var login = $http.post('/auth/login', credentials);
 	    login.success(function(result) {
 	      store.set('jwt', result.token);
-          store.set('user', result.user); 
+          store.set('user', result.user);
 	    });
 	    return login;
 	  },
 
 	  logout: function() {
-	    store.unset('jwt');
-	    store.unset('user');
+	    store.remove('jwt');
+	    store.remove('user');
 	  },
 
 	  

@@ -4,7 +4,7 @@
 angular
   .module('secondLead')
   
-  .factory('UserModel',['Restangular', function(Restangular) {
+  .factory('UserModel',['Auth', 'Restangular', function(Auth, Restangular) {
     var baseUsers = Restangular.all('users');
     var currentUser = null;
 
@@ -19,23 +19,22 @@ angular
       currentUser = user;
       },
 
-      
-
       register: function(newUser){
         return baseUsers.post({"user": newUser});
       },
 
       login: function (user) {
         return Auth.login({
-          email: user.username,
+          username: user.username,
           password: user.password
         }, function(error, authData) {
           if (error) {
             currentUser = null;
             console.error('Authentication failed:', error);
           } else {
-            currentUser = authData.uid;
-            console.log('Logged in as:', authData.uid);
+            // currentUser = authData.id;
+            console.log('Logged in as:', authData.user.username);
+
           }
         });
       }

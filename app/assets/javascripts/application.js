@@ -10,22 +10,23 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require jquery-ui
+// require jquery
+// require jquery_ujs
+// require jquery-ui
 
 //= require angular
-//= require angular-route
-//= require angular-rails-templates
-//= require angular-dragdrop
+//= require angular-bootstrap
+// require angular-dragdrop
 //= require angular-gridster
+//= require angular-jwt
+//= require angular-rails-templates
+//= require angular-route
 //= require angular-ui-router
 //= require angular-ui-select
-//= require angular-bootstrap
-//= require angular-jwt
-//= require restangular
-//= require lodash
+//= require a0-angular-storage
 //= require angularUtils-pagination
+//= require lodash
+//= require restangular
 //= require_tree ../templates
 
 //= require angular/app
@@ -37,7 +38,7 @@
 //= require_tree ./angular/users
 //= require_tree .
 
-//= require modernizr.custom
-//= require toucheffects
-//= require freewall
+// require modernizr.custom
+// require toucheffects
+// require freewall
 
