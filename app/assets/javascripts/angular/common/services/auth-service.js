@@ -3,39 +3,27 @@
 'use strict';
 
 angular.module('secondLead.common')
-  .factory('Auth', ['$http', 'LocalService', function($http, LocalService) {
+  .factory('Auth', ['$http', 'store', function($http, store) {
 	return {
 	  isAuthenticated: function() {
-	    return LocalService.get('auth_token');
+	    return store.get('jwt');
 	  },
 
 	  login: function(credentials) {
-	    var login = $http.post('/auth/authenticate', credentials);
+	    var login = $http.post('/auth/login', credentials);
 	    login.success(function(result) {
-	      LocalService.set('auth_token', result.token);
-	      var user = { 
-          id: result.id, 
-          username: result.username
-        }
-        LocalService.set('user', JSON.stringify(user)); 
+	      store.set('jwt', result.token);
+          store.set('user', result.user); 
 	    });
 	    return login;
 	  },
 
 	  logout: function() {
-	    LocalService.unset('auth_token');
-	    LocalService.unset('user');
+	    store.unset('jwt');
+	    store.unset('user');
 	  },
 
-	  register: function(formData) {
-	    LocalService.unset('auth_token');
-	    var register = $http.post('/auth/register', formData);
-	    register.success(function(result) {
-	      LocalService.set('auth_token', JSON.stringify(result));
-	    });
-	    return register;
-	  }
-
+	  
 	};
   }])
 
