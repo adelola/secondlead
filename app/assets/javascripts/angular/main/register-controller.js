@@ -15,9 +15,8 @@ angular
     register.newUser = {};
 
     register.signUp = function () {
-      UserModel.register(
-        register.newUser
-      )
+      UserModel
+        .register(register.newUser)
       	.then(function(data){
           store.set('jwt',data.token);
       	  $state.go('user.lists', {userID: data.user.id});
