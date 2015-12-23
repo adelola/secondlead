@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  require 'auth_token'
   respond_to :json, :html
 
   def index
@@ -11,12 +12,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)   
+    user = User.new(user_params)
     if user.save
-      respond_with(user)
-      
+      token = AuthToken.issue_token({ user_id: user.id })
+      render json: { user: user,
+                   token: token }
     else
-      render json: { errors: "user.errors.full_messages" }
+      render json: { errors: user.errors.full_messages }
     end
   end
 

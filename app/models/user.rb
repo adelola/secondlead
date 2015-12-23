@@ -20,11 +20,11 @@ class User < ActiveRecord::Base
   has_many :reviews, foreign_key: :reviewer_id
   has_many :reviewed_dramas,  through: :reviews, source: :drama
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :username, presence: true, length: { maximum: 50 }, uniqueness: true
-  validates :email, presence: true, uniqueness: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }
-  validates :password, presence: true, length: { minimum: 6 }
+  # validates :first_name, presence: true
+  # validates :last_name, presence: true
+  # validates :username, presence: true, length: { maximum: 50 }, uniqueness: true
+  # validates :email, presence: true, uniqueness: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }
+  # validates :password, presence: true, length: { minimum: 6 }
 
   after_create :create_watch_list, :create_watching_list, :create_watched_list
 
@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
 
   def generate_auth_token
     payload = { user_id: self.id }
-    AuthToken.encode(payload)
+    AuthToken.issue_token(payload)
   end
 
   private

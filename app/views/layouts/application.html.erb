@@ -21,12 +21,12 @@
                 <li> <%= link_to "Home", root_path %> </li>
                 <li> <a ui-sref='dramas' ui-sref-active="active">Browse</a> </li>
                 <li> <a ui-sref='user.lists({userID: 1})' ui-sref-active="active"> Lists </li>
-                <li><%= link_to "Log Out", sessions_path, :method => :delete %></li>
+                <li>"Log Out"</li>
               <% else %>
                 <li> <%= link_to "Home", root_path %> </li>
                 <li> <a ui-sref='dramas' ui-sref-active="active">Browse</a> </li>
-                <li><a href="<%= new_user_path %>">Sign Up</a></li>
-                <li><a href="<%= new_session_path %>">Log In</a></li>
+                <li><a href="#/register">Sign Up</a></li>
+                <li><a href="#/login">Log In</a></li>
               <% end %>
             </ul>
           </div>
