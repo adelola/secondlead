@@ -91,6 +91,7 @@ angular
       .state('user', {
         url:'/users/:userID',
         templateUrl: 'user-show.html',
+        data: { requireLogin: true },
         controller:'UserCtrl',
         controllerAs: 'user',
         resolve: {
@@ -123,9 +124,19 @@ angular
           }]
         }
       })
+  }])
+
+  .run([ 'jwtHelper','$rootScope', '$state', 'store',  function (jwtHelper, $rootScope, $state, store) {
+    $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
+      if (toState.data && toState.data.requiresLogin) {
+        if (!store.get('jwt') || jwtHelper.isTokenExpired(store.get('jwt'))) {
+          event.preventDefault();
+          $state.go('login');
+        }
+      }
+    });
+  }])
 
 
-
-  }]);
 
 })();
