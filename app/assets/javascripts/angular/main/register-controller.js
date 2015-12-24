@@ -15,7 +15,7 @@ angular
 
     register.newUser = {};
 
-    register.signUp = function () {
+    register.onSubmit = function () {
       UserModel.register(register.newUser)
       	.then(function(response){
           if (response.errors){

@@ -15,7 +15,7 @@ angular
 
     login.user = {};
 
-    login.onLogin = function() {
+    login.onSubmit = function() {
       UserModel.login(login.user)
       .then(function (response) {
         var user = response.data.user;
