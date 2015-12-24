@@ -18,7 +18,6 @@ angular
     login.onLogin = function() {
       UserModel.login(login.user)
       .then(function (response) {
-        console.log(response.data.user);
         var user = response.data.user;
         $state.go('user.lists', {userID: user.id});
         login.reset();

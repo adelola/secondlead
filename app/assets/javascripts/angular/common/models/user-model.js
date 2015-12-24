@@ -16,11 +16,17 @@ angular
       },
       
       setCurrentUser:  function (user) {
-      currentUser = user;
+        currentUser = user;
       },
 
       register: function(newUser){
-        return baseUsers.post({"user": newUser});
+        return baseUsers.post({"user": {
+          first_name: newUser.firstName,
+          last_name: newUser.lastName,
+          email: newUser.email,
+          username: newUser.username,
+          password: newUser.password }   
+        });
       },
 
       login: function (user) {
