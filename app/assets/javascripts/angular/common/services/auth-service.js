@@ -21,10 +21,10 @@ angular.module('secondLead.common')
 	  logout: function() {
 	    store.remove('jwt');
 	    store.remove('user');
-	  },
+	  }
 
-	  
 	};
+	
   }])
 
 })();

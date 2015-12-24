@@ -24,7 +24,6 @@ angular
 
     $httpProvider.interceptors.push('jwtInterceptor');
   })
-
    
   .config(function(paginationTemplateProvider) {
     paginationTemplateProvider.setPath('/dirPagination.html');
@@ -91,7 +90,7 @@ angular
       .state('user', {
         url:'/users/:userID',
         templateUrl: 'user-show.html',
-        data: { requireLogin: true },
+        data: { requiresLogin: true },
         controller:'UserCtrl',
         controllerAs: 'user',
         resolve: {
@@ -136,7 +135,6 @@ angular
       }
     });
   }])
-
 
 
 })();

@@ -17,7 +17,6 @@
 
 //= require angular
 //= require angular-bootstrap
-// require angular-dragdrop
 //= require angular-gridster
 //= require angular-jwt
 //= require angular-rails-templates
@@ -42,5 +41,4 @@
 
 
 // require modernizr.custom
-// require toucheffects
-// require freewall
+

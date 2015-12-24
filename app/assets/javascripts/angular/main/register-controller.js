@@ -22,6 +22,7 @@ angular
             register.error = response.errors[0];
           } else { 
             store.set('jwt',response.token);
+            store.set('user',response.user);
             $state.go('user.lists', {userID: response.user.id});
             register.reset();
           }
