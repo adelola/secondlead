@@ -4,9 +4,8 @@
 angular
   .module('secondLead')
   
-  .factory('UserModel',['Auth', 'Restangular', function(Auth, Restangular) {
+  .factory('UserModel',['Auth', 'Restangular', 'store', function(Auth, Restangular, store) {
     var baseUsers = Restangular.all('users');
-    var currentUser = null;
 
     return {
       getAll: baseUsers.getList().$object,  
@@ -15,8 +14,8 @@ angular
         return Restangular.one('users', userId).get()
       },
       
-      setCurrentUser:  function (user) {
-        currentUser = user;
+      isLoggedIn:  function (user) {
+        return store.get('user');  
       },
 
       register: function(newUser){
@@ -33,7 +32,7 @@ angular
         return Auth.login({
           username: user.username,
           password: user.password
-        })
+        });
       }
        
     };
