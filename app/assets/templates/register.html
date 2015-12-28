@@ -1,0 +1,42 @@
+<div class="col-md-6 col-md-offset-3" ng-controller="RegisterCtrl as register" >
+  <h2>Register</h2>  
+  <div ng-if="register.error" role="alert"> {{register.error}}</div>
+  <form name="registerForm" ng-submit= "register.onSubmit()" role="form" novalidate>
+    <div class="form-group" ng-class="{ 'has-error' : registerForm.firstName.$invalid && !registerForm.firstName.$pristine }">
+      <label for="firstName">First Name</label>
+      <input type="text" name="firstName" class="form-control" ng-model="register.newUser.firstName" required />
+      <p ng-show="registerForm.firstName.$invalid && !registerForm.firstName.$pristine" class="help-block">Your first name is required.</p>
+    </div>
+
+    <div class="form-group" ng-class="{ 'has-error' : registerForm.lastName.$invalid && !registerForm.lastName.$pristine }">
+      <label for="lastName">Last Name</label>
+      <input type="text" name="lastName" class="form-control" ng-model="register.newUser.lastName" required />
+      <p ng-show="registerForm.lastName.$invalid && !registerForm.lastName.$pristine" class="help-block">Your last name is required.</p>
+    </div>
+
+    <div ng-class="{ 'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine }">
+      <label for="email">Email</label>
+      <input type="text" name="email" class="form-control" ng-model="register.newUser.email" required />
+      <p ng-show="registerForm.email.$invalid && !registerForm.email.$pristine" class="help-block">Enter a valid email.</p>
+    </div>
+
+    <div class="form-group" ng-class="{ 'has-error' : registerForm.username.$invalid && !registerForm.username.$pristine }">
+      <label for="username">Username</label>
+      <input type="text" name="username" class="form-control" ng-model="register.newUser.username" ng-minlength="3" ng-maxlength="20" required />
+      <p ng-show="registerForm.username.$error.minlength" class="help-block">Username is too short.</p>
+      <p ng-show="registerForm.username.$error.maxlength" class="help-block">Username is too long.</p>
+    </div>
+    
+    <div class="form-group" ng-class="{ 'has-error' : registerForm.password.$invalid && !registerForm.password.$pristine }">
+      <label for="password">Password</label>
+      <input type="password" name="password" class="form-control" ng-model="register.newUser.password" ng-minlength="6" ng-maxlength="20" required />
+      <p ng-show="registerForm.password.$error.minlength" class="help-block">Password is too short.</p>
+      <p ng-show="registerForm.password.$error.maxlength" class="help-block">Password is too long.</p>
+    </div>
+
+    <div>
+      <button type="submit" ng-disabled="registerForm.$invalid" class="btn btn-primary">Register</button>
+      <a href="#/login" class="btn btn-link">Cancel</a>
+    </div>
+  </form>
+</div>

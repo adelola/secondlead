@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  require 'auth_token'
   searchkick
 
   def search_data
@@ -21,7 +22,7 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :username, presence: true, length: { maximum: 50 }, uniqueness: true
+  validates :username, presence: true, length: { maximum: 20 }, uniqueness: true
   validates :email, presence: true, uniqueness: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }
   validates :password, presence: true, length: { minimum: 6 }
 
@@ -39,6 +40,11 @@ class User < ActiveRecord::Base
 
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  def generate_auth_token
+    payload = { user_id: self.id }
+    AuthToken.issue_token(payload)
   end
 
   private

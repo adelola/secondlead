@@ -20,6 +20,7 @@ gem 'bower-rails'
 gem 'sprockets'
 gem 'responders', '~> 2.0'
 gem 'searchkick'
+gem 'jwt', '~> 1.5', '>= 1.5.2'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'

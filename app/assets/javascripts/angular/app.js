@@ -2,16 +2,29 @@
 'use strict';
 
 angular
-  .module('secondLead',
-  	['ngDragDrop',
-  	'ui.bootstrap',
-  	'ui.router',
-  	'gridster',
-  	'restangular',
+  .module('secondLead', 
+  	['angular-jwt',
+    'angular-storage',
     'angularUtils.directives.dirPagination',
+    'gridster',
+    'restangular',
     'secondLead.common',
-  	'templates'])
+  	'templates',
+    'ui.bootstrap',
+    'ui.router' ])
 
+  .config(function Config($httpProvider, jwtInterceptorProvider) {
+    jwtInterceptorProvider.tokenGetter = ['config', 'store', function(config, store) {
+    // Skip authentication for any requests ending in .html
+    if (config.url.substr(config.url.length - 5) == '.html') {
+      return null;
+    }
+      return store.get('jwt');;
+    }];
+
+    $httpProvider.interceptors.push('jwtInterceptor');
+  })
+   
   .config(function(paginationTemplateProvider) {
     paginationTemplateProvider.setPath('/dirPagination.html');
   })
@@ -19,8 +32,23 @@ angular
   .config(['$stateProvider',
     '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/');
+    
     $stateProvider
+      .state('register', {
+        url:'/register',
+        templateUrl: 'register.html',
+        controller:'RegisterCtrl',
+        controllerAs: 'register'
+      })
 
+      .state('login', {
+        url:'/login',
+        templateUrl: 'login.html',
+        controller:'LoginCtrl',
+        controllerAs: 'login'
+      })
+      
       .state('dramas', {
         url:'/dramas',
         templateUrl: 'dramas-index.html',
@@ -62,6 +90,7 @@ angular
       .state('user', {
         url:'/users/:userID',
         templateUrl: 'user-show.html',
+        data: { requiresLogin: true },
         controller:'UserCtrl',
         controllerAs: 'user',
         resolve: {
@@ -94,8 +123,18 @@ angular
           }]
         }
       })
+  }])
 
-    $urlRouterProvider.otherwise('/');
-  }]);
+  .run([ 'jwtHelper','$rootScope', '$state', 'store',  function (jwtHelper, $rootScope, $state, store) {
+    $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
+      if (toState.data && toState.data.requiresLogin) {
+        if (!store.get('jwt') || jwtHelper.isTokenExpired(store.get('jwt'))) {
+          event.preventDefault();
+          $state.go('login');
+        }
+      }
+    });
+  }])
+
 
 })();

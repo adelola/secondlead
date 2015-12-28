@@ -4,15 +4,41 @@
 angular
   .module('secondLead')
   
-  .factory('UserModel',['Restangular', function(Restangular) {
-     var baseUsers = Restangular.all('users');
+  .factory('UserModel',['Auth', 'Restangular', function(Auth, Restangular) {
+    var baseUsers = Restangular.all('users');
+    var currentUser = null;
 
-     return {
+    return {
       getAll: baseUsers.getList().$object,  
+      
       getOne: function(userId) {
         return Restangular.one('users', userId).get()
+      },
+      
+      setCurrentUser:  function (user) {
+        currentUser = user;
+      },
+
+      register: function(newUser){
+        return baseUsers.post({"user": {
+          first_name: newUser.firstName,
+          last_name: newUser.lastName,
+          email: newUser.email,
+          username: newUser.username,
+          password: newUser.password }   
+        });
+      },
+
+      login: function (user) {
+        return Auth.login({
+          username: user.username,
+          password: user.password
+        })
       }
-     };
+       
+    };
+
   }])
+
 })();
   

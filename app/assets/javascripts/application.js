@@ -1,31 +1,40 @@
-//= require jquery
-//= require jquery_ujs
-//= require jquery-ui
 
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// compiled file.
+//
+// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
+// about supported directives.
+//
 //= require angular
-//= require angular-route
-//= require angular-rails-templates
-//= require angular-dragdrop
+//= require angular-bootstrap
 //= require angular-gridster
+//= require angular-jwt
+//= require angular-rails-templates
+//= require angular-route
 //= require angular-ui-router
 //= require angular-ui-select
-//= require angular-bootstrap
-//= require restangular
-//= require lodash
+//= require a0-angular-storage
 //= require angularUtils-pagination
+//= require lodash
+//= require restangular
 //= require_tree ../templates
 
 //= require angular/app
+//= require_tree ./angular/casts
 //= require_tree ./angular/common
 //= require_tree ./angular/dramas
 //= require_tree ./angular/lists
-//= require_tree ./angular/login
-//= require_tree ./angular/casts
-// require_tree ./angular/main
+//= require_tree ./angular/main
 //= require_tree ./angular/reviews
 //= require_tree ./angular/users
 //= require_tree .
 
-//= require modernizr.custom
-//= require toucheffects
-//= require freewall
+
+// require modernizr.custom
+
