@@ -6,28 +6,28 @@ angular
   .module('secondLead')
 
   .controller('MainCtrl', [ 
-    'UserModel',
     'Auth',
+    '$scope',
     '$state',
     'store',
-    function (UserModel, Auth, $state, store) {
+    'UserModel', 
+    function (Auth, $scope, $state, store, UserModel) {
     var main = this;
-    main.auth = Auth;
-    main.currentUser = null;
-
+    
     main.logout = function () {
-      UserModel.logout();
+      Auth.logout();
+      main.currentUser = null;
+      UserModel.setLoggedIn(false);
       $state.go('login');
     };
 
-    main.setCurrentUser = function () {
-      if (store.get('user')) {
-        main.currentUser = user.id;
-      } else {
-        main.currentUser = null;
-      }
-    };
-    
+    main.currentUser = store.get('user');
+
+    $scope.$on('loggedIn:updated', function(event,data) {
+      main.loggedIn = UserModel.getStatus().loggedIn;
+      main.currentUser = store.get('user');
+    });
+
   }]);
 
 })();
