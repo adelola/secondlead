@@ -19,6 +19,7 @@ angular
       UserModel.login(login.user)
       .then(function (response) {
         var user = response.data.user;
+        UserModel.setLoggedIn(true);
         $state.go('user.lists', {userID: user.id});
         login.reset();
        }, function(error){

@@ -19,8 +19,12 @@ angular.module('secondLead.common')
 	  },
 
 	  logout: function() {
-	    store.remove('jwt');
-	    store.remove('user');
+	    var clearJWT = store.remove('jwt');
+	    var clearUser = store.remove('user');
+		return {
+		  jwt: clearJWT,
+		  user: clearUser
+		};
 	  }
 
 	};

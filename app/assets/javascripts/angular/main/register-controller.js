@@ -23,6 +23,7 @@ angular
           } else { 
             store.set('jwt',response.token);
             store.set('user',response.user);
+            UserModel.setLoggedIn(true);
             $state.go('user.lists', {userID: response.user.id});
             register.reset();
           }

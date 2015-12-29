@@ -15,7 +15,7 @@ angular
 
   .config(function Config($httpProvider, jwtInterceptorProvider) {
     jwtInterceptorProvider.tokenGetter = ['config', 'store', function(config, store) {
-    // Skip authentication for any requests ending in .html
+    // Skips authentication for any requests ending in .html
     if (config.url.substr(config.url.length - 5) == '.html') {
       return null;
     }

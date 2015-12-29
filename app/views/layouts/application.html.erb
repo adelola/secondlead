@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="secondLead">
 
   <head>
     <title>Second Lead</title>
@@ -11,23 +11,17 @@
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.min.css" rel="stylesheet">
   </head>
 
-  <body ng-app="secondLead">
+  <body ng-controller="MainCtrl as main">
     <nav>
       <div class="nav-wrapper">
        <div class="row">
          <div class="col s12">
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-              <% if logged_in? %>
-                <li> <%= link_to "Home", root_path %> </li>
-                <li> <a ui-sref='dramas' ui-sref-active="active">Browse</a> </li>
-                <li> <a ui-sref='user.lists({userID: 1})' ui-sref-active="active"> Lists </li>
-                <li>"Log Out"</li>
-              <% else %>
-                <li> <%= link_to "Home", root_path %> </li>
-                <li> <a ui-sref='dramas' ui-sref-active="active">Browse</a> </li>
-                <li><a href="#/register">Sign Up</a></li>
-                <li><a href="#/login">Log In</a></li>
-              <% end %>
+            <ul id="navbar" class="right hide-on-med-and-down">
+              <li> <a ui-sref='dramas' ui-sref-active="active">Browse</a> </li>
+              <li> <a ng-if="main.currentUser" ui-sref='user.lists({userID: main.currentUser.id})' ui-sref-active="active">MyPage</li>
+              <li> <a ng-if="main.loggedIn || main.currentUser" ng-click="main.logout()">Logout</a></li>
+              <li> <a ng-if="!main.loggedIn && !main.currentUser" ui-sref='register' ui-sref-active="active">Sign Up</a></li>
+              <li> <a ng-if="!main.loggedIn && !main.currentUser" ui-sref='login' ui-sref-active="active">Log In</a></li>
             </ul>
           </div>
         </div>

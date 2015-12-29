@@ -6,9 +6,9 @@ angular
 
   .controller('ListCtrl', [
     'Gridster',
-    'user',
     'list',
-    function(Gridster, user, list) {
+    'user',
+    function(Gridster, list, user) {
     var ctrl = this;
     
     ctrl.items = list.dramas;
