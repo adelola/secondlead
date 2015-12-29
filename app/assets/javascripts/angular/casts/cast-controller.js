@@ -5,9 +5,9 @@ angular
   .module('secondLead')
 
   .controller('CastCtrl', [
-    'Gridster',
     'cast',
-    function(Gridster, cast) {
+    'Gridster',
+    function(cast, Gridster) {
     var ctrl = this;
 
     ctrl.name = cast.name;
