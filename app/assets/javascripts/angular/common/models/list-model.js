@@ -4,15 +4,24 @@
 angular
   .module('secondLead')
   
-  .factory('ListModel',['Restangular', function(Restangular) {
-    
-     return {
+  .factory('ListModel',['Restangular', 'store', function(Restangular, store) {
+    var currentUser = store.get('user');
+    return {
+
       getAll: function(userID) { 
-      	Restangular.one('users', userID).getList('lists') },
+          return Restangular.one('users', userID).getList('lists') 
+      },
+      
+      currentUserLists: function(){
+        return Restangular.one('users', currentUser.id).getList('lists').$object
+      },
+      
       getOne: function(userID, listID) {
         return Restangular.one('users', userID).one('lists', listID).get()
       }
+
     };
+
   }])
 
 })();
