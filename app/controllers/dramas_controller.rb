@@ -24,4 +24,24 @@ class DramasController < ApplicationController
     @drama = Drama.find_by(id: params[:id])
     respond_with(@drama)
   end
+
+  def create
+    user = User.find_by(id: params[:user_id])
+    list = user.lists.find_by(id: params[:list_id])
+    drama = Drama.find_by(id: params[:drama_id])
+    unless list.dramas.find_by(id: drama.id)
+      new_list_drama = drama.add_to_list(list)
+        if new_list_drama.save
+          render json: { message: "Drama successfully added to #{list.name}" }
+        else
+          render json: { errors: "Oops, something went wrong." }
+        end
+    end
+    render json: { message: "Drama already in #{list.name}" } 
+  end
+
+  def destroy
+
+  end
+
 end
