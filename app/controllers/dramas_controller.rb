@@ -41,7 +41,12 @@ class DramasController < ApplicationController
   end
 
   def destroy
-
+    drama = ListDrama.find_by({drama_id: params[:id], list_id: params[:list_id]})
+      if drama.destroy
+        render json: { message: "Drama successfully deleted." }
+      else
+        render json: { errors: "Oops, something went wrong." }
+      end
   end
 
 end
