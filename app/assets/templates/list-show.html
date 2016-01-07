@@ -1,6 +1,6 @@
 
 <a ui-sref="user.lists({userID: list.userID})"> Back </a>
-<div gridster= "list.gridsterOpts">
+<div gridster= "list.gridsterOpts"> 
   <div gridster-item="items" ng-repeat= "drama in list.items" >
     <figure>
       <img src="{{drama.image_url}}" alt="{{drama.poster_file_name}}">
@@ -8,7 +8,7 @@
         {{drama.name}} <br/>
         {{drama.release_date}}
       </figcaption>
-      <delete-drama drama="drama"> </delete-drama>
+      <delete-drama drama="drama" list="{{list.id}}" user="{{list.userID}}"> </delete-drama>
     </figure>
   </div>
 </div>

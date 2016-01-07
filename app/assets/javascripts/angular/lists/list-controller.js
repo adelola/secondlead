@@ -12,7 +12,7 @@ angular
     var ctrl = this;
     
     ctrl.items = list.dramas;
-  
+    ctrl.id = list.list.id;
     ctrl.userID = user.user.id;
 
     

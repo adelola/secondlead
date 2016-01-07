@@ -1,18 +1,21 @@
 angular.module('secondLead')
-  .directive('deleteDrama', function(){
+  .directive('deleteDrama', [ 'DramaModel' , function(DramaModel){ 
   	return {
   	  restrict: 'E',
+  	  templateUrl:'delete-drama.html' ,
   	  scope: {
-  	  	drama: "="
+  	  	drama: "=",
+  	  	list: "@",
+  	  	user: "@",
+  	  	remove: "&"
   	  },
   	  replace: true,
-  	  link: function(scope, element, attrs){
-
-  	  },
-  	  controller: function($scope){
-  	  	console.log($scope.drama);
+  	  link: function(scope, element, attributes){
+  	  	scope.delete = function(user, list, drama){
+  	  	  DramaModel.delete(scope.user,scope.list,scope.drama.id);
+  	  	};
   	  }
-  	}
+  	  
+  	};
 
-
-  })
+  }])
