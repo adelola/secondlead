@@ -1,5 +1,10 @@
 /*temp styling*/
 
+#add_drama{
+ width:50px;
+ float:right;   
+}
+
 body {
     background-color: #EEEEEE;
     color: #515151;

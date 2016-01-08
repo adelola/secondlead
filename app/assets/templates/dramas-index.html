@@ -8,14 +8,11 @@
       <a ui-sref="drama({dramaID: drama.id}) "> <figure>
         <img src="{{drama.image_url}}" alt="{{drama.poster_file_name}}">
         <figcaption>
-          {{drama.name}} <br/></a>
-          {{drama.release_date}}
-
-        </figcaption>
-        <select name ="add_drama" ng-model="dramas.selectedList" class="form-control" ng-options="list as list.name for list in dramas.userLists" required>
-          <option value="">Add</option>
-        </select>
+          {{drama.name}} <br/>
+          {{drama.release_date}}</a>    
+        </figcaption> 
       </figure> 
+      <add-drama drama="drama" user="{{dramas.user.id}}" user-lists="dramas.userLists" selected-list="dramas.selectedList"> </add-drama>
     </div>
   </div>
 </div>

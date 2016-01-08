@@ -1,4 +1,4 @@
-(function(){
+    (function(){
 'use strict';
 
 angular
@@ -18,9 +18,6 @@ angular
     
     ctrl.userLists = ListModel.currentUserLists();
     ctrl.selectedList = {};
-    ctrl.test = function(){
-      console.log(ctrl.selectedList)
-    }
 
     ctrl.gridsterOpts = Gridster.getOptions();
     ctrl.currentPage = 1;
