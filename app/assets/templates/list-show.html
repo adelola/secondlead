@@ -8,7 +8,7 @@
         {{drama.name}} <br/>
         {{drama.release_date}}
       </figcaption>
-      <delete-drama drama="drama" list="{{list.id}}" user="{{list.userID}}"> </delete-drama>
+      <delete-drama drama="drama" remove-item= "list.removeItem(drama)" list="{{list.id}}" user="{{list.userID}}"> </delete-drama>
     </figure>
   </div>
 </div>

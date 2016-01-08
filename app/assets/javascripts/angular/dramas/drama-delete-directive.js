@@ -7,12 +7,13 @@ angular.module('secondLead')
   	  	drama: "=",
   	  	list: "@",
   	  	user: "@",
-  	  	remove: "&"
+  	  	removeItem: "&"
   	  },
   	  replace: true,
   	  link: function(scope, element, attributes){
   	  	scope.delete = function(user, list, drama){
   	  	  DramaModel.delete(scope.user,scope.list,scope.drama.id);
+  	  	  scope.removeItem(scope.drama);
   	  	};
   	  }
   	  
