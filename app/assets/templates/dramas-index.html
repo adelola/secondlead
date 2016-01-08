@@ -1,12 +1,16 @@
+<div ng-controller= "DramasCtrl as dramas">
 <dir-pagination-controls boundary-links="true" template-url="/dirPagination.html"> </dir-pagination-controls>
+  <h3>Dramas:</h3>
   <div gridster= "dramas.gridsterOpts">
     <div gridster-item="items" dir-paginate= "drama in dramas.items | itemsPerPage: dramas.pageSize" current-page="dramas.currentPage">
       <a ui-sref="drama({dramaID: drama.id}) "> <figure>
         <img src="{{drama.image_url}}" alt="{{drama.poster_file_name}}">
         <figcaption>
           {{drama.name}} <br/>
-          {{drama.release_date}}
-        </figcaption>
-      </figure> </a>
+          {{drama.release_date}}</a>    
+        </figcaption> 
+      </figure> 
+      <add-drama drama="drama" user="{{dramas.user.id}}" user-lists="dramas.userLists" selected-list="dramas.selectedList"> </add-drama>
     </div>
   </div>
+</div>

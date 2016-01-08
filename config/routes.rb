@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     member do
       get :following, :followers
     end
-    resources :lists
+    resources :lists do
+      resources :dramas, only: [:create, :destroy], defaults: {:format => 'json'}
+    end
   end
 
   resources :relationships, only: [:create, :destroy]

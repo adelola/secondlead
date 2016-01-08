@@ -1,0 +1,6 @@
+<select name ="add_drama" id="add_drama" ng-model="selectedList" ng-change="addToList(selectedList, drama.id)" class="form-control" required>
+	<option ng-repeat="list in userLists" value="{{list.id}}">{{list.name}}</option>
+</select>
+
+
+

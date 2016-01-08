@@ -7,18 +7,19 @@ angular
   .controller('DramasCtrl', [
     'DramaModel',
     'Gridster', 
+    'ListModel',
     'Restangular',
-    function(DramaModel, Gridster, Restangular) {
+    'UserModel',
+    function(DramaModel, Gridster, ListModel, Restangular, UserModel) {
     var ctrl = this;
     
     ctrl.items = DramaModel.getAll;
-   
-    ctrl.setCurrentDrama = function(item){
-      ctrl.currentDrama = item;
-    };
+    ctrl.user = UserModel.currentUser();
+    
+    ctrl.userLists = ListModel.currentUserLists();
+    ctrl.selectedList = {};
 
     ctrl.gridsterOpts = Gridster.getOptions();
-
     ctrl.currentPage = 1;
     ctrl.pageSize = 20;
   }])
