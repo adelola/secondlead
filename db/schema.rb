@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150919004504) do
+ActiveRecord::Schema.define(version: 20160110041405) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,12 @@ ActiveRecord::Schema.define(version: 20150919004504) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.integer "weight"
+    t.integer "drama_id"
+    t.integer "rater_id"
+  end
+
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
@@ -88,7 +94,6 @@ ActiveRecord::Schema.define(version: 20150919004504) do
   create_table "reviews", force: :cascade do |t|
     t.integer  "drama_id"
     t.integer  "reviewer_id"
-    t.float    "rating"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"

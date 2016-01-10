@@ -12,6 +12,8 @@ class Drama < ActiveRecord::Base
 
   has_many :reviews
   has_many :reviewers, through: :reviews
+  has_many :ratings
+  has_many :raters, through: :ratings
 
   has_attached_file :poster, styles: { medium: "400x400>", small: "200x200#", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :poster, content_type: /\Aimage\/.*\Z/
@@ -45,8 +47,8 @@ class Drama < ActiveRecord::Base
       x.rating
     end 
     all_ratings = all_ratings.compact
-    all_ratings.reduce(:+).to_f / all_ratings.size
-
+    avg = all_ratings.reduce(:+).to_f / all_ratings.size
+    avg.round(1)
   end
   
 end
