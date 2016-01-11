@@ -45,10 +45,14 @@ class Drama < ActiveRecord::Base
   def avg_rating
     all_ratings = self.ratings.map do |x|
       x.weight
-    end 
-    all_ratings = all_ratings.compact
-    avg = all_ratings.reduce(:+).to_f / all_ratings.size
-    avg.round(1)
+    end
+    if all_ratings.count == 0
+      return 0
+    else 
+      all_ratings = all_ratings.compact
+      avg = all_ratings.reduce(:+).to_f / all_ratings.size
+      avg.round(1)
+    end
   end
   
 end
