@@ -1,10 +1,18 @@
 <div >
 
-<h1>Drama show </h1>
+  <h1>Drama show </h1>
 
- <p>Name: {{drama.name}}</p> 
+  <p>Name: {{drama.name}}</p> 
 
-<p> {{drama.year}}</p> 
-<p> {{drama.episode_count}} episodes</p> 
+  <p>Year of Release: {{drama.year}}</p> 
+  <p>Number of episodes: {{drama.episode_count}} </p> 
+  <div>
+   <h3> Avg Rating: {{drama.avgRating}} </h3>
+  </div>
+  
+  <div ng-controller="RatingsCtrl as ctrl">	
+    <h4> Rate:</h4>
+    <div drama-rating drama="drama" rating-id ="ctrl.id" rating-value="ctrl.rating" data-max="ctrl.max"></div>
+  </div>
 
 </div>
