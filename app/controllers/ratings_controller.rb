@@ -1,5 +1,7 @@
 class RatingsController < ApplicationController
-  before_action :set_rating, only: [:show, :update, :destroy]
+  before_action :set_rating, only: [:update, :destroy]
+  respond_to :json, :html
+
 
   def index
     drama = Drama.find_by(id: params[:drama_id])
@@ -11,11 +13,20 @@ class RatingsController < ApplicationController
     respond_with(@rating)
   end
 
+  def find
+    @rating = Rating.find_by({drama_id: params[:drama_id], rater_id: params[:rater_id]})
+    if @rating
+      respond_with(@rating)
+    else
+      render json: { errors: "Oops, something went wrong." }
+    end
+  end
+
   def create
     drama = Drama.find_by(id: params[:drama_id])
     @rating = drama.ratings.build(new_rating_params)
     if @rating.save
-      respond_with(@rating)
+      render json: { message: "Rating successfully created" }
     else
       render json: { errors: "Oops, something went wrong." }
     end
@@ -44,11 +55,11 @@ class RatingsController < ApplicationController
     end
 
     def new_rating_params
-      params.require(:rating).permit(:drama_id, :weight, :rater_id)
+      params.permit(:drama_id, :weight, :rater_id)
     end
 
     def update_params
-      params.require(:rating).permit(:weight)
+      params.permit(:weight)
     end
 
 end
