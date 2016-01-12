@@ -9,9 +9,11 @@ angular
     'Gridster',
     'RatingModel',
     'Restangular',
-    function(drama, Gridster, RatingModel,Restangular) {
+    'UserModel',
+    function(drama, Gridster, RatingModel,Restangular,UserModel) {
     var ctrl = this;
 
+    ctrl.user = UserModel.currentUser();
     ctrl.name = drama.name;
     ctrl.episode_count = drama.episode_count
     ctrl.year = drama.release_date;
