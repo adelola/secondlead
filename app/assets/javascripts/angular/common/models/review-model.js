@@ -7,17 +7,13 @@ angular
   .factory('ReviewModel',['Restangular', 'store', function(Restangular, store) {
     var currentUser = store.get('user');
     return {
-
-      getAll: function(userID) { 
-          return Restangular.one('users', userID).getList('reviews') 
+      
+      getAll: function(dramaID){
+        return Restangular.one('dramas', dramaID).getList('reviews').$object
       },
       
-      currentUserReviews: function(){
-        return Restangular.one('users', currentUser.id).getList('reviews').$object
-      },
-      
-      getOne: function(userID, reviewID) {
-        return Restangular.one('users', userID).one('reviews', reviewID).get()
+      getOne: function(dramaID, reviewID) {
+        return Restangular.one('dramas', dramaID).one('reviews', reviewID).get()
       }
 
     };
