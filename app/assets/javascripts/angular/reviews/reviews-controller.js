@@ -9,9 +9,6 @@ angular
     var dramaID = $stateParams.dramaID
     ctrl.reviews = ReviewModel.getAll(dramaID);
 
-   
-
-
   }]);
 
 })();
