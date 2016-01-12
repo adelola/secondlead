@@ -19,6 +19,7 @@
 //= require angular-route
 //= require angular-ui-router
 //= require angular-ui-select
+//= require angular-xeditable
 //= require a0-angular-storage
 //= require angularUtils-pagination
 //= require lodash

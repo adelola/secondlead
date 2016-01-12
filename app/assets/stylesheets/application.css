@@ -12,6 +12,7 @@
  *
  *= require hover
  *= require angular-gridster
+ *= require angular-xeditable
  *= require_tree .
  *= require_self
  */

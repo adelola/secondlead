@@ -11,7 +11,8 @@ angular
     'secondLead.common',
   	'templates',
     'ui.bootstrap',
-    'ui.router' ])
+    'ui.router',
+    'xeditable' ])
 
   .config(function Config($httpProvider, jwtInterceptorProvider) {
     jwtInterceptorProvider.tokenGetter = ['config', 'store', function(config, store) {
@@ -135,6 +136,10 @@ angular
       }
     });
   }])
+
+  .run(function(editableOptions) {
+    editableOptions.theme = 'bs2'; 
+  });
 
 
 })();
