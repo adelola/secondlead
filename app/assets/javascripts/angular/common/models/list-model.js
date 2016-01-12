@@ -9,7 +9,7 @@ angular
     return {
 
       getAll: function(userID) { 
-          return Restangular.one('users', userID).getList('lists') 
+        return Restangular.one('users', userID).getList('lists') 
       },
       
       currentUserLists: function(){
@@ -22,6 +22,14 @@ angular
 
       create: function(listParams) {
         return Restangular.one('users', currentUser.id).all('lists').post(listParams)
+      },
+
+      update: function(listID, listParams){
+        return Restangular.one('users', currentUser.id).one('lists', listID).put(listParams)
+      },
+
+      delete: function(listID){
+        return Restangular.one('users', currentUser.id).one('lists', listID).remove()
       }
 
     };

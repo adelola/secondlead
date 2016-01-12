@@ -14,6 +14,12 @@ angular
     var ctrl = this;
     ctrl.items = lists;
 
+    var createList = function(listParams){
+      ListModel.create(listParams).then(function(result){
+      ctrl.items.push(result.list);
+      });
+    };
+
     ctrl.showModal = function(){
       var modalInstance = $uibModal.open({
         animation: $scope.animationsEnabled,
@@ -27,10 +33,8 @@ angular
       });
     };
 
-    var createList = function(listParams){
-      ListModel.create(listParams).then(function(result){
-      ctrl.items.push(result.list);
-      });
+    ctrl.removeItem = function(item){
+      ctrl.items.splice(ctrl.items.indexOf(item),1);
     };
     
     ctrl.gridsterOpts = Gridster.getOptions();

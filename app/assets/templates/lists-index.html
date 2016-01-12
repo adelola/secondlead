@@ -2,5 +2,6 @@
 <div gridster= "user.gridsterOpts">
   <div gridster-item="items" ng-repeat= "list in lists.items" >
      <h4> <a ui-sref='user.list({listID: list.id, userID: list.user_id})'> {{list.name}} </a> </h4>
+      <delete-list class="left" list="list" remove-item="lists.removeItem(list)"> </delete-drama>
   </div>
 </div>
