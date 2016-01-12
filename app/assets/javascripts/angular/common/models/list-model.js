@@ -18,6 +18,10 @@ angular
       
       getOne: function(userID, listID) {
         return Restangular.one('users', userID).one('lists', listID).get()
+      },
+
+      create: function(listParams) {
+        return Restangular.one('users', currentUser.id).all('lists').post(listParams)
       }
 
     };

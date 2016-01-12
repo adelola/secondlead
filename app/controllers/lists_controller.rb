@@ -19,11 +19,11 @@ class ListsController < ApplicationController
 
   def create
   	@list = List.new(list_params)
-    @list.user = current_user
+    @list.user = find_user
   	if @list.save
-      redirect_to user_path(current_user), notice: "Added #{@list.name}"
+      render json: { list: @list} 
   	else
-  	  render :new
+  	  render json: { errors: "Oops, something went wrong." }
   	end
   end
 
@@ -58,7 +58,7 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:name, :description)
+    params.permit(:name, :description)
   end
 
 
