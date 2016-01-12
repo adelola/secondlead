@@ -15,4 +15,12 @@
     <div drama-rating drama="drama" rating-id ="ctrl.id" rating-value="ctrl.rating" data-max="ctrl.max"></div>
   </div>
 
+  <div ng-controller="ReviewsCtrl as ctrl">
+    <h3>Reviews</h3>
+    <div ng-repeat= "review in ctrl.reviews">
+      Author: <span name-user user-id="review.reviewer_id"></span>
+      <p>Review: {{review.body}}</p>
+    </div>
+  </div>
+
 </div>
