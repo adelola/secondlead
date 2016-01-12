@@ -27,6 +27,6 @@ Rails.application.routes.draw do
   match '/auth/login', to: 'auth#login', via: 'post'
   match '/auth/token_status', to: 'auth#token_status', via: 'get'
   match 'ratings/find', to: 'ratings#find', via: 'get', :format => 'json'
-
+  match 'reviews/find', to: 'reviews#find', via: 'get', :format => 'json'
 end
 
