@@ -4,6 +4,7 @@
 angular
   .module('secondLead', 
   	['angular-jwt',
+    'angularModalService',
     'angular-storage',
     'angularUtils.directives.dirPagination',
     'gridster',
