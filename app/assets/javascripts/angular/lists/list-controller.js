@@ -25,6 +25,10 @@ angular
         return true
       } 
     };
+
+    ctrl.removeItem = function(item){
+      ctrl.items.splice(ctrl.items.indexOf(item),1)
+    };
   
     ctrl.updateName = function(name){
       ListModel.update(ctrl.id, {name: name});
