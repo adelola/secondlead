@@ -15,7 +15,7 @@ angular
     };
 
     return {
-
+      
       currentUser: function() {
         return store.get('user');
       },

@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :find_list, only: [:show, :edit, :update, :destroy]
+  before_action :find_list, only: [:show, :update, :destroy]
   respond_to :json, :html
 
   def index
@@ -13,36 +13,30 @@ class ListsController < ApplicationController
     respond_with({list: @list, dramas: @dramas})
   end
 
-  def new
-  	@list = List.new
-  end
-
   def create
   	@list = List.new(list_params)
-    @list.user = current_user
+    @list.user = find_user
   	if @list.save
-      redirect_to user_path(current_user), notice: "Added #{@list.name}"
+      render json: { list: @list} 
   	else
-  	  render :new
+  	  render json: { errors: "Oops, something went wrong." }
   	end
   end
 
-  def edit
-  end
-
   def update
-    if @list.user == current_user && @list.update_attributes(list_params)
-      redirect_to user_path(current_user), notice: "Updated #{@list.name}"
+    if @list.update_attributes(list_params)
+      render json: { message: "List successfully updated" }
     else
-      render :edit
+      render json: { errors: "Oops, something went wrong." }
     end
   end
 
   def destroy
-  	if @list.user == current_user 
-  	  @list.destroy
-  	  redirect_to user_path(current_user), notice: "Deleted #{@list.name}"
-  	end
+  	if @list.destroy
+  	  render json: { message: "List successfully created" }
+  	else
+      render json: { errors: "Oops, something went wrong." }
+    end
   end
 
 
@@ -58,7 +52,7 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:name, :description)
+    params.permit(:name, :description)
   end
 
 
