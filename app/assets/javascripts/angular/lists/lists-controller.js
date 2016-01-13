@@ -9,10 +9,20 @@ angular
     'ListModel',
     'lists',
     '$scope',
+    '$stateParams',
     '$uibModal',
-    function(Gridster,ListModel,lists,$scope, $uibModal) {
+    'UserModel',
+    function(Gridster,ListModel,lists,$scope, $stateParams, $uibModal, UserModel) {
     var ctrl = this;
     ctrl.items = lists;
+    ctrl.userID = $stateParams.userID;
+    var currentUser = UserModel.currentUser().id.toString()
+
+    ctrl.authorized = function(){
+      if( ctrl.userID === currentUser){
+        return true
+      } 
+    };
 
     var createList = function(listParams){
       ListModel.create(listParams).then(function(result){

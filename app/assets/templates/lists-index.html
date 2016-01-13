@@ -1,7 +1,16 @@
-<h3> Your Lists  <button class="btn btn-primary" ng-click="lists.showModal()">+</button></h3>
-<div gridster= "user.gridsterOpts">
-  <div gridster-item="items" ng-repeat= "list in lists.items" >
-     <h4> <a ui-sref='user.list({listID: list.id, userID: list.user_id})'> {{list.name}} </a> </h4>
-      <delete-list class="left" list="list" remove-item="lists.removeItem(list)"> </delete-list>
+<div>
+  <h3> Your Lists </h3>
+  <div ng-if="lists.authorized()">
+    <button class="btn btn-primary" ng-click="lists.showModal()">+</button>
   </div>
+  
+  <div gridster= "user.gridsterOpts">
+    <div gridster-item="items" ng-repeat= "list in lists.items" >
+      <h4> <a ui-sref='user.list({listID: list.id, userID: list.user_id})'> {{list.name}} </a> </h4>
+      <div ng-if="lists.authorized()">
+        <delete-list class="left" list="list" remove-item="lists.removeItem(list)"> </delete-list>
+      </div>
+    </div>
+  </div>
+
 </div>

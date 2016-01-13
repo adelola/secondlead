@@ -9,14 +9,22 @@ angular
     'list',
     'ListModel',
     'user',
-    function(Gridster, list, ListModel,user) {
+    'UserModel',
+    function(Gridster, list, ListModel,user, UserModel) {
     var ctrl = this;
+    var currentUser = UserModel.currentUser().id;
     
     ctrl.items = list.dramas;
     ctrl.id = list.list.id;
     ctrl.name = list.list.name;
     ctrl.description = list.list.description;
     ctrl.userID = user.user.id;
+
+    ctrl.authorized = function(){
+      if( ctrl.userID === currentUser){
+        return true
+      } 
+    };
   
     ctrl.updateName = function(name){
       ListModel.update(ctrl.id, {name: name});

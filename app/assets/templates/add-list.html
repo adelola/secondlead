@@ -1,28 +1,27 @@
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" ng-click="cancel()" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Add List</h4>
-      </div>
-      <div class="modal-body">
-
-  <form name="addListForm" role="form" ng-submit="close()" novalidate>
-  
-  <div class="form-group" ng-class="{ 'has-error' : addListForm.name.$invalid && !addListForm.name.$pristine }">
-    <label for="name">Name</label>
-    <input type="text" name="name" class="form-control" ng-model="name" ng-minlength="3" ng-maxlength="20" required/>
-    <p ng-show="addListForm.name.$error.minlength" class="help-block">Name is too short.</p>
-    <p ng-show="addListForm.name.$error.maxlength" class="help-block">Name is too long.</p>
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">Add List</h4>
   </div>
   
-  <label for="description">Description</label>
-  <textarea ng-model="description" placeholder=""></textarea>
-</form>
+  <div class="modal-body">
+    <form name="addListForm" role="form" ng-submit="close()" novalidate>
+      <div class="form-group" ng-class="{ 'has-error' : addListForm.name.$invalid && !addListForm.name.$pristine }">
+        <label for="name">Name</label>
+        <input type="text" name="name" class="form-control" ng-model="name" ng-minlength="3" ng-maxlength="20" required/>
+        <p ng-show="addListForm.name.$error.minlength" class="help-block">Name is too short.</p>
+        <p ng-show="addListForm.name.$error.maxlength" class="help-block">Name is too long.</p>
+      </div>
+  
+      <label for="description">Description</label>
+      <textarea ng-model="description" placeholder=""></textarea>
+    </form>
+  </div>
  
   <div class="modal-footer">
-  <button type="button" ng-click="close()" ng-disabled="addListForm.$invalid" class="btn btn-primary">Create</button>
+    <button type="button" ng-click="close()" ng-disabled="addListForm.$invalid" class="btn btn-primary">Create</button>
   </div>	
 </div>
-</div>
-</div>
+
 
 
