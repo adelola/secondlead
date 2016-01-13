@@ -4,22 +4,25 @@
     </div>
     <div class="drama-info">
       <h1>{{drama.name}}</h1>
-      <div ng-controller="RatingsCtrl as ctrl">
-        <div drama-rating drama="drama" rating-id ="ctrl.id" rating-value="ctrl.rating" data-max="ctrl.max"></div>
+      <div class="drama-info-left">
+        <div ng-controller="RatingsCtrl as ctrl">
+          <div drama-rating drama="drama" rating-id ="ctrl.id" rating-value="ctrl.rating" data-max="ctrl.max"></div>
+        </div>
+        <p>{{drama.non_english_name}}</p>
+        <p>{{drama.year}}</p>
+        <p>{{drama.episode_count}} Episodes</p>
+      </div>
+      <div class="drama-info-right">
+        <h3> Avg Rating: {{drama.avgRating}}</h3>
       </div>
     </div>
   </div>
-
-  <p>Year of Release: {{drama.year}}</p>
-  <p>Number of episodes: {{drama.episode_count}} </p>
-  <div>
-   <h3> Avg Rating: {{drama.avgRating}} </h3>
+  <div class="drama-description">
+    {{drama.description}}
   </div>
-
   <div ng-if="drama.user">
     <add-review drama="drama"></add-review>
   </div>
-
   <div ng-controller="ReviewsCtrl as ctrl">
     <h3>All Reviews</h3>
     <div ng-repeat= "review in ctrl.reviews">
@@ -27,5 +30,4 @@
       <p>Review: {{review.body}}</p>
     </div>
   </div>
-
 </section>
