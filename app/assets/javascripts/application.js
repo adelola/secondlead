@@ -15,7 +15,6 @@
 //= require angular-bootstrap
 //= require angular-gridster
 //= require angular-jwt
-//= require angular-modal-service
 //= require angular-rails-templates
 //= require angular-route
 //= require angular-ui-router
