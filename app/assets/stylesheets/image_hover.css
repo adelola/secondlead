@@ -1,8 +1,17 @@
 /*temp styling*/
+h3.editable-click { 
+  color: #000000;
+  border-bottom: none;
+}
+h3.editable-click:hover { 
+  color: #lightgrey;
+}
+
 .left{
    padding: 10px;
    margin-right: 100px;
 }
+
 .rating{
   color: #a9a9a9;
   margin: 0;

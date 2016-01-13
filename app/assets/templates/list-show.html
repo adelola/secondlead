@@ -1,4 +1,7 @@
 <a ui-sref="user.lists({userID: list.userID})"> Back </a>
+<h3 editable-text="list.name" onaftersave="list.updateName(list.name)">{{list.name}}</h3>
+<h5>Description:</h5>
+<em editable-text="list.description" onaftersave="list.updateDescription(list.description)">{{list.description || "empty" }} </em>
 <div gridster= "list.gridsterOpts"> 
   <div gridster-item="items" ng-repeat= "drama in list.items" >
     <a ui-sref="drama({dramaID: drama.id}) "> <figure>
