@@ -1,6 +1,7 @@
 <section>
   <div class="drama-image-and-info">
     <div class="drama-image">
+      <img src="{{drama.image_url}}" alt="{{drama.poster_file_name}}">
     </div>
     <div class="drama-info">
       <h1>{{drama.name}}</h1>
@@ -20,6 +21,9 @@
   <div class="drama-description">
     {{drama.description}}
   </div>
+  <div class="drama-casts">
+    <div ng-repeat="cast in drama.casts">{{cast}}</div>
+  </div>
   <div ng-if="drama.user">
     <add-review drama="drama"></add-review>
   </div>
@@ -31,3 +35,13 @@
     </div>
   </div>
 </section>
+<div>
+  <div layout="row">
+    <div flex>First item in row</div>
+    <div flex="20">Second item in row</div>
+  </div>
+  <div layout="column">
+    <div flex="66">First item in column</div>
+    <div flex="33">Second item in column</div>
+  </div>
+</div>

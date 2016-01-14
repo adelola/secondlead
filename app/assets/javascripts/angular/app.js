@@ -2,7 +2,7 @@
 'use strict';
 
 angular
-  .module('secondLead', 
+  .module('secondLead',
   	['angular-jwt',
     'angular-storage',
     'angularUtils.directives.dirPagination',
@@ -12,7 +12,8 @@ angular
   	'templates',
     'ui.bootstrap',
     'ui.router',
-    'xeditable' ])
+    'xeditable',
+    'ngMaterial' ])
 
   .config(function Config($httpProvider, jwtInterceptorProvider) {
     jwtInterceptorProvider.tokenGetter = ['config', 'store', function(config, store) {
@@ -25,7 +26,7 @@ angular
 
     $httpProvider.interceptors.push('jwtInterceptor');
   })
-   
+
   .config(function(paginationTemplateProvider) {
     paginationTemplateProvider.setPath('/dirPagination.html');
   })
@@ -34,7 +35,7 @@ angular
     '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
-    
+
     $stateProvider
       .state('register', {
         url:'/register',
@@ -49,7 +50,7 @@ angular
         controller:'LoginCtrl',
         controllerAs: 'login'
       })
-      
+
       .state('dramas', {
         url:'/dramas',
         templateUrl: 'dramas-index.html',
@@ -57,7 +58,7 @@ angular
         controllerAs: 'dramas'
       })
 
-      .state('drama', {   
+      .state('drama', {
       url:'/dramas/:dramaID',
       templateUrl: 'drama-show.html',
       controller:'DramaCtrl',
@@ -100,7 +101,7 @@ angular
           }]
         }
       })
-        
+
         .state('user.lists', {     //Indented because nested under user
           url:'/lists',
           templateUrl: 'lists-index.html',
@@ -138,7 +139,7 @@ angular
   }])
 
   .run(function(editableOptions) {
-    editableOptions.theme = 'bs2'; 
+    editableOptions.theme = 'bs2';
   });
 
 

@@ -19,6 +19,7 @@ angular
     ctrl.episode_count = drama.episode_count
     ctrl.year = drama.release_date;
     ctrl.description = drama.plot;
+    ctrl.casts = ["dfd"]
     ctrl.dramaId = drama.id;
 
     var avgRate = function(drama){
