@@ -1,20 +1,22 @@
 <section>
-  <div class="drama-image-and-info">
-    <div class="drama-image">
+  <div class="drama-image-and-info" layout="row">
+    <div class="drama-image" flex>
       <img src="{{drama.image_url}}" alt="{{drama.poster_file_name}}">
     </div>
-    <div class="drama-info">
+    <div class="drama-info" flex="70">
       <h1>{{drama.name}}</h1>
-      <div class="drama-info-left">
-        <div ng-controller="RatingsCtrl as ctrl">
-          <div drama-rating drama="drama" rating-id ="ctrl.id" rating-value="ctrl.rating" data-max="ctrl.max"></div>
+      <div layout="row">
+        <div class="drama-info-left" flex>
+          <div ng-controller="RatingsCtrl as ctrl">
+            <div drama-rating drama="drama" rating-id ="ctrl.id" rating-value="ctrl.rating" data-max="ctrl.max"></div>
+          </div>
+          <p>{{drama.non_english_name}}</p>
+          <p>{{drama.year}}</p>
+          <p>{{drama.episode_count}} Episodes</p>
         </div>
-        <p>{{drama.non_english_name}}</p>
-        <p>{{drama.year}}</p>
-        <p>{{drama.episode_count}} Episodes</p>
-      </div>
-      <div class="drama-info-right">
-        <h3> Avg Rating: {{drama.avgRating}}</h3>
+        <div class="drama-info-right" flex>
+          <h3> Avg Rating: {{drama.avgRating}}</h3>
+        </div>
       </div>
     </div>
   </div>
@@ -35,13 +37,3 @@
     </div>
   </div>
 </section>
-<div>
-  <div layout="row">
-    <div flex>First item in row</div>
-    <div flex="20">Second item in row</div>
-  </div>
-  <div layout="column">
-    <div flex="66">First item in column</div>
-    <div flex="33">Second item in column</div>
-  </div>
-</div>
