@@ -1,16 +1,22 @@
 <div>
 	<!-- if no review, form to create -->
-  <div ng-if="!review"> 
-    <form name="addReviewForm" role="form" ng-submit="addReview(review)" novalidate>
-      <textarea ng-model="review" placeholder="Write a review..."></textarea>
-      <button type="submit" ng-disabled="addReviewForm.$invalid" class="btn btn-primary">Save</button>	
-    </form>
+  <div ng-if="!review">
+    <div layout="column" ng-cloak class="md-inline-form">
+      <md-content>
+        <div>
+          <form name="addReviewForm" role="form" ng-submit="addReview(review)" novalidate>
+            <md-input-container class="md-block">
+              <input ng-model="review" placeholder="Write a review...">
+            </md-input-container>
+            <button type="submit" ng-disabled="addReviewForm.$invalid" class="btn btn-primary">Save</button>
+          </form>
+        </div>
+      </md-content>
+    </div>
   </div>
-  
   <!-- Else option to edit or delete -->
   <div ng-if="review">
     <p> <em>Your review:</em> <span editable-text="review" onaftersave="updateReview(review)"> {{review}} </span></p>
     <button ng-click="reset()">Delete</button>
   </div>
-
 </div>
