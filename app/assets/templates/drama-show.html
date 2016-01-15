@@ -7,7 +7,7 @@
       <h1>{{drama.name}}</h1>
       <div layout="row">
         <div class="drama-info-left" flex>
-          <div ng-controller="RatingsCtrl as ctrl">
+          <div ng-controller="RatingsCtrl as ctrl" class="drama-rating-picker">
             <div drama-rating drama="drama" rating-id ="ctrl.id" rating-value="ctrl.rating" data-max="ctrl.max"></div>
           </div>
           <p>{{drama.non_english_name}}</p>
