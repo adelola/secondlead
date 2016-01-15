@@ -3,7 +3,7 @@
     <div class="drama-image" flex>
       <img src="{{drama.image_url}}" alt="{{drama.poster_file_name}}">
     </div>
-    <div class="drama-info" flex="70">
+    <div class="drama-info" flex="60">
       <h1>{{drama.name}}</h1>
       <div layout="row">
         <div class="drama-info-left" flex>
@@ -18,22 +18,27 @@
           <h3> Avg Rating: {{drama.avgRating}}</h3>
         </div>
       </div>
+      <div class="drama-description">
+        {{drama.description}}
+      </div>
     </div>
   </div>
-  <div class="drama-description">
-    {{drama.description}}
-  </div>
-  <div class="drama-casts">
-    <div ng-repeat="cast in drama.casts">{{cast}}</div>
-  </div>
-  <div ng-if="drama.user">
-    <add-review drama="drama"></add-review>
-  </div>
-  <div ng-controller="ReviewsCtrl as ctrl">
-    <h3>All Reviews</h3>
-    <div ng-repeat= "review in ctrl.reviews">
-      Author: <span name-user user-id="review.reviewer_id"></span>
-      <p>Review: {{review.body}}</p>
+  <div class="drama-review-and-cast" layout="row">
+    <div class="drama-review" flex="60">
+      <h2>Reviews</h2>
+      <div ng-if="drama.user">
+        <add-review drama="drama"></add-review>
+      </div>
+      <div ng-controller="ReviewsCtrl as ctrl">
+        <div ng-repeat= "review in ctrl.reviews">
+          Author: <span name-user user-id="review.reviewer_id"></span>
+          <p>Review: {{review.body}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="drama-cast" flex>
+      <h2>Cast</h2>
+      <div ng-repeat="cast in drama.casts">{{cast}}</div>
     </div>
   </div>
 </section>
