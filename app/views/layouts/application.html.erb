@@ -32,10 +32,10 @@
         <%= submit_tag "Go", name: nil %>
       <% end %>
     </nav>
-    <ui-view></ui-view>
-
-    <%= yield %>
-
+    <section class="container">
+      <ui-view></ui-view>
+      <%= yield %>
+    </section>
   </body>
 
 </html>

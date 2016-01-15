@@ -25,7 +25,7 @@
   </div>
   <div class="drama-review-and-cast" layout="row">
     <div class="drama-review" flex="60">
-      <h2>Reviews</h2>
+      <h3>Reviews</h3>
       <div ng-if="drama.user">
         <add-review drama="drama"></add-review>
       </div>
@@ -37,7 +37,7 @@
       </div>
     </div>
     <div class="drama-cast" flex>
-      <h2>Cast</h2>
+      <h3>Cast</h3>
       <div ng-repeat="cast in drama.casts">{{cast}}</div>
     </div>
   </div>
