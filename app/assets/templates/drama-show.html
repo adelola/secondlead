@@ -30,9 +30,22 @@
         <add-review drama="drama"></add-review>
       </div>
       <div ng-controller="ReviewsCtrl as ctrl">
-        <div ng-repeat= "review in ctrl.reviews">
-          Author: <span name-user user-id="review.reviewer_id"></span>
-          <p>Review: {{review.body}}</p>
+        <div ng-repeat= "review in ctrl.reviews" ng-cloak>
+          <md-content>
+            <md-list>
+              <md-list-item class="md-3-line md-long-text">
+                <img src="https://lh5.googleusercontent.com/-Qhu7Srm0lp8/AAAAAAAAAAI/AAAAAAAAReo/s-uOtXpAmHE/photo.jpg" class="md-avatar" alt="yolo" />
+                <div class="md-list-item-text">
+                  <h3>
+                    <span name-user user-id="review.reviewer_id"></span>
+                  </h3>
+                  <p>
+                    {{review.body}}
+                  </p>
+                </div>
+              </md-list-item>
+            </md-list>
+          </md-content>
         </div>
       </div>
     </div>
