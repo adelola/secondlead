@@ -16,14 +16,20 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
         APPLICATION_SPEC,
-        'app/assets/javascripts/angular/**/*.html',
+        'app/assets/templates/**/*.html',
         'app/assets/javascripts/angular/**/*.js',
         'app/assets/javascripts/angular/*.js',
         'vendor/assets/javascripts/angular/angular.min.js',
         'vendor/assets/javascripts/angular-mocks/angular-mocks.js',
         'vendor/assets/javascripts/angular-gridster/dist/angular-gridster.min.js',
+        'vendor/assets/javascripts/angular-jwt/dist/angular-jwt.min.js', 
+        'vendor/assets/javascripts/angular-xeditable/dist/js/xeditable.min.js', 
+        'vendor/assets/javascripts/', 
+        'vendor/assets/javascripts/lodash/lodash.min.js', 
+        'vendor/assets/javascripts/restangular/dist/restangular.min.js', 
+        'vendor/assets/javascripts/angularUtils-pagination/dirPagination.js',   
         'vendor/assets/javascripts/angular-ui-router/release/angular-ui-router.min.js',
-        'vendor/assets/javascripts/angular-ui-select/dist/select.min.js',
+        // 'vendor/assets/javascripts/angular-ui-select/dist/select.min.js',
         'spec/javascripts/**/*.spec.js'
     ],
 
