@@ -1,15 +1,13 @@
-describe('Unit: Drama', function () {
+describe('Second Lead: Configuration', function () {
 
- 
-    // Suite for testing an individual piece of our feature.
-    describe('Drama Route', function () {
+    beforeEach(module('secondLead'))
 
-        // Instantiate global variables (global to all tests in this describe block).
+    describe('Dramas Route', function () {
+
         var $state,
             $rootScope,
-            state = 'dramatest';
+            state = 'dramas';
 
-        // Inject dependencies
         beforeEach(inject(function (_$state_, $templateCache, _$rootScope_) {
             $state = _$state_;
             $rootScope = _$rootScope_;
@@ -23,7 +21,7 @@ describe('Unit: Drama', function () {
         });
 
         it('should respond to URL', function(){
-            expect($state.href(state)).toEqual('#/dramatest');
+            expect($state.href(state)).toEqual('#/dramas');
         })
     });
 });
