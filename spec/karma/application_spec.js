@@ -1,3 +1,13 @@
-
 //= require application
+//= require angular
 //= require angular-mocks
+//= require angular-bootstrap
+//= require angular-gridster
+//= require angular-jwt
+//= require angular-rails-templates
+//= require angular-ui-router
+//= require angular-xeditable
+//= require a0-angular-storage
+//= require angularUtils-pagination
+//= require lodash
+//= require restangular

@@ -1,27 +1,29 @@
-describe('Second Lead: Configuration', function () {
 
-    beforeEach(module('secondLead'))
 
-    describe('Dramas Route', function () {
+// describe('Second Lead: Configuration', function () {
 
-        var $state,
-            $rootScope,
-            state = 'dramas';
+//     beforeEach(module('secondLead'))
 
-        beforeEach(inject(function (_$state_, $templateCache, _$rootScope_) {
-            $state = _$state_;
-            $rootScope = _$rootScope_;
-            $templateCache.put('dramas-index.html', '');
-        }));
+    // describe('Dramas Route', function () {
 
-        it('verifies state configuration', function () {
-            var config = $state.get(state);
-            expect(config.abstract).toBeTruthy();
-            expect(config.url).toBeUndefined();
-        });
+    //     var $state,
+    //         $rootScope,
+    //         state = 'dramas';
 
-        it('should respond to URL', function(){
-            expect($state.href(state)).toEqual('#/dramas');
-        })
-    });
-});
+    //     beforeEach(inject(function (_$state_, $templateCache, _$rootScope_) {
+    //         $state = _$state_;
+    //         $rootScope = _$rootScope_;
+    //         $templateCache.put('dramas-index.html', '');
+    //     }));
+
+    //     it('verifies state configuration', function () {
+    //         var config = $state.get(state);
+    //         expect(config.abstract).toBeTruthy();
+    //         expect(config.url).toBeUndefined();
+    //     });
+
+    //     it('should respond to URL', function(){
+    //         expect($state.href(state)).toEqual('#/dramas');
+    //     })
+    // });
+// });

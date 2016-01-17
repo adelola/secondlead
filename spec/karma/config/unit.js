@@ -29,7 +29,7 @@ module.exports = function(config) {
 
         // setting this option will create only a single module that contains templates
         // from all the files, so you can load them all with module('foo')
-        moduleName: 'myAppTemplates'
+        moduleName: 'templates'
     },
 
     // list of files to exclude
