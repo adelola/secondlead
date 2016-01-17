@@ -15,22 +15,24 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        APPLICATION_SPEC,
-        'app/assets/templates/**/*.html',
-        'app/assets/javascripts/angular/**/*.js',
-        'app/assets/javascripts/angular/*.js',
-        'vendor/assets/javascripts/angular/angular.min.js',
-        'vendor/assets/javascripts/angular-mocks/angular-mocks.js',
-        'vendor/assets/javascripts/angular-gridster/dist/angular-gridster.min.js',
-        'vendor/assets/javascripts/angular-jwt/dist/angular-jwt.min.js', 
-        'vendor/assets/javascripts/angular-xeditable/dist/js/xeditable.min.js', 
-        'vendor/assets/javascripts/', 
-        'vendor/assets/javascripts/lodash/lodash.min.js', 
-        'vendor/assets/javascripts/restangular/dist/restangular.min.js', 
-        'vendor/assets/javascripts/angularUtils-pagination/dirPagination.js',   
-        'vendor/assets/javascripts/angular-ui-router/release/angular-ui-router.min.js',
-        // 'vendor/assets/javascripts/angular-ui-select/dist/select.min.js',
-        'spec/javascripts/**/*.spec.js'
+        '../karma/application_spec.js',
+        '../../vendor/assets/javascripts/angular/angular.min.js',
+        '../../vendor/assets/javascripts/angular-mocks/angular-mocks.js',
+        '../../vendor/assets/javascripts/angular-gridster/dist/angular-gridster.min.js',
+        '../../vendor/assets/javascripts/angular-jwt/dist/angular-jwt.min.js', 
+        '../../vendor/assets/javascripts/angular-xeditable/dist/js/xeditable.min.js', 
+        '../../vendor/assets/javascripts/a0-angular-storage/dist/angular-storage.min.js', 
+        '../../vendor/assets/javascripts/lodash/lodash.min.js', 
+        '../../vendor/assets/javascripts/restangular/dist/restangular.min.js', 
+        '../../vendor/assets/javascripts/angularUtils-pagination/dirPagination.js',   
+        '../../vendor/assets/javascripts/angular-ui-router/release/angular-ui-router.min.js',
+        // '../../vendor/assets/javascripts/angular-ui-select/dist/select.min.js',
+        '../../app/assets/javascripts/angular/*.js',
+        '../../app/assets/javascripts/angular/**/*.js',
+        '../../app/assets/templates/*.html',
+        '../javascripts/angular/*.spec.js',
+        '../javascripts/angular/**/*.spec.js'
+
     ],
 
     ngHtml2JsPreprocessor: {
@@ -71,11 +73,11 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_ERROR,
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: true,
+    autoWatch: false,
 
 
     // start these browsers
@@ -85,7 +87,7 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+    singleRun: true,
 
     // Concurrency level
     // how many browser should be started simultanous
