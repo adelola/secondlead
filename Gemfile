@@ -34,4 +34,5 @@ group :development, :test do
   gem 'pry'
   gem 'better_errors'
   gem 'jasmine-rails'
+  gem 'simplecov', :require => false, :group => :test
 end

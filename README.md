@@ -1,5 +1,8 @@
 # Second Lead
 
+[![Coverage Status](https://coveralls.io/repos/github/ac-adekunle/secondlead/badge.svg?branch=master)](https://coveralls.io/github/ac-adekunle/secondlead?branch=master)
+
+
 ## Description
 Second Lead is a tool for exploring, tracking, and sharing Asian television dramas. Users will be able to:
 * view a list of Asian dramas - current and old

@@ -18,4 +18,5 @@
 .env
 /public/system/dramas/posters
 /node_modules/*
+coverage
 
