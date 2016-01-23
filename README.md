@@ -1,4 +1,5 @@
 # Second Lead
+[![Build Status](https://travis-ci.org/ac-adekunle/secondlead.svg?branch=master)](https://travis-ci.org/ac-adekunle/secondlead)
 
 [![Coverage Status](https://coveralls.io/repos/github/ac-adekunle/secondlead/badge.svg?branch=master)](https://coveralls.io/github/ac-adekunle/secondlead?branch=master)
 
