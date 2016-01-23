@@ -2,11 +2,15 @@ language: ruby
 cache: bundler
 rvm:
 - 2.0.0
+before_install:
+  - pip install --user codecov
+after_success:
+  - codecov
 env:
 - DB=postgresql
-script:
-- bundle exec rake spec
 before_script:
 - bundle exec rake db:create RAILS_ENV=test
 - bundle exec rake db:migrate
 - bundle exec rake db:test:prepare
+script:
+- bundle exec rake spec

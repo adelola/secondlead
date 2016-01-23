@@ -16,5 +16,7 @@
   "scripts": {
     "test": "spec/karma/config/unit.js"
   },
-  "dependencies": {}
+  "dependencies": {
+    "codecov.io": "^0.1.6"
+  }
 }
