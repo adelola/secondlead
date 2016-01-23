@@ -8,7 +8,7 @@ class DramasController < ApplicationController
   end
 
   def show
-    @drama = Drama.find_by(id: params[:id])
+    @drama = Drama.find_by(id: params[:id]).add_image_url
     respond_with(@drama)
   end
 

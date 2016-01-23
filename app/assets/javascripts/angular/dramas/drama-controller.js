@@ -20,6 +20,7 @@ angular
     ctrl.year = drama.release_date;
     ctrl.description = drama.plot;
     ctrl.dramaId = drama.id;
+    ctrl.image_url = drama.image_url;
 
     var avgRate = function(drama){
       RatingModel.getAvg(drama).then(function(result){
