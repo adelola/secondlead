@@ -1,4 +1,4 @@
-class IndexController < ApplicationController
+class ActivitiesController < ApplicationController
   respond_to :json, :html
 
   def index

@@ -4,9 +4,13 @@
 angular
   .module('secondLead')
 
-  .controller('IndexCtrl', function () {
+  .controller('IndexCtrl', [
+    'ActivityModel',
+    'Restangular',
+    function(ActivityModel, Restangular) {
     var ctrl = this;
 
-    ctrl.id= '';
-  });
+    ctrl.activities = ActivityModel.getAll;
+  }])
+
 })();

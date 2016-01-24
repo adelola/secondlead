@@ -29,6 +29,6 @@ Rails.application.routes.draw do
   match 'ratings/find', to: 'ratings#find', via: 'get', :format => 'json'
   match 'reviews/find', to: 'reviews#find', via: 'get', :format => 'json'
 
-  match '/welcome', to: 'index#index', via: 'get', :format => 'json'
+  match '/activities', to: 'activities#index', via: 'get', :format => 'json'
 end
 
