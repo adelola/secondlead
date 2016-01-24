@@ -4,12 +4,12 @@ Rails.application.routes.draw do
 
   resources :genres
   resources :casts, defaults: {:format => 'json'}
-  
+
   resources :dramas, only: [:index, :show], defaults: {:format => 'json'} do
     resources :ratings, except: [:new, :edit]
     resources :reviews, except: [:new, :edit]
   end
-    
+
 
   resources :users,:defaults => {:format => "json"} do
     member do
@@ -28,5 +28,7 @@ Rails.application.routes.draw do
   match '/auth/token_status', to: 'auth#token_status', via: 'get'
   match 'ratings/find', to: 'ratings#find', via: 'get', :format => 'json'
   match 'reviews/find', to: 'reviews#find', via: 'get', :format => 'json'
+
+  match '/welcome', to: 'index#index', via: 'get', :format => 'json'
 end
 
