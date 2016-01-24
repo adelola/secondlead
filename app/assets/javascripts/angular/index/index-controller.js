@@ -10,6 +10,7 @@ angular
     function(ActivityModel, Restangular) {
     var ctrl = this;
 
+    ctrl.name = "huy";
     ctrl.activities = ActivityModel.getAll;
   }])
 
