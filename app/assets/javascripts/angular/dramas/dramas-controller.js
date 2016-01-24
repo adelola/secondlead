@@ -6,16 +6,16 @@ angular
 
   .controller('DramasCtrl', [
     'DramaModel',
-    'Gridster', 
+    'Gridster',
     'ListModel',
     'Restangular',
     'UserModel',
     function(DramaModel, Gridster, ListModel, Restangular, UserModel) {
     var ctrl = this;
-    
+
     ctrl.items = DramaModel.getAll;
     ctrl.user = UserModel.currentUser();
-    
+
     ctrl.userLists = ListModel.currentUserLists();
     ctrl.selectedList = {};
 
@@ -25,4 +25,3 @@ angular
   }])
 
 })();
-  

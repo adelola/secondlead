@@ -1,35 +1,60 @@
-<div >
-
-  <h1>Drama show </h1>
-
-  <p>Name: {{drama.name}}</p> 
-
-  <p>Year of Release: {{drama.year}}</p> 
-  <p>Number of episodes: {{drama.episode_count}} </p> 
-  <div>
-   <h3> Avg Rating: {{drama.avgRating}} </h3>
-  </div>
-  
-  <div ng-controller="RatingsCtrl as ctrl">	
-    <h4> Rate:</h4>
-    <div drama-rating drama="drama" rating-id ="ctrl.id" rating-value="ctrl.rating" data-max="ctrl.max"></div>
-  </div>
-
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-
-  <div ng-if="drama.user">
-    <add-review drama="drama"></add-review>
-  </div>
-
-  <div ng-controller="ReviewsCtrl as ctrl">
-    <h3>All Reviews</h3>
-    <div ng-repeat= "review in ctrl.reviews">
-      Author: <span name-user user-id="review.reviewer_id"></span>
-      <p>Review: {{review.body}}</p>
+<section>
+  <div class="drama-image-and-info" layout="row">
+    <div class="drama-image" flex>
+      <img src="{{drama.image_url}}" alt="{{drama.poster_file_name}}">
+    </div>
+    <div class="drama-info" flex="60">
+      <h1>{{drama.name}}</h1>
+      <div layout="row">
+        <div class="drama-info-left" flex>
+          <div ng-controller="RatingsCtrl as ctrl" class="drama-rating-picker">
+            <div drama-rating drama="drama" rating-id ="ctrl.id" rating-value="ctrl.rating" data-max="ctrl.max"></div>
+          </div>
+          <p>{{drama.non_english_name}}</p>
+          <p>{{drama.year}}</p>
+          <p>{{drama.episode_count}} Episodes</p>
+        </div>
+        <div class="drama-info-right" flex>
+          <div class="drama-rating">
+            <div class="drama-rating-box">{{drama.avgRating}}</div>
+            Avg Rating
+          </div>
+        </div>
+      </div>
+      <div class="drama-description">
+        {{drama.description}}
+      </div>
     </div>
   </div>
-
-</div>
+  <div class="drama-review-and-cast" layout="row">
+    <div class="drama-review" flex="60">
+      <h3>Reviews</h3>
+      <div ng-if="drama.user">
+        <add-review drama="drama"></add-review>
+      </div>
+      <div ng-controller="ReviewsCtrl as ctrl">
+        <div ng-repeat= "review in ctrl.reviews" ng-cloak>
+          <md-content>
+            <md-list>
+              <md-list-item class="md-3-line">
+                <img src="https://lh5.googleusercontent.com/-Qhu7Srm0lp8/AAAAAAAAAAI/AAAAAAAAReo/s-uOtXpAmHE/photo.jpg" class="md-avatar" alt="yolo" />
+                <div class="md-list-item-text">
+                  <h3>
+                    <span name-user user-id="review.reviewer_id"></span>
+                  </h3>
+                  <p>
+                    {{review.body}}
+                  </p>
+                </div>
+              </md-list-item>
+            </md-list>
+          </md-content>
+        </div>
+      </div>
+    </div>
+    <div class="drama-cast" flex>
+      <h3>Cast</h3>
+      <div ng-repeat="cast in drama.casts">{{cast}}</div>
+    </div>
+  </div>
+</section>

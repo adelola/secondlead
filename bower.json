@@ -18,6 +18,7 @@
       "angular-ui-select": "latest",
       "angular-mocks":"latest",
       "angular-bootstrap":"latest",
+      "angular-material":"latest",
       "jquery": "latest",
       "jquery-ui": "latest",
       "javascript-detect-element-resize": "latest"
