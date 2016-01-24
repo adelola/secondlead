@@ -11,24 +11,36 @@
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body ng-controller="MainCtrl as main">
-    <nav>
-      <div class="nav-wrapper">
-       <div class="row">
-         <div class="col s12">
-            <ul id="navbar" class="right hide-on-med-and-down">
-              <li> <a ui-sref='dramas' ui-sref-active="active">Browse</a> </li>
-              <li> <a ng-if="main.currentUser" ui-sref='user.lists({userID: main.currentUser.id})' ui-sref-active="active">MyPage</li>
-              <li> <a ng-if="main.loggedIn || main.currentUser" ng-click="main.logout()">Logout</a></li>
-              <li> <a ng-if="!main.loggedIn && !main.currentUser" ui-sref='register' ui-sref-active="active">Sign Up</a></li>
-              <li> <a ng-if="!main.loggedIn && !main.currentUser" ui-sref='login' ui-sref-active="active">Log In</a></li>
-            </ul>
+    <nav ng-cloak>
+      <md-content>
+        <md-toolbar>
+          <div class="md-toolbar-tools">
+            <h2>
+              <span>Second Lead</span>
+            </h2>
+            <md-button aria-label="Browse">
+              <a ui-sref='dramas' ui-sref-active="active">Browse</a>
+            </md-button>
+            <md-button aria-label="My Page">
+              <a ng-if="main.currentUser" ui-sref='user.lists({userID: main.currentUser.id})' ui-sref-active="active">My Page</a>
+            </md-button>
+            <md-button aria-label="Logout">
+              <a ng-if="main.loggedIn || main.currentUser" ng-click="main.logout()">Logout</a>
+            </md-button>
+            <md-button aria-label="Register">
+              <a ng-if="!main.loggedIn && !main.currentUser" ui-sref='register' ui-sref-active="active">Sign Up</a>
+            </md-button>
+            <md-button aria-label="Login">
+              <a ng-if="!main.loggedIn && !main.currentUser" ui-sref='login' ui-sref-active="active">Log In</a>
+            </md-button>
+            <span flex></span>
+            <%= form_tag search_path, method: :get do %>
+              <%= text_field_tag :q, params[:q], placeholder: 'Search' %>
+              <%= submit_tag "Go", name: nil %>
+            <% end %>
           </div>
-        </div>
-      </div>
-      <%= form_tag search_path, method: :get do %>
-        <%= text_field_tag :q, params[:q], placeholder: 'Search' %>
-        <%= submit_tag "Go", name: nil %>
-      <% end %>
+        </md-toolbar>
+      </md-content>
     </nav>
     <section class="container">
       <ui-view></ui-view>
