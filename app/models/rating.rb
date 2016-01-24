@@ -1,4 +1,5 @@
 class Rating < ActiveRecord::Base
+  include PublicActivity::Model
   tracked
 
   belongs_to :drama
