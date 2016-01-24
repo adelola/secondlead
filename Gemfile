@@ -21,14 +21,15 @@ gem 'sprockets'
 gem 'responders', '~> 2.0'
 gem 'searchkick'
 gem 'jwt', '~> 1.5', '>= 1.5.2'
+gem 'public_activity'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'rspec-rails'
   gem 'rspec-collection_matchers'
-  gem "factory_girl_rails", "~> 4.0"
-  gem "database_cleaner"
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'database_cleaner'
   gem 'capybara'
   gem 'faker'
   gem 'pry'
