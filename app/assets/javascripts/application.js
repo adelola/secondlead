@@ -20,6 +20,10 @@
 //= require angular-ui-router
 //= require angular-ui-select
 //= require angular-xeditable
+//= require angular-aria
+//= require angular-animate
+//= require angular-messages
+//= require angular-material
 //= require a0-angular-storage
 //= require angularUtils-pagination
 //= require lodash

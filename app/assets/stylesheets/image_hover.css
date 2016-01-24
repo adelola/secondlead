@@ -1,9 +1,9 @@
 /*temp styling*/
-h3.editable-click { 
+h3.editable-click {
   color: #000000;
   border-bottom: none;
 }
-h3.editable-click:hover { 
+h3.editable-click:hover {
   color: #lightgrey;
 }
 
@@ -12,32 +12,9 @@ h3.editable-click:hover {
    margin-right: 100px;
 }
 
-.rating{
-  color: #a9a9a9;
-  margin: 0;
-  padding: 0;
-}
-
-ul.rating {
-  display: inline-block;
-}
-
-.rating li {
-  list-style-type: none;
-  display: inline-block;
-  padding: 1px;
-  text-align: center;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.rating .filled {
-  color: #FF0000;
-}
-
 #add_drama{
  width:50px;
- float:right;   
+ float:right;
 }
 
 body {
