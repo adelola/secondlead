@@ -1,5 +1,7 @@
 <div ng-controller= "DramasCtrl as dramas">
-  <dir-pagination-controls boundary-links="true" template-url="/dirPagination.html"> </dir-pagination-controls>
+  <div class="clearfix">
+    <dir-pagination-controls boundary-links="true" template-url="/dirPagination.html"> </dir-pagination-controls>
+  </div>
   <div gridster= "dramas.gridsterOpts">
     <div gridster-item="items" dir-paginate= "drama in dramas.items | itemsPerPage: dramas.pageSize" current-page="dramas.currentPage" ng-cloak>
       <md-content layout="row" layout-wrap layout-align="center start" layout-xs="column">
@@ -24,5 +26,7 @@
       </md-content>
     </div>
   </div>
-  <dir-pagination-controls boundary-links="true" template-url="/dirPagination.html"> </dir-pagination-controls>
+  <div class="clearfix">
+    <dir-pagination-controls boundary-links="true" template-url="/dirPagination.html"> </dir-pagination-controls>
+  </div>
 </div>
