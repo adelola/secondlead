@@ -51,3 +51,23 @@
     color: #FE7A47;
   }
 }
+
+md-card-title {
+  a,
+  a:visited {
+    color: #FE7A47;
+  }
+  a:hover {
+    background: none;
+  }
+}
+
+md-card md-card-title {
+  padding: 10px 16px 0;
+}
+
+md-input-container {
+  margin: 0;
+  vertical-align: top;
+  padding: 0 2px;
+}
