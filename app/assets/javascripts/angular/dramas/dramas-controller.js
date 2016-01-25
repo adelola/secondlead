@@ -19,9 +19,11 @@ angular
     ctrl.userLists = ListModel.currentUserLists();
     ctrl.selectedList = {};
 
-    ctrl.gridsterOpts = Gridster.getOptions();
+    ctrl.gridsterOpts = {
+      columns: 6
+    }
     ctrl.currentPage = 1;
-    ctrl.pageSize = 20;
+    ctrl.pageSize = 30;
   }])
 
 })();

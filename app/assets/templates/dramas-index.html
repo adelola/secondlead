@@ -2,8 +2,8 @@
   <dir-pagination-controls boundary-links="true" template-url="/dirPagination.html"> </dir-pagination-controls>
   <div gridster= "dramas.gridsterOpts">
     <div gridster-item="items" dir-paginate= "drama in dramas.items | itemsPerPage: dramas.pageSize" current-page="dramas.currentPage" ng-cloak>
-      <md-content layout="row" layout-wrap layout-align="center start" layout-xs="column" >
-        <div flex="50" flex-xs="100" layout="column">
+      <md-content layout="row" layout-wrap layout-align="center start" layout-xs="column">
+        <div flex-xs="100" layout="column">
           <md-card>
             <a ui-sref="drama({dramaID: drama.id})">
               <img src="{{drama.image_url}}" alt="{{drama.poster_file_name}}">
