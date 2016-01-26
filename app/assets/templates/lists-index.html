@@ -1,9 +1,9 @@
 <div>
-  <h3> Your Lists </h3>
-  <div ng-if="lists.authorized()">
-    <button class="btn btn-primary" ng-click="lists.showModal()">+</button>
-  </div>
-  
+  <h2 ng-cloak>
+    Lists
+    <md-button class="add-list" ng-if="lists.authorized()" ng-click="lists.showModal()"><i class="fa fa-plus fa-1x"></i></md-button>
+  </h2>
+
   <div gridster= "user.gridsterOpts">
     <div gridster-item="items" ng-repeat= "list in lists.items" >
       <h4> <a ui-sref='user.list({listID: list.id, userID: list.user_id})'> {{list.name}} </a> </h4>
@@ -12,5 +12,4 @@
       </div>
     </div>
   </div>
-
 </div>
