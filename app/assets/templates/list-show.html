@@ -5,15 +5,15 @@
     <h5>Description:</h5>
     <em editable-text="list.description" onaftersave="list.updateDescription(list.description)">{{list.description || "empty" }} </em>
   </div>
-  
+
   <div ng-if="!list.authorized()">
     <h3> {{list.name}} </h3>
     <h5> {{list.description}} </h5>
   </div>
 
-  <div gridster= "list.gridsterOpts"> 
+  <div gridster= "list.gridsterOpts">
     <div gridster-item="items" ng-repeat= "drama in list.items" >
-      <a ui-sref="drama({dramaID: drama.id}) "> 
+      <a ui-sref="drama({dramaID: drama.id}) ">
         <figure>
           <img src="{{drama.image_url}}" alt="{{drama.poster_file_name}}">
           <figcaption>

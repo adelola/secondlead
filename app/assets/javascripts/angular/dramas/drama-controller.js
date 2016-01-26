@@ -10,10 +10,15 @@ angular
     'RatingModel',
     'Restangular',
     'UserModel',
-    function(drama, Gridster, RatingModel,Restangular,UserModel) {
+    'ListModel',
+    function(drama, Gridster, RatingModel, Restangular,UserModel, ListModel) {
     var ctrl = this;
 
+    ctrl.drama = drama;
     ctrl.user = UserModel.currentUser();
+    ctrl.userLists = ListModel.currentUserLists();
+    ctrl.selectedList = {};
+
     ctrl.name = drama.name;
     ctrl.non_english_name = drama.non_english_name;
     ctrl.episode_count = drama.episode_count;
