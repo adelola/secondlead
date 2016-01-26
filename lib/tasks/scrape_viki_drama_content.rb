@@ -77,8 +77,10 @@ class ScrapeDramaContent
     @doc.search('.badge').map { |element| element.inner_text }[0]
   end
 
-  def scrape_cast
-    @doc.search('.actor-info h4 > a').map { |element| element.inner_text }
+  def scrape_cast_urls
+    @doc.search('.thumbnail-description > a').map { |element| element["href"] }.map do |url|
+      "https://www.viki.com/" + url
+    end
   end
 
   def scrape_genre
