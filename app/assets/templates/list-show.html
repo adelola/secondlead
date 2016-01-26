@@ -5,25 +5,33 @@
       Description:
       <em editable-text="list.description" onaftersave="list.updateDescription(list.description)">{{list.description || "empty" }} </em>
     </h4>
-
   </div>
   <div ng-if="!list.authorized()">
     <h3> {{list.name}} </h3>
-    <h5> {{list.description}} </h5>
+    <h4> {{list.description}} </h4>
   </div>
   <div gridster= "list.gridsterOpts">
-    <div gridster-item="items" ng-repeat= "drama in list.items" >
-      <a ui-sref="drama({dramaID: drama.id}) ">
-        <figure>
-          <img src="{{drama.image_url}}" alt="{{drama.poster_file_name}}">
-          <figcaption>
-            {{drama.name}} <br/></a>
-            {{drama.release_date}}
-          </figcaption>
-         <div ng-if="list.authorized()">
-           <delete-drama drama="drama" remove-item= "list.removeItem(drama)" list="{{list.id}}" user="{{list.userID}}"> </delete-drama>
-         </div>
-        </figure>
+    <div gridster-item="items" ng-repeat= "drama in list.items" ng-cloak>
+      <md-content layout="row" layout-wrap layout-align="center start" layout-xs="column">
+        <div flex-xs="100" layout="column">
+          <md-card>
+            <a ui-sref="drama({dramaID: drama.id})">
+              <img src="{{drama.image_url}}" alt="{{drama.poster_file_name}}">
+            </a>
+            <md-card-title>
+              <md-card-title-text>
+                <a ui-sref="drama({dramaID: drama.id})">
+                  {{drama.name}}
+                </a>
+                {{drama.release_date}}
+              </md-card-title-text>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center" ng-if="list.authorized()">
+              <delete-drama drama="drama" remove-item= "list.removeItem(drama)" list="{{list.id}}" user="{{list.userID}}"> </delete-drama>
+            </md-card-actions>
+          </md-card>
+        </div>
+      </md-content>
     </div>
   </div>
 </div>
