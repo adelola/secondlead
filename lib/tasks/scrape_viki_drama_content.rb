@@ -66,11 +66,15 @@ class ScrapeDramaContent
   end
 
   def scrape_image_url
-    if @doc.search('.series-thumbnail > img').map { |element| element['src'] }[0] != nil
-      @doc.search('.series-thumbnail > img').map { |element| element['src'] }[0]
+    if @doc.search('.billboard-image > img').map { |element| element['srcset'] }[0] != nil
+      @doc.search('.billboard-image > img').map { |element| element['srcset'] }[0].split(",").last.split(" ")[0].strip
     else
       nil
     end
+  end
+
+  def scrape_language
+    @doc.search('.badge').map { |element| element.inner_text }[0]
   end
 
   def scrape_cast
@@ -78,7 +82,7 @@ class ScrapeDramaContent
   end
 
   def scrape_genre
-    @doc.search('.theme-list li > a').map { |element| element.inner_text }
+    @doc.search('.section > .badge').map { |element| element.inner_text }[1..-1]
   end
 
   def add_content_to_db
@@ -92,10 +96,13 @@ class ScrapeDramaContent
         non_english_name: scrape_non_english_name,
         episode_count:    scrape_episode_count,
         release_date:     scrape_release_date,
-        plot:             scrape_plot
+        plot:             scrape_plot,
+        language:         scrape_language
       )
-      scrape_genre.each do |genre|
-        @drama.genres.find_or_create_by(name: genre)
+      if scrape_genre.any?
+        scrape_genre.each do |genre|
+          @drama.genres.find_or_create_by(name: genre)
+        end
       end
       scrape_cast.each do |cast|
         @drama.casts.find_or_create_by(name: cast)
