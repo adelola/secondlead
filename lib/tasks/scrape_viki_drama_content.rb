@@ -15,6 +15,13 @@ class ScrapeDramaContent
         raise e
       end
     end
+    @original_title = nil
+    @romanized_title = nil
+    @also_known_as = nil
+    @network = nil
+    @broadcast_period = nil
+    @rating = nil
+    scrape_info
     add_content_to_db
   end
 
@@ -22,25 +29,29 @@ class ScrapeDramaContent
     @doc.search('.display-2').map { |element| element.inner_text }[0].strip
   end
 
-  def scrape_non_english_name
-    if @doc.search('.dl-horizontal > dd').map { |element| element.inner_text }[0].strip != nil
-      @doc.search('.dl-horizontal > dt').map { |element| element.inner_text }[0].strip
-    else
-      nil
+  def scrape_info
+    @doc.search('.dl-horizontal > dt').map { |element| element.inner_text }.each_with_index do |header, index|
+      contents = @doc.search('.dl-horizontal > dd').map { |element| element.inner_text }
+
+      if /original title/i =~ header
+        @original_title = contents[index]
+      elsif /romanized title/i =~ header
+        @romanized_title = contents[index]
+      elsif /Also known as/i =~ header
+        @also_known_as = contents[index]
+      elsif /Broadcast Network/i =~ header
+        @network = contents[index]
+      elsif /Broadcast Period/i =~ header
+        @broadcast_period = contents[index]
+      elsif /Rating/i =~ header
+        @rating = contents[index]
+      end
     end
   end
 
   def scrape_episode_count
-    if @doc.search('.quickview').map { |element| element.inner_text }[0] != nil
-      @doc.search('.quickview').map { |element| element.inner_text }[0].gsub(/[a-z\-|]/i, "").slice(2..3)
-    else
-      nil
-    end
-  end
-
-  def scrape_release_date
-    if @doc.search('.quickview').map { |element| element.inner_text }[0] != nil
-      @doc.search('.quickview').map { |element| element.inner_text }[0].gsub(/[a-z\-|]/i, "").slice(-4..-1)
+    if @doc.search('.card > .card-content > .left').map { |element| element.inner_text }[0] != nil
+      @doc.search('.card > .card-content > .left').map { |element| element.inner_text }[0].gsub(/[a-z]/i, "").strip
     else
       nil
     end
