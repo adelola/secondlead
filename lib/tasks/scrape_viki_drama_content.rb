@@ -14,6 +14,7 @@ class ScrapeVikiDramaContent
         raise e
       end
     end
+    @url = url
     @original_title = nil
     @romanized_title = nil
     @also_known_as = nil
@@ -102,7 +103,8 @@ class ScrapeVikiDramaContent
         romanized_title:  @romanized_title,
         also_known_as:    @also_known_as,
         network:          @network,
-        rating:           @rating
+        rating:           @rating,
+        viki_url:         @url
       )
       if scrape_genre.any?
         scrape_genre.each do |name|
@@ -110,9 +112,11 @@ class ScrapeVikiDramaContent
           DramaGenre.create(genre: genre, drama: @drama)
         end
       end
-      # scrape_cast.each do |cast|
-      #   @drama.casts.find_or_create_by(name: cast)
-      # end
+      if scrape_cast_urls.any?
+        scrape_cast_urls.each do |url|
+          ScrapeCastContent.new(url, @drama)
+        end
+      end
     end
   end
 end
