@@ -1,13 +1,12 @@
 require 'open-uri'
 
-class ScrapeDramaContent
+class ScrapeVikiDramaContent
 
   def initialize(url)
     begin
       file = open(url)
       @doc = Nokogiri::HTML(file) do
       end
-      binding.pry
     rescue OpenURI::HTTPError => e
       if e.message == '404 Not Found'
         @doc = false
@@ -74,7 +73,7 @@ class ScrapeDramaContent
   end
 
   def scrape_language
-    @doc.search('.badge').map { |element| element.inner_text }[0]
+    @doc.search('.section > .badge').map { |element| element.inner_text }[0]
   end
 
   def scrape_cast_urls
@@ -90,25 +89,29 @@ class ScrapeDramaContent
   def add_content_to_db
     if @doc != false
       if scrape_image_url != nil
-        @drama = Drama.create!(name: scrape_name, poster: URI.parse("http:" + scrape_image_url))
+        @drama = Drama.create!(name: scrape_name, poster: URI.parse(scrape_image_url))
       else
         @drama = Drama.create!(name: scrape_name)
       end
       @drama.update_attributes(
-        non_english_name: scrape_non_english_name,
+        non_english_name: @original_title,
         episode_count:    scrape_episode_count,
-        release_date:     scrape_release_date,
         plot:             scrape_plot,
-        language:         scrape_language
+        language:         scrape_language,
+        broadcast_period: @broadcast_period,
+        romanized_title:  @romanized_title,
+        also_known_as:    @also_known_as,
+        network:          @network,
+        rating:           @rating
       )
       if scrape_genre.any?
         scrape_genre.each do |genre|
           @drama.genres.find_or_create_by(name: genre)
         end
       end
-      scrape_cast.each do |cast|
-        @drama.casts.find_or_create_by(name: cast)
-      end
+      # scrape_cast.each do |cast|
+      #   @drama.casts.find_or_create_by(name: cast)
+      # end
     end
   end
 end
