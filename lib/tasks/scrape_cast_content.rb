@@ -61,6 +61,14 @@ class ScrapeCastContent
     end
   end
 
+  def scrape_image_url
+    if @doc.search('.billboard-image > img').map { |element| element['srcset'] }[0] != nil
+      @doc.search('.billboard-image > img').map { |element| element['srcset'] }[0].split(",").last.split(" ")[0].strip
+    else
+      nil
+    end
+  end
+
   def add_content_to_db
     if @doc != false
       cast = Cast.where(
@@ -74,6 +82,9 @@ class ScrapeCastContent
         star_sign: @star_sign
         ).first_or_create
       DramaCast.create(cast: cast, drama: @drama)
+      if scrape_image_url != nil
+        cast.update(picture: URI.parse(scrape_image_url))
+      end
     end
   end
 end
