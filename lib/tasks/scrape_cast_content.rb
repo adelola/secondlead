@@ -50,9 +50,17 @@ class ScrapeCastContent
     end
   end
 
+  def scrape_non_english_name
+    if @doc.search('.billboard-desc-title').map { |element| element.inner_text }[0] != nil
+      @doc.search('.billboard-desc-title').map { |element| element.inner_text }[0].strip
+    else
+      nil
+    end
+  end
+
   def add_content_to_db
     if @doc != false
-      cast = Cast.where(name: scrape_name).first_or_create
+      cast = Cast.where(name: scrape_name, non_english_name: scrape_non_english_name).first_or_create
       DramaCast.create(cast: cast, drama: @drama)
     end
   end
