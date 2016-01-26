@@ -105,8 +105,9 @@ class ScrapeVikiDramaContent
         rating:           @rating
       )
       if scrape_genre.any?
-        scrape_genre.each do |genre|
-          @drama.genres.find_or_create_by(name: genre)
+        scrape_genre.each do |name|
+          genre = Genre.where(name: name).first_or_create
+          DramaGenre.create(genre: genre, drama: @drama)
         end
       end
       # scrape_cast.each do |cast|
