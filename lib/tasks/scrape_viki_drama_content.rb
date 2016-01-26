@@ -51,7 +51,7 @@ class ScrapeDramaContent
 
   def scrape_episode_count
     if @doc.search('.card > .card-content > .left').map { |element| element.inner_text }[0] != nil
-      @doc.search('.card > .card-content > .left').map { |element| element.inner_text }[0].gsub(/[a-z]/i, "").strip
+      @doc.search('.card > .card-content > .left').map { |element| element.inner_text }[0].gsub(/[a-z]/i, "").strip.to_i
     else
       nil
     end
