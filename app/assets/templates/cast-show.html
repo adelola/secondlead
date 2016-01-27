@@ -1,8 +1,12 @@
-<div >
-
-<h1> This is the cast show page </h1>
-
-<p>Name: {{cast.name}}</p>
-
-
-</div>
+<section>
+  <div class="drama-image-and-info" layout="row">
+    <div class="drama-image" flex>
+      <img src="{{}}" alt="{{}}">
+    </div>
+    <div class="drama-info" flex="60">
+      <h1>{{cast.name}}</h1>
+      <p>{{cast.dob}}</p>
+      <p>{{cast.star_sign}}</p>
+    </div>
+  </div>
+</section>

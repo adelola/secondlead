@@ -6,12 +6,10 @@ angular
 
   .controller('CastCtrl', [
     'cast',
-    'Gridster',
-    function(cast, Gridster) {
+    function(cast) {
     var ctrl = this;
 
     ctrl.name = cast.name;
-
-    ctrl.gridsterOpts = Gridster.getOptions();
+    ctrl.dob = cast.dob;
   }])
 })();
