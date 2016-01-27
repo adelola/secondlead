@@ -35,8 +35,8 @@ class Drama < ActiveRecord::Base
   end
 
   def self.fetch
-    sample = Drama.where.not(poster_file_name: nil).limit(50)
-    sample_with_images = sample.map do |x| 
+    sample = Drama.where.not(poster_file_name: nil).limit(100)
+    sample_with_images = sample.map do |x|
       x.add_image_url
     end
     sample_with_images
@@ -48,11 +48,11 @@ class Drama < ActiveRecord::Base
     end
     if all_ratings.count == 0
       return 0
-    else 
+    else
       all_ratings = all_ratings.compact
       avg = all_ratings.reduce(:+).to_f / all_ratings.size
       avg.round(1)
     end
   end
-  
+
 end
