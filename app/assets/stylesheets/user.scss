@@ -1,4 +1,32 @@
+#user-bar {
+  width: 100%;
+  background-color:#F5CA99;
+}
+
+.user-info {
+  display: inline;
+  border: solid 1px;
+  background-color: #fff;
+  
+}
+
+.user-icon {
+  background-color:#fff;
+  min-width: 40px;
+  text-align: center;
+}
+
+
 button.add-list {
   min-width: 40px;
   border: 1px solid #ccc;
 }
+
+button.follow-user {
+  min-width: 40px;
+  margin-left: 80%;
+  border: 1px solid #ccc;
+  background-color: #fff;
+
+}
+
