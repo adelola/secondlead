@@ -9,6 +9,7 @@ class CastsController < ApplicationController
 
   def show
     @cast = Cast.find_by(id: params[:id])
+    # @cast.add_image_url
     respond_with(@cast)
   end
 
