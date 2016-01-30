@@ -4,10 +4,16 @@
 angular
   .module('secondLead')
   
-  .factory('UserModel',['Auth', 'Restangular', '$rootScope', 'store', function(Auth, Restangular, $rootScope, store) {
+  .factory('UserModel',['Auth', '$http', 'Restangular', '$rootScope', 'store', function(Auth, $http, Restangular, $rootScope, store) {
     var baseUsers = Restangular.all('users');
 
     var loggedIn = false;
+
+    var user = '';
+
+    function extract(result) {
+      return result.data;
+    }
 
     function setLoggedIn(state){
       loggedIn = state;
@@ -17,8 +23,13 @@ angular
     return {
       
       currentUser: function() {
-        return store.get('user');
+        user = store.get('user');
+        return user;
       },
+
+      follow: function(userId){
+        return $http.post('/relationships', {follower_id: user.id, followed_id: userId}).then(extract);
+      },  
 
       getAll: baseUsers.getList().$object,  
       
