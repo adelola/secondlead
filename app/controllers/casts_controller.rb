@@ -8,7 +8,7 @@ class CastsController < ApplicationController
   end
 
   def show
-    # @cast.add_image_url
+    @cast.add_image_url
     # respond_with(@cast)
     respond_to do |format|
       format.json { render json: @cast }
