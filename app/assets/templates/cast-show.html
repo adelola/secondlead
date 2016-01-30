@@ -5,33 +5,30 @@
     </div>
     <div class="drama-info col s12 l5">
       <h1>{{cast.name}}</h1>
-      <table>
+      <h2>{{cast.non_english_name}}</h2>
+      <table class="bordered">
         <tbody>
-          <tr>
+          <tr ng-if="cast.dob">
             <td>Date of Birth</td>
             <td>{{cast.dob}}</td>
           </tr>
-          <tr>
+          <tr ng-if="cast.age">
             <td>Age</td>
             <td>{{cast.age}}</td>
           </tr>
-          <tr>
-            <td>Date of Birth</td>
-            <td>{{cast.dob}}</td>
-          </tr>
-          <tr>
+          <tr ng-if="cast.height">
             <td>Height</td>
             <td>{{cast.height}}</td>
           </tr>
-          <tr>
+          <tr ng-if="cast.weight">
             <td>Weight</td>
             <td>{{cast.weight}}</td>
           </tr>
-          <tr>
+          <tr ng-if="cast.blood_type">
             <td>Blood Type</td>
             <td>{{cast.blood_type}}</td>
           </tr>
-          <tr>
+          <tr ng-if="cast.star_sign">
             <td>Star Sign</td>
             <td>{{cast.star_sign}}</td>
           </tr>
