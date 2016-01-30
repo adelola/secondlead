@@ -29,6 +29,10 @@ angular
 
       follow: function(userId){
         return $http.post('/relationships', {follower_id: user.id, followed_id: userId}).then(extract);
+      },
+
+      unfollow: function(relationshipId){
+        return $http.delete('/relationships/'+ relationshipId).then(extract);
       },  
 
       getAll: baseUsers.getList().$object,  
