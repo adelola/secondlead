@@ -10,4 +10,9 @@ class Cast < ActiveRecord::Base
 
   has_attached_file :picture, styles: { medium: "400x400>", small: "200x200>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
+
+  def add_image_url
+    self.image_url = self.picture.url
+    self
+  end
 end
