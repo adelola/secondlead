@@ -6,13 +6,14 @@ angular.module('secondLead')
     
     return {
 	  restrict : 'A',
-	  template : '<span> {{userName}}</span>',
+	  template : '<span> {{userName }}</span>',
 	  scope : {
 	    userId : '=',
 	  },
 	  link: function (scope, elem, attrs){
 	  	UserModel.getOne(scope.userId).then(function (result){
-	  		scope.userName = (result.user.username);
+	  		name = (result.user.username);
+	  		scope.userName = name.substring(0,1).toUpperCase()+name.substring(1)
 	  	})
 	  }
 	}
