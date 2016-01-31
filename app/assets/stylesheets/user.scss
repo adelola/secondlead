@@ -1,31 +1,33 @@
 #user-bar {
+  min-height: 50px;
   width: 100%;
-  background-color:#F5CA99;
+  background-color:#fff2e5;
+  
 }
 
-.user-info {
+#user-info {
   display: inline;
-  border: solid 1px;
-  background-color: #fff;
+  margin-left: 85%;
 }
 
 .user-icon {
-  background-color:#fff;
+  display: inline;
   min-width: 40px;
   text-align: center;
+  margin-top: 10px;
 }
 
-
-button.add-list {
+button.alter-relationship {
   min-width: 40px;
-  border: 1px solid #ccc;
-}
-
-button.follow-user {
-  min-width: 40px;
-  margin-left: 80%;
   border: 1px solid #ccc;
   background-color: #fff;
+}
 
+.md-button.alter-relationship:hover {
+  background-color: #faebd7;
+}
+
+.relationship {
+  display: inline
 }
 

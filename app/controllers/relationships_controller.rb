@@ -3,7 +3,7 @@ class RelationshipsController < ApplicationController
 
   def find
     if relationship = Relationship.find_by(follower_id: params[:follower_id], followed_id: params[:followed_id])
-      respond_with(relationship.id)
+      respond_with(relationship)
     else
       render json: { errors: "Oops, something went wrong." }
     end
