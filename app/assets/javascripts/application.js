@@ -16,9 +16,7 @@
 //= require angular-gridster
 //= require angular-jwt
 //= require angular-rails-templates
-//= require angular-route
 //= require angular-ui-router
-//= require angular-ui-select
 //= require angular-xeditable
 //= require angular-aria
 //= require angular-animate

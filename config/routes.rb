@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :relationships, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy], defaults: {:format => 'json'}
 
   match 'search', to: 'search#search', via: 'get'
   match '/auth/register',     to: 'auth#register',     via: 'post'
@@ -28,5 +28,7 @@ Rails.application.routes.draw do
   match '/auth/token_status', to: 'auth#token_status', via: 'get'
   match 'ratings/find', to: 'ratings#find', via: 'get', :format => 'json'
   match 'reviews/find', to: 'reviews#find', via: 'get', :format => 'json'
+  match 'relationships/find', to: 'relationships#find', via: 'get', :format => 'json'
+
 end
 

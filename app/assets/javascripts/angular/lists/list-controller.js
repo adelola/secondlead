@@ -10,7 +10,7 @@ angular
     'ListModel',
     'user',
     'UserModel',
-    function(Gridster, list, ListModel,user, UserModel) {
+    function (Gridster, list, ListModel,user, UserModel){
     var ctrl = this;
     var currentUser = UserModel.currentUser().id;
 
@@ -20,22 +20,22 @@ angular
     ctrl.description = list.list.description;
     ctrl.userID = user.user.id;
 
-    ctrl.authorized = function(){
-      if( ctrl.userID === currentUser){
+    ctrl.authorized = function () {
+      if ( ctrl.userID === currentUser) {
         return true
       }
     };
 
-    ctrl.removeItem = function(item){
+    ctrl.removeItem = function (item){
       ctrl.items.splice(ctrl.items.indexOf(item),1)
     };
 
-    ctrl.updateName = function(name){
+    ctrl.updateName = function (name){
       ListModel.update(ctrl.id, {name: name});
       ctrl.name = name;
     };
 
-    ctrl.updateDescription = function(description){
+    ctrl.updateDescription = function (description){
       ListModel.update(ctrl.id, {description: description});
       ctrl.description = description;
     };

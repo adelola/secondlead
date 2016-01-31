@@ -19,7 +19,7 @@
             <div class="drama-rating-box">{{drama.avgRating}}</div>
             Avg Rating
           </div>
-          <div class="add-drama-box">
+          <div ng-if="drama.user" class="add-drama-box">
             <add-drama drama="drama.drama" user="{{drama.user.id}}" user-lists="drama.userLists" selected-list="drama.selectedList"> </add-drama>
           </div>
         </div>

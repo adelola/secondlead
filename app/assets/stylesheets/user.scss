@@ -1,4 +1,33 @@
-button.add-list {
-  min-width: 40px;
-  border: 1px solid #ccc;
+#user-bar {
+  min-height: 50px;
+  width: 100%;
+  background-color:#fff2e5;
+  
 }
+
+#user-info {
+  display: inline;
+  margin-left: 85%;
+}
+
+.user-icon {
+  display: inline;
+  min-width: 40px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+button.alter-relationship {
+  min-width: 40px;
+  background-color: #fff;
+}
+
+.md-button.alter-relationship:hover {
+  background-color: #ffd8b3;
+  color: white;
+}
+
+.relationship {
+  display: inline
+}
+

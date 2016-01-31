@@ -11,7 +11,7 @@ angular
     '$state',
     'store',
     'UserModel', 
-    function (Auth, $scope, $state, store, UserModel) {
+    function (Auth, $scope, $state, store, UserModel){
     var main = this;
     
     main.logout = function () {
@@ -23,7 +23,7 @@ angular
 
     main.currentUser = store.get('user');
 
-    $scope.$on('loggedIn:updated', function(event,data) {
+    $scope.$on('loggedIn:updated', function (event,data){
       main.loggedIn = UserModel.getStatus().loggedIn;
       main.currentUser = store.get('user');
     });

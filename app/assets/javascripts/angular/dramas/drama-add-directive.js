@@ -1,5 +1,5 @@
 angular.module('secondLead')
-  .directive('addDrama', [ 'DramaModel', function(DramaModel){ 
+  .directive('addDrama', [ 'DramaModel', function (DramaModel){ 
   	return {
   	  restrict: 'E',
   	  templateUrl:'add-drama.html',
@@ -9,8 +9,8 @@ angular.module('secondLead')
   	  	user: "@",
   	  	selectedList:"@"
   	  },
-  	  link: function(scope, element, attrs){
-  	  	scope.addToList = function(list, drama){
+  	  link: function (scope, element, attrs){
+  	  	scope.addToList = function (list, drama){
   	  	  DramaModel.add(scope.user,list,drama);
   	  	  scope.selectedList = "";
   	  	};
