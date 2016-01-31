@@ -1,17 +1,23 @@
 (function(){
-'use strict';
+  'use strict';
 
-angular
-  .module('secondLead')
+  angular
+    .module('secondLead')
 
-  .controller('CastCtrl', [
-    'cast',
-    'Gridster',
-    function(cast, Gridster) {
-    var ctrl = this;
+    .controller('CastCtrl', [
+      'cast',
+      function(cast) {
+      var ctrl = this;
 
-    ctrl.name = cast.name;
-
-    ctrl.gridsterOpts = Gridster.getOptions();
-  }])
+      ctrl.image_url         = cast.image_url;
+      ctrl.picture_file_name = cast.picture_file_name;
+      ctrl.name              = cast.name;
+      ctrl.dob               = cast.dob;
+      ctrl.age               = cast.age;
+      ctrl.non_english_name  = cast.non_english_name;
+      ctrl.height            = cast.height;
+      ctrl.weight            = cast.weight;
+      ctrl.star_sign         = cast.star_sign;
+      ctrl.blood_type        = cast.blood_type;
+    }]);
 })();
