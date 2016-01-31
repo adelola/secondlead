@@ -28,7 +28,7 @@ angular
     var authorized = function () {
       if(UserModel.currentUser()){
         ctrl.user = UserModel.currentUser();
-        ctrl.userLists = ListModel.currentUserLists();
+        ctrl.userLists = ListModel.currentUserLists(ctrl.user.id);
       } 
     };
 

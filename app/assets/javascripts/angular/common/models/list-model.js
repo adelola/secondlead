@@ -8,27 +8,27 @@ angular
     var currentUser = store.get('user');
     return {
 
-      getAll: function(userID) { 
+      getAll: function (userID){ 
         return Restangular.one('users', userID).getList('lists') 
       },
       
-      currentUserLists: function(){
-        return Restangular.one('users', currentUser.id).getList('lists').$object
+      currentUserLists: function (userID){
+        return Restangular.one('users', userID).getList('lists').$object
       },
       
-      getOne: function(userID, listID) {
+      getOne: function (userID, listID){
         return Restangular.one('users', userID).one('lists', listID).get()
       },
 
-      create: function(listParams) {
+      create: function (listParams){
         return Restangular.one('users', currentUser.id).all('lists').post(listParams)
       },
 
-      update: function(listID, listParams){
+      update: function (listID, listParams){
         return Restangular.one('users', currentUser.id).one('lists', listID).put(listParams)
       },
 
-      delete: function(listID){
+      delete: function (listID){
         return Restangular.one('users', currentUser.id).one('lists', listID).remove()
       }
 

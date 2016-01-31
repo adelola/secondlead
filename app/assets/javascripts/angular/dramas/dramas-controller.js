@@ -16,13 +16,13 @@ angular
     ctrl.items = DramaModel.getAll;
     ctrl.user = '';
     
-    var authorized = function () {
+    var initialize = function () {
       if(UserModel.currentUser()){
         ctrl.user = UserModel.currentUser();
-        ctrl.userLists = ListModel.currentUserLists();
+        ctrl.userLists = ListModel.currentUserLists(ctrl.user.id);
       } 
     };
-    authorized();
+    initialize();
 
     ctrl.selectedList = {};
 

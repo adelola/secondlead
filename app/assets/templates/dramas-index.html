@@ -18,7 +18,7 @@
                 {{drama.release_date}}
               </md-card-title-text>
             </md-card-title>
-            <md-card-actions layout="row" layout-align="end center">
+            <md-card-actions layout="row" layout-align="end center" ng-if="dramas.user">
               <add-drama drama="drama" user="{{dramas.user.id}}" user-lists="dramas.userLists" selected-list="dramas.selectedList"> </add-drama>
             </md-card-actions>
           </md-card>
