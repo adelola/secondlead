@@ -2,7 +2,7 @@
 'use strict';
 
 angular
-  .module('secondLead')
+  .module('secondLead.common')
   
   .factory('ListModel',['Restangular', 'store', function (Restangular, store){
     var currentUser = store.get('user');

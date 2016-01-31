@@ -2,7 +2,7 @@
 'use strict';
 
 angular
-  .module('secondLead')
+  .module('secondLead.common')
 
   .factory('CastModel',['Restangular', function (Restangular){
      var baseCasts = Restangular.all('casts');

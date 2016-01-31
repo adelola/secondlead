@@ -2,7 +2,7 @@
 'use strict';
 
 angular
-  .module('secondLead')
+  .module('secondLead.common')
 
   .factory('DramaModel',['Restangular', function (Restangular){
      var baseDramas = Restangular.all('dramas');
