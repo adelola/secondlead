@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('secondLead')
-  .directive('nameUser', ['UserModel',function(UserModel) {
+  .directive('nameUser', ['UserModel',function (UserModel){
     
     return {
 	  restrict : 'A',
@@ -10,8 +10,8 @@ angular.module('secondLead')
 	  scope : {
 	    userId : '=',
 	  },
-	  link: function(scope, elem, attrs){
-	  	UserModel.getOne(scope.userId).then(function(result){
+	  link: function (scope, elem, attrs){
+	  	UserModel.getOne(scope.userId).then(function (result){
 	  		scope.userName = (result.user.username);
 	  	})
 	  }

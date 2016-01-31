@@ -17,7 +17,7 @@ angular
     ctrl.user = '';
     
     var initialize = function () {
-      if(UserModel.currentUser()){
+      if (UserModel.currentUser()) {
         ctrl.user = UserModel.currentUser();
         ctrl.userLists = ListModel.currentUserLists(ctrl.user.id);
       } 

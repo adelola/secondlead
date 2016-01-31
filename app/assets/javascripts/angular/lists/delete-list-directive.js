@@ -1,5 +1,5 @@
 angular.module('secondLead')
-  .directive('deleteList', [ 'ListModel','$uibModal' , function(ListModel, $uibModal){ 
+  .directive('deleteList', [ 'ListModel','$uibModal' , function (ListModel, $uibModal){ 
   	return {
   	  restrict: 'E',
   	  template:'<button type="button" '
@@ -11,7 +11,7 @@ angular.module('secondLead')
   	  	removeItem: "&"
   	  },
   	  replace: true,
-  	  link: function(scope, element, attributes){
+  	  link: function (scope, element, attributes){
   	  	scope.delete = function(){
           var modalInstance = $uibModal.open({
             animation: scope.animationsEnabled,
@@ -20,8 +20,8 @@ angular.module('secondLead')
             size: 'sm'
           });
 
-          modalInstance.result.then(function(result) {
-            if (result.confirmation === true){
+          modalInstance.result.then(function (result){
+            if (result.confirmation === true) {
     	  	    ListModel.delete(scope.list.id);
     	  	    scope.removeItem(scope.list);
             }

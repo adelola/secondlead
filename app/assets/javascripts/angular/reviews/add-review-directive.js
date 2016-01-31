@@ -1,5 +1,5 @@
 angular.module('secondLead')
-  .directive('addReview', [ 'ReviewModel', 'store',function(ReviewModel, store) {
+  .directive('addReview', [ 'ReviewModel', 'store',function (ReviewModel, store){
     
     return {
 	  restrict : 'E',
@@ -7,12 +7,12 @@ angular.module('secondLead')
 	  scope : {
 	    drama : '='
 	  },
-	  link : function(scope, elem, attrs) {
+	  link : function (scope, elem, attrs){
 		var dramaId = scope.drama.dramaId;
 		var currentUser = store.get('user');
 	  	
-	  	var initialize = function(){
-	  	  ReviewModel.find(dramaId, currentUser.id).then(function(result){
+	  	var initialize = function () {
+	  	  ReviewModel.find(dramaId, currentUser.id).then(function (result){
 	  	  	if (result.errors) {
 	  	  	  scope.review = "";
 	  	  	} else {
@@ -23,20 +23,20 @@ angular.module('secondLead')
 	  	};
 	  	initialize();
 	  
-		scope.addReview = function(newReview){
-		  	ReviewModel.create(dramaId,currentUser.id, newReview).then(function(result){
+		scope.addReview = function (newReview){
+		  	ReviewModel.create(dramaId,currentUser.id, newReview).then(function (result){
 		  	  scope.review = result.review.body;
 		  	  scope.reviewId = result.review.id;
 		  	});
 		};
 
-		scope.reset = function(){
+		scope.reset = function () {
 		  	ReviewModel.delete(dramaId, scope.reviewId);
 		  	scope.review = '';
 		  	scope.reviewId = '';
 		};
 
-		scope.updateReview = function(review){
+		scope.updateReview = function (review){
 		  ReviewModel.update(dramaId, scope.reviewId, review);
 		  scope.review = review;
 		};

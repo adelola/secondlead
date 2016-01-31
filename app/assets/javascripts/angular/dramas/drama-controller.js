@@ -11,7 +11,7 @@ angular
     'Restangular',
     'UserModel',
     'ListModel',
-    function(drama, Gridster, RatingModel, Restangular,UserModel, ListModel) {
+    function (drama, Gridster, RatingModel, Restangular,UserModel, ListModel){
     var ctrl = this;
 
     ctrl.drama = drama;
@@ -26,13 +26,13 @@ angular
     ctrl.image_url = drama.image_url;
     
     var authorized = function () {
-      if(UserModel.currentUser()){
+      if (UserModel.currentUser()) {
         ctrl.user = UserModel.currentUser();
         ctrl.userLists = ListModel.currentUserLists(ctrl.user.id);
       } 
     };
 
-    var avgRate = function(drama){
+    var avgRate = function (drama){
       RatingModel.getAvg(drama).then(function(result){
         ctrl.avgRating = result;
       });

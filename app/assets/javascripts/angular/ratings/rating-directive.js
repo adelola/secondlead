@@ -1,5 +1,5 @@
 angular.module('secondLead')
-  .directive('dramaRating', [ 'RatingModel', 'store',function(RatingModel, store) {
+  .directive('dramaRating', [ 'RatingModel', 'store',function (RatingModel, store){
     
     return {
 	  restrict : 'A',
@@ -10,12 +10,12 @@ angular.module('secondLead')
 	    drama : '=',
 	    max : '='
 	  },
-	  link : function(scope, elem, attrs) {
+	  link : function (scope, elem, attrs){
 		var dramaId = scope.drama.dramaId;
 		var currentUser = store.get('user');
 	  	
 	  	var initialize = function(){
-	  	  RatingModel.find(dramaId, currentUser.id).then(function(result){
+	  	  RatingModel.find(dramaId, currentUser.id).then(function (result){
 	  	  	if (result.errors) {
 	  	  	  scope.ratingValue = -1;
 	  	  	} else {
@@ -29,7 +29,7 @@ angular.module('secondLead')
 	  	  initialize();
 	  	};
 
-	  	var updateHearts = function() {
+	  	var updateHearts = function () {
 		  scope.hearts = [];
 			for ( var i = 0; i < scope.max; i++) {
 			  scope.hearts.push({
@@ -38,7 +38,7 @@ angular.module('secondLead')
 			}
 		};
 
-		var updateRating = function(newWeight){
+		var updateRating = function (newWeight){
 		  if(scope.ratingId){
 		  	RatingModel.update(dramaId, scope.ratingId, newWeight)
 		  }
@@ -48,16 +48,16 @@ angular.module('secondLead')
 		  };
 		};
 				
-		scope.toggle = function(index) {
-		  if(currentUser){
+		scope.toggle = function (index){
+		  if (currentUser) {
 		    scope.ratingValue = index + 1;
 		    updateRating(index + 1);
 		    updateHearts();
 		  };
 		};
 
-		scope.reset = function(){
-		  if(currentUser){
+		scope.reset = function () {
+		  if (currentUser) {
 		  	RatingModel.delete(dramaId, scope.ratingId);
 		  	scope.ratingValue = 0;
 		  	scope.ratingId = '';

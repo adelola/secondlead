@@ -4,7 +4,7 @@
 angular
   .module('secondLead')
   
-  .factory('UserModel',['Auth', '$http', 'Restangular', '$rootScope', 'store', function(Auth, $http, Restangular, $rootScope, store) {
+  .factory('UserModel',['Auth', '$http', 'Restangular', '$rootScope', 'store', function (Auth, $http, Restangular, $rootScope, store){
     var baseUsers = Restangular.all('users');
 
     var loggedIn = false;

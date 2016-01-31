@@ -10,14 +10,14 @@ angular
     '$state', 
     'store',
     'UserModel',
-    function (Restangular, $state, store, UserModel) {
+    function (Restangular, $state, store, UserModel){
     var login = this;
 
     login.user = {};
 
-    login.onSubmit = function() {
+    login.onSubmit = function () {
       UserModel.login(login.user)
-      .then(function (response) {
+      .then(function (response){
         var user = response.data.user;
         UserModel.setLoggedIn(true);
         $state.go('user.lists', {userID: user.id});

@@ -4,7 +4,7 @@
 angular
   .module('secondLead')
   
-  .factory('ListModel',['Restangular', 'store', function(Restangular, store) {
+  .factory('ListModel',['Restangular', 'store', function (Restangular, store){
     var currentUser = store.get('user');
     return {
 
