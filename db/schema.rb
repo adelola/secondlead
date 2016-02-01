@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(version: 20160201024108) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "rating_id"
-    t.string   "rating_weight"
+    t.integer  "rating_weight"
   end
 
   add_index "reviews", ["drama_id"], name: "index_reviews_on_drama_id", using: :btree

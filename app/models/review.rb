@@ -9,6 +9,6 @@ class Review < ActiveRecord::Base
   end
 
   def update_with_rating
-    self.update(rating_id: rating.id) if self.rating_id.nil? && !rating.nil?
+    self.update(rating_id: rating.id, rating_weight: rating.weight) if self.rating_id.nil? && !rating.nil?
   end
 end
