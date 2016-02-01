@@ -45,6 +45,9 @@
                   <h3>
                     <span name-user user-id="review.reviewer_id"></span>
                   </h3>
+                  <p ng-if="review.rating_weight > 0">
+                    <i class="fa fa-heart fa-1x review-hearts" ng-repeat="n in getNums(review.rating_weight) track by $index"></i>
+                  </p>
                   <p>
                     {{review.body}}
                   </p>
