@@ -5,14 +5,16 @@ class ReviewsController < ApplicationController
   def index
     @drama = Drama.find_by(id: params[:drama_id])
     @reviews = @drama.reviews
-    respond_with(@reviews)  
+    respond_with(@reviews)
   end
 
   def create
     drama = Drama.find_by(id: params[:drama_id])
     review = drama.reviews.build(new_review_params)
+    rating = Rating.find_by({drama: drama, rater_id: params[:reviewer_id]})
+    review.update(rating_id: rating.id) if review.rating_id.nil? && !rating.nil?
     if review.save
-      render json: { review: review} 
+      render json: { review: review}
     else
       render json: { errors: "Oops, something went wrong." }
     end
@@ -21,7 +23,7 @@ class ReviewsController < ApplicationController
   def find
     review = Review.find_by({drama_id: params[:drama_id], reviewer_id: params[:reviewer_id]})
     if review
-      render json: { review: review} 
+      render json: { review: review}
     else
       render json: { errors: "Oops, something went wrong." }
     end
@@ -40,11 +42,10 @@ class ReviewsController < ApplicationController
       render json: { message: "Review successfully deleted." }
     else
       render json: { errors: "Oops, something went wrong." }
-    end 	
+    end
   end
 
   private
-
     def set_review
       @review = Review.find_by(id: params[:id])
     end
@@ -56,5 +57,4 @@ class ReviewsController < ApplicationController
     def update_params
       params.permit(:body)
     end
-
 end
