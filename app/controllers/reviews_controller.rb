@@ -11,8 +11,7 @@ class ReviewsController < ApplicationController
   def create
     drama = Drama.find_by(id: params[:drama_id])
     review = drama.reviews.build(new_review_params)
-    rating = Rating.find_by({drama: drama, rater_id: params[:reviewer_id]})
-    review.update(rating_id: rating.id) if review.rating_id.nil? && !rating.nil?
+    review.update_with_rating
     if review.save
       render json: { review: review}
     else
