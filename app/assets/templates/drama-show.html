@@ -45,7 +45,9 @@
                   <h3>
                     <span name-user user-id="review.reviewer_id"></span>
                   </h3>
-                  {{review.rating_id}}
+                  <p>
+                    <i class="fa fa-heart fa-x" ng-repeat="n in getNums(review.rating_weight) track by $index"></i>
+                  </p>
                   <p>
                     {{review.body}}
                   </p>
