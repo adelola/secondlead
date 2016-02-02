@@ -57,7 +57,7 @@ angular
       })
 
       .state('search-results', {
-        url:'/search/:query',
+        url:'/search',
         templateUrl: 'search-results.html',
         controller:'SearchCtrl',
         controllerAs: 'search'

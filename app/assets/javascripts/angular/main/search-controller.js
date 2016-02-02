@@ -13,22 +13,23 @@ angular
     function ($scope, $state, store, SearchService){
     var ctrl = this;
 
-    ctrl.huh = "HUH";
-
     ctrl.query = '';
+    ctrl.dramas = SearchService.getDramas();
+    ctrl.casts = SearchService.getCasts();
+    ctrl.users = SearchService.getUsers();
+    
     ctrl.submit = function (query){
       SearchService.get(query).then(function (result){
         console.log(result);
-        ctrl.dramas = result.dramas;
-        ctrl.users = result.users;
-        ctrl.casts = result.cast;
+        SearchService.setDramas(result.dramas);
+        SearchService.setCasts(result.casts);
+        SearchService.setUsers(result.users);
         $state.go('search-results', {query: '?' + query})
-
       });
     };
 
     ctrl.test =  function () {
-      console.log(ctrl.dramas);
+      console.log(ctrl.users);
     }
     
    
