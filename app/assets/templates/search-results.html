@@ -1,0 +1,17 @@
+<div ng-controller="SearchCtrl as search">
+  <div> 
+  	<h3>Performers</h3> {{search.huh}}
+
+  </div>
+  <div> 
+  	<h3>Users</h3> 
+
+  </div>
+  <div> 
+  	<h3>Dramas</h3>
+  	<button ng-click="search.test">test</button>
+  	<div ng-repeat="drama in search.dramas"> {{drama.name}}</div> 
+
+  </div>
+
+</div>

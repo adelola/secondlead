@@ -56,6 +56,13 @@ angular
         controllerAs: 'dramas'
       })
 
+      .state('search-results', {
+        url:'/search/:query',
+        templateUrl: 'search-results.html',
+        controller:'SearchCtrl',
+        controllerAs: 'search'
+      })
+
       .state('drama', {
       url:'/dramas/:dramaID',
       templateUrl: 'drama-show.html',
