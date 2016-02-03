@@ -27,6 +27,10 @@ angular
     $httpProvider.interceptors.push('jwtInterceptor');
   }])
 
+  .config(['$locationProvider', function ($locationProvider) {
+    $locationProvider.html5Mode(true)
+  }])
+
   .config(['paginationTemplateProvider', function (paginationTemplateProvider){
     paginationTemplateProvider.setPath('/dirPagination.html');
   }])
