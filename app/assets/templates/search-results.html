@@ -1,4 +1,4 @@
-<div ng-controller="SearchCtrl as search">
+<div>
   <div> 
   	<h5>Performers</h5> 
   	<div ng-repeat="cast in search.casts"> {{cast.name}}</div> 
@@ -13,4 +13,5 @@
   	<h5>Dramas</h5>
   	<div ng-repeat="drama in search.dramas"> {{drama.name}}</div> 
   </div>
+  <button ng-click="search.test()">here</button>
 </div>

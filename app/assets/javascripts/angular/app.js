@@ -38,12 +38,14 @@ angular
       .state('register', {
         url:'/register',
         templateUrl: 'register.html',
+        data: { requiresLogin: false },
         controller:'RegisterCtrl',
         controllerAs: 'register'
       })
 
       .state('login', {
         url:'/login',
+        data: { requiresLogin: false },
         templateUrl: 'login.html',
         controller:'LoginCtrl',
         controllerAs: 'login'
@@ -51,32 +53,47 @@ angular
 
       .state('dramas', {
         url:'/dramas',
+        data: { requiresLogin: false },
         templateUrl: 'dramas-index.html',
         controller:'DramasCtrl',
         controllerAs: 'dramas'
       })
 
       .state('search-results', {
-        url:'/search',
+        url:'/search/?=:query',
+        data: { requiresLogin: false },
         templateUrl: 'search-results.html',
         controller:'SearchCtrl',
-        controllerAs: 'search'
+        controllerAs: 'search',
+        resolve: {
+          dramas: ['SearchService', function (SearchService){
+              return SearchService.getDramas();
+          }],
+          casts: ['SearchService', function (SearchService){
+              return SearchService.getCasts();
+          }],
+          users: ['SearchService', function (SearchService){
+              return SearchService.getUsers();
+          }]
+        }
       })
 
       .state('drama', {
-      url:'/dramas/:dramaID',
-      templateUrl: 'drama-show.html',
-      controller:'DramaCtrl',
-      controllerAs: 'drama',
-      resolve: {
-        drama: ['$stateParams','DramaModel','Restangular', function ($stateParams,DramaModel,Restangular){
-            return DramaModel.getOne($stateParams.dramaID);
-        }]
-      }
+        url:'/dramas/:dramaID',
+        data: { requiresLogin: false },
+        templateUrl: 'drama-show.html',
+        controller:'DramaCtrl',
+        controllerAs: 'drama',
+        resolve: {
+          drama: ['$stateParams','DramaModel','Restangular', function ($stateParams,DramaModel,Restangular){
+              return DramaModel.getOne($stateParams.dramaID);
+          }]
+        }
       })
 
       .state('casts', {
         url:'/casts',
+        data: { requiresLogin: false },
         templateUrl: 'casts-index.html',
         controller:'CastsCtrl',
         controllerAs: 'casts'
@@ -84,6 +101,7 @@ angular
 
       .state('cast', {
         url:'/casts/:castID',
+        data: { requiresLogin: false },
         templateUrl: 'cast-show.html',
         controller:'CastCtrl',
         controllerAs: 'cast',
@@ -96,8 +114,8 @@ angular
 
       .state('user', {
         url:'/users/:userID',
-        templateUrl: 'user-show.html',
         data: { requiresLogin: true },
+        templateUrl: 'user-show.html',
         controller:'UserCtrl',
         controllerAs: 'user',
         resolve: {
@@ -109,6 +127,7 @@ angular
 
         .state('user.lists', {     //Indented because nested under user
           url:'/lists',
+          data: { requiresLogin: true },
           templateUrl: 'lists-index.html',
           controller:'ListsCtrl',
           controllerAs: 'lists',
@@ -120,28 +139,31 @@ angular
         })
 
         .state('user.list', {       //Indented because nested under user
-        url:'/lists/:listID',
-        templateUrl: 'list-show.html',
-        controller:'ListCtrl',
-        controllerAs: 'list',
-        resolve: {
-          list: ['$stateParams','ListModel','Restangular', function ($stateParams,ListModel,Restangular){
-              return ListModel.getOne($stateParams.userID, $stateParams.listID);
-          }]
-        }
+          url:'/lists/:listID',
+          data: { requiresLogin: true },
+          templateUrl: 'list-show.html',
+          controller:'ListCtrl',
+          controllerAs: 'list',
+          resolve: {
+            list: ['$stateParams','ListModel','Restangular', function ($stateParams,ListModel,Restangular){
+                return ListModel.getOne($stateParams.userID, $stateParams.listID);
+            }]
+          }
       })
   }])
 
-  .run([ 'jwtHelper','$rootScope', '$state', 'store',  function (jwtHelper, $rootScope, $state, store){
-    $rootScope.$on('$stateChangeStart', ['event', 'toState' ,'toParams', function (event, toState, toParams){
-      if (toState.data && toState.data.requiresLogin) {
-        if (!store.get('jwt') || jwtHelper.isTokenExpired(store.get('jwt'))) {
-          event.preventDefault();
-          $state.go('login');
-        }
-      }
-    }]);
-  }])
+  //   Do Not Delete - have to debug
+  // .run(['jwtHelper','$rootScope', '$state', 'store', function (jwtHelper, $rootScope, $state, store){
+    // $rootScope.$on('$stateChangeStart', ['event', 'toState', 'toParams', function (event, toState, toParams){
+        // var requiresLogin = toState.data.requiresLogin;
+        // if (requiresLogin === true) {
+    //     if (!store.get('jwt') || jwtHelper.isTokenExpired(store.get('jwt'))) {
+    //       event.preventDefault();
+    //       $state.go('login');
+    //     }
+    //   }
+    // }]);
+  // }])
 
   .run(['editableOptions',function (editableOptions){
     editableOptions.theme = 'bs2';

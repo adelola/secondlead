@@ -14,22 +14,25 @@ angular
      
     return {
 
-      get: function (query){
+      getResults: function (query){
         return $http.get('/search', {params: {q: query}}).then(extract);
       },
 
       setDramas: function (results){
         dramaResults = results;
+        // $rootScope.$broadcast('results:updated');
         return dramaResults;
       },
 
       setCasts: function (results){
         castResults = results;
+        // $rootScope.$broadcast('results:updated');
         return castResults;
       },
 
       setUsers: function (results){
         userResults = results;
+        // $rootScope.$broadcast('results:updated');
         return userResults;
       },
 
