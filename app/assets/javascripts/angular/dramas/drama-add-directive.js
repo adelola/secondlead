@@ -12,9 +12,9 @@ angular.module('secondLead')
 	  link: function (scope, element, attrs) {
       openToast = function($event) {
         $mdToast.show({
-            template: '<md-toast class="md-toast">Added to list!</md-toast>',
+            template: '<md-toast class="md-toast"><i class="fa fa-check"></i>Added to list!</md-toast>',
             hideDelay: 2000,
-            position: 'bottom right'
+            position: 'right'
         });
       };
 	  	scope.addToList = function (list, drama) {

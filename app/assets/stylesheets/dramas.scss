@@ -90,10 +90,13 @@ md-input-container {
   padding: 0 2px;
 }
 
-md-toast.md-success-toast-theme {
-  background-color: green !important;
+md-toast {
+  position: fixed;
+  bottom: 0;
+  .md-toast-content {
+    background-color: #4AC948 !important;
+  }
 }
-
 dir-pagination-controls {
   float: right;
 }
