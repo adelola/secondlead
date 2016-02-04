@@ -99,9 +99,17 @@ dir-pagination-controls {
   display: inline;
 }
 
+.drama-description {
+  margin-bottom: 20px;
+}
+
 .drama-review-and-cast {
   h3 {
     font-size: 2em;
+  }
+  h4 {
+    font-size: 1.3em;
+    font-weight: bold;
   }
   .drama-cast {
     padding-left: 10px;
@@ -112,11 +120,5 @@ dir-pagination-controls {
     img {
       width: 100%;
     }
-  }
-}
-
-.comments {
-  h3 {
-    font-size: 2em;
   }
 }

@@ -38,31 +38,51 @@
   </div>
   <div class="drama-review-and-cast row">
     <div class="drama-review col m12 l8">
-      <h3>Reviews</h3>
-      <div ng-if="drama.user">
-        <add-review drama="drama"></add-review>
-      </div>
-      <div ng-controller="ReviewsCtrl as ctrl">
-        <div ng-repeat= "review in ctrl.reviews" ng-cloak>
-          <md-content>
-            <md-list>
-              <md-list-item class="md-3-line">
-                <img src="https://lh5.googleusercontent.com/-Qhu7Srm0lp8/AAAAAAAAAAI/AAAAAAAAReo/s-uOtXpAmHE/photo.jpg" class="md-avatar" alt="yolo" />
-                <div class="md-list-item-text">
-                  <h3>
-                    <span name-user user-id="review.reviewer_id"></span>
-                  </h3>
-                  <p ng-if="review.rating_weight > 0">
-                    <i class="fa fa-heart fa-1x review-hearts" ng-repeat="n in getNums(review.rating_weight) track by $index"></i>
-                  </p>
-                  <p>
-                    {{review.body}}
-                  </p>
+      <div ng-cloak>
+        <md-content>
+          <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Reviews">
+              <md-content class="md-padding">
+                <div ng-if="drama.user">
+                  <add-review drama="drama"></add-review>
                 </div>
-              </md-list-item>
-            </md-list>
-          </md-content>
-        </div>
+                <div ng-controller="ReviewsCtrl as ctrl">
+                  <h4>{{ctrl.reviews.length}} Reviews</h4>
+                  <div ng-repeat= "review in ctrl.reviews" ng-cloak>
+                    <md-content>
+                      <md-list>
+                        <md-list-item class="md-3-line">
+                          <img src="https://lh5.googleusercontent.com/-Qhu7Srm0lp8/AAAAAAAAAAI/AAAAAAAAReo/s-uOtXpAmHE/photo.jpg" class="md-avatar" alt="yolo" />
+                          <div class="md-list-item-text">
+                            <h3>
+                              <span name-user user-id="review.reviewer_id"></span>
+                            </h3>
+                            <p ng-if="review.rating_weight > 0">
+                              <i class="fa fa-heart fa-1x review-hearts" ng-repeat="n in getNums(review.rating_weight) track by $index"></i>
+                            </p>
+                            <p>
+                              {{review.body}}
+                            </p>
+                          </div>
+                        </md-list-item>
+                      </md-list>
+                    </md-content>
+                  </div>
+                </div>
+              </md-content>
+            </md-tab>
+            <md-tab label="Comments">
+              <md-content class="md-padding">
+                <div class="comments">
+                  <dir-disqus disqus-shortname="secondlead"
+                       disqus-identifier="{{ identifier }}"
+                       disqus-url="{{ url }}">
+                  </dir-disqus>
+                </div>
+              </md-content>
+            </md-tab>
+          </md-tabs>
+        </md-content>
       </div>
     </div>
     <div class="drama-cast col m12 l4 row">
@@ -76,12 +96,5 @@
         </a>
       </div>
     </div>
-  </div>
-  <div class="comments">
-    <h3>Comments</h3>
-    <dir-disqus disqus-shortname="secondlead"
-         disqus-identifier="{{ identifier }}"
-         disqus-url="{{ url }}">
-    </dir-disqus>
   </div>
 </section>
