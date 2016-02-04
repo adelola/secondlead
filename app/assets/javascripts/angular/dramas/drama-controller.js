@@ -14,22 +14,22 @@ angular
     function (drama, Gridster, RatingModel, Restangular,UserModel, ListModel){
     var ctrl = this;
 
-    ctrl.drama = drama;
+    ctrl.drama = drama.drama;
     ctrl.user = '';
     ctrl.selectedList = {};
-    ctrl.name = drama.name;
-    ctrl.non_english_name = drama.non_english_name;
-    ctrl.episode_count = drama.episode_count;
-    ctrl.year = drama.release_date;
-    ctrl.description = drama.plot;
-    ctrl.dramaId = drama.id;
-    ctrl.image_url = drama.image_url;
-    
+    ctrl.name = drama.drama.name;
+    ctrl.non_english_name = drama.drama.non_english_name;
+    ctrl.episode_count = drama.drama.episode_count;
+    ctrl.year = drama.drama.release_date;
+    ctrl.description = drama.drama.plot;
+    ctrl.dramaId = drama.drama.id;
+    ctrl.image_url = drama.drama.image_url;
+
     var authorized = function () {
       if (UserModel.currentUser()) {
         ctrl.user = UserModel.currentUser();
         ctrl.userLists = ListModel.currentUserLists(ctrl.user.id);
-      } 
+      }
     };
 
     var avgRate = function (drama){
@@ -37,10 +37,10 @@ angular
         ctrl.avgRating = result;
       });
     }
-    
-    var initialize = function () {  
+
+    var initialize = function () {
       authorized();
-      avgRate(drama.id);
+      avgRate(drama.drama.id);
     };
     initialize();
 

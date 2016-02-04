@@ -9,7 +9,11 @@ class DramasController < ApplicationController
 
   def show
     @drama = Drama.find_by(id: params[:id]).add_image_url
-    respond_with(@drama)
+    # will be added in seed
+    @casts = @drama.casts.each do |cast|
+      cast.add_image_url
+    end
+    respond_with(drama: @drama, casts: @casts)
   end
 
   def create
