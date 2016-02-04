@@ -1,9 +1,9 @@
 <section>
-  <div class="drama-image-and-info" layout="row">
-    <div class="drama-image" flex>
+  <div class="drama-image-and-info row">
+    <div class="drama-image col m12 l5">
       <img src="{{drama.image_url}}" alt="{{drama.poster_file_name}}">
     </div>
-    <div class="drama-info" flex="60">
+    <div class="drama-info col m12 l7">
       <h1>{{drama.name}}</h1>
       <div layout="row">
         <div class="drama-info-left" flex>
@@ -36,8 +36,8 @@
   <div class="drama-description">
     {{drama.description}}
   </div>
-  <div class="drama-review-and-cast" layout="row">
-    <div class="drama-review" flex="60">
+  <div class="drama-review-and-cast row">
+    <div class="drama-review col m12 l8">
       <h3>Reviews</h3>
       <div ng-if="drama.user">
         <add-review drama="drama"></add-review>
@@ -65,12 +65,14 @@
         </div>
       </div>
     </div>
-    <div class="drama-cast" flex>
+    <div class="drama-cast col m12 l4 row">
       <h3>Cast</h3>
       <div ng-repeat="cast in drama.casts">
         <a ui-sref="cast({castID: cast.id})">
-          <img src="{{cast.image_url}}" alt="{{cast.poster_file_name}}">
-          {{cast.name}}
+          <div class="col s8">
+            <img src="{{cast.image_url}}" alt="{{cast.poster_file_name}}">
+          </div>
+          <div class="col s4">{{cast.name}}</div>
         </a>
       </div>
     </div>
