@@ -24,6 +24,14 @@
       ctrl.description      = drama.drama.plot;
       ctrl.dramaId          = drama.drama.id;
       ctrl.image_url        = drama.drama.image_url;
+      ctrl.country          = drama.drama.language;
+      ctrl.romanized_title  = drama.drama.romanized_title;
+      ctrl.also_known_as    = drama.drama.also_known_as;
+      ctrl.network          = drama.drama.network;
+      ctrl.broadcast_period = drama.drama.broadcast_period;
+      ctrl.rating           = drama.drama.rating;
+      ctrl.viki_url         = drama.drama.viki_url;
+      ctrl.drama_fever_url  = drama.drama.drama_fever_url;
 
       var authorized = function () {
         if (UserModel.currentUser()) {
