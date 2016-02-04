@@ -3,7 +3,7 @@
   .drama-info {
     padding-left: 30px;
     h1 {
-      font-size: 2em;
+      font-size: 3em;
       margin: 0 0 10px 0;
     }
     h2 {
@@ -99,9 +99,23 @@ dir-pagination-controls {
 }
 
 .drama-review-and-cast {
+  h3 {
+    font-size: 2em;
+  }
   .drama-cast {
+    padding-left: 10px;
+    div {
+      text-align: center;
+      margin-bottom: 20px;
+    }
     img {
       width: 100%;
     }
+  }
+}
+
+.comments {
+  h3 {
+    font-size: 2em;
   }
 }
