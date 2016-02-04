@@ -32,6 +32,7 @@
       ctrl.rating           = drama.drama.rating;
       ctrl.viki_url         = drama.drama.viki_url;
       ctrl.drama_fever_url  = drama.drama.drama_fever_url;
+      ctrl.casts            = drama.casts
 
       var authorized = function () {
         if (UserModel.currentUser()) {
