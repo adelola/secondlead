@@ -3,7 +3,7 @@
   .drama-info {
     padding-left: 30px;
     h1 {
-      font-size: 2em;
+      font-size: 3em;
       margin: 0 0 10px 0;
     }
     h2 {
@@ -26,6 +26,7 @@
 .drama-rating {
   width: 125px;
   text-align: center;
+  margin-bottom: 20px;
   .drama-rating-box {
     position: relative;
     text-align: center;
@@ -96,4 +97,28 @@ dir-pagination-controls {
 
 .range-label {
   display: inline;
+}
+
+.drama-description {
+  margin-bottom: 20px;
+}
+
+.drama-review-and-cast {
+  h3 {
+    font-size: 2em;
+  }
+  h4 {
+    font-size: 1.3em;
+    font-weight: bold;
+  }
+  .drama-cast {
+    padding-left: 10px;
+    div {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    img {
+      width: 100%;
+    }
+  }
 }

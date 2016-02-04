@@ -84,6 +84,7 @@ class ScrapeCastContent
       DramaCast.create(cast: cast, drama: @drama)
       if scrape_image_url != nil
         cast.update(picture: URI.parse(scrape_image_url))
+        cast.add_image_url
       end
     end
   end
