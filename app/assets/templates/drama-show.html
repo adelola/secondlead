@@ -10,9 +10,16 @@
           <div ng-controller="RatingsCtrl as ctrl" class="drama-rating-picker">
             <div drama-rating drama="drama" rating-id ="ctrl.id" rating-value="ctrl.rating" data-max="ctrl.max"></div>
           </div>
-          <p>{{drama.non_english_name}}</p>
+          <p>{{drama.country}}</p>
+          <p>
+            {{drama.non_english_name}}
+            <span ng-if="drama.romanized_title">/</span>
+            {{drama.romanized_title}}
+          </p>
           <p>{{drama.year}}</p>
           <p>{{drama.episode_count}} Episodes</p>
+          <p>{{drama.network}}</p>
+          <p>{{drama.broadcast_period}}</p>
         </div>
         <div class="drama-info-right" flex>
           <div class="drama-rating">
