@@ -67,12 +67,12 @@
     </div>
     <div class="drama-cast col m12 l4 row">
       <h3>Cast</h3>
-      <div ng-repeat="cast in drama.casts">
+      <div ng-repeat="cast in drama.casts" class="col m6">
         <a ui-sref="cast({castID: cast.id})">
-          <div class="col s8">
-            <img src="{{cast.image_url}}" alt="{{cast.poster_file_name}}">
-          </div>
-          <div class="col s4">{{cast.name}}</div>
+          <img src="{{cast.image_url}}" alt="{{cast.poster_file_name}}">
+        </a>
+        <a ui-sref="cast({castID: cast.id})">
+          {{cast.name}}
         </a>
       </div>
     </div>
