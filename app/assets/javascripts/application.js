@@ -25,6 +25,7 @@
 //= require a0-angular-storage
 //= require angularUtils-pagination
 //= require lodash
+//= require angularUtils-disqus
 //= require restangular
 //= require_tree ../templates
 

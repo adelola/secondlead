@@ -13,7 +13,8 @@ angular
     'ui.bootstrap',
     'ui.router',
     'xeditable',
-    'ngMaterial' ])
+    'ngMaterial',
+    'angularUtils.directives.dirDisqus' ])
 
   .config(['$httpProvider', 'jwtInterceptorProvider', function Config ($httpProvider, jwtInterceptorProvider) {
     jwtInterceptorProvider.tokenGetter = ['config', 'store', function(config, store) {
@@ -28,7 +29,7 @@ angular
   }])
 
   .config(['$locationProvider', function ($locationProvider) {
-    $locationProvider.html5Mode(true)
+    $locationProvider.hashPrefix('!');
   }])
 
   .config(['paginationTemplateProvider', function (paginationTemplateProvider){
