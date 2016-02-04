@@ -36,6 +36,10 @@
   <div class="drama-description">
     {{drama.description}}
   </div>
+  <div class="watch-drama-links">
+    <a href="{{drama.viki_url}}" ng-if="drama.viki_url">Watch on Viki</a>
+    <a href="{{drama.drama_fever_url}}" ng-if="drama.drama_fever_url">Watch on Drama Fever</a>
+  </div>
   <div class="drama-review-and-cast row">
     <div class="drama-review col m12 l8">
       <div ng-cloak>
