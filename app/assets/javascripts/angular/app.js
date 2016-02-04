@@ -13,7 +13,8 @@ angular
     'ui.bootstrap',
     'ui.router',
     'xeditable',
-    'ngMaterial' ])
+    'ngMaterial',
+    'angularUtils.directives.dirDisqus' ])
 
   .config(['$httpProvider', 'jwtInterceptorProvider', function Config ($httpProvider, jwtInterceptorProvider) {
     jwtInterceptorProvider.tokenGetter = ['config', 'store', function(config, store) {
@@ -25,6 +26,10 @@ angular
     }];
 
     $httpProvider.interceptors.push('jwtInterceptor');
+  }])
+
+  .config(['$locationProvider', function ($locationProvider) {
+    $locationProvider.hashPrefix('!');
   }])
 
   .config(['paginationTemplateProvider', function (paginationTemplateProvider){
@@ -57,15 +62,15 @@ angular
       })
 
       .state('drama', {
-      url:'/dramas/:dramaID',
-      templateUrl: 'drama-show.html',
-      controller:'DramaCtrl',
-      controllerAs: 'drama',
-      resolve: {
-        drama: ['$stateParams','DramaModel','Restangular', function ($stateParams,DramaModel,Restangular){
-            return DramaModel.getOne($stateParams.dramaID);
-        }]
-      }
+        url:'/dramas/:dramaID',
+        templateUrl: 'drama-show.html',
+        controller:'DramaCtrl',
+        controllerAs: 'drama',
+        resolve: {
+          drama: ['$stateParams','DramaModel','Restangular', function ($stateParams,DramaModel,Restangular){
+              return DramaModel.getOne($stateParams.dramaID);
+          }]
+        }
       })
 
       .state('casts', {
@@ -113,15 +118,15 @@ angular
         })
 
         .state('user.list', {       //Indented because nested under user
-        url:'/lists/:listID',
-        templateUrl: 'list-show.html',
-        controller:'ListCtrl',
-        controllerAs: 'list',
-        resolve: {
-          list: ['$stateParams','ListModel','Restangular', function ($stateParams,ListModel,Restangular){
-              return ListModel.getOne($stateParams.userID, $stateParams.listID);
-          }]
-        }
+          url:'/lists/:listID',
+          templateUrl: 'list-show.html',
+          controller:'ListCtrl',
+          controllerAs: 'list',
+          resolve: {
+            list: ['$stateParams','ListModel','Restangular', function ($stateParams,ListModel,Restangular){
+                return ListModel.getOne($stateParams.userID, $stateParams.listID);
+            }]
+          }
       })
   }])
 
@@ -139,6 +144,4 @@ angular
   .run(['editableOptions',function (editableOptions){
     editableOptions.theme = 'bs2';
   }]);
-
-
 })();

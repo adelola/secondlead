@@ -63,4 +63,10 @@
       <div ng-repeat="cast in drama.casts">{{cast}}</div>
     </div>
   </div>
+  <div class="comments">
+    <dir-disqus disqus-shortname="secondlead"
+         disqus-identifier="{{ identifier }}"
+         disqus-url="{{ url }}">
+    </dir-disqus>
+  </div>
 </section>
