@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'static_pages#index'
+  root 'welcome#index'
   mount Buttercms::Engine => '/blog'
 
   resources :genres
@@ -30,6 +30,4 @@ Rails.application.routes.draw do
   match 'reviews/find', to: 'reviews#find', via: 'get', :format => 'json'
   match '/activities', to: 'activities#index', via: 'get', :format => 'json'
   match 'relationships/find', to: 'relationships#find', via: 'get', :format => 'json'
-
 end
-
