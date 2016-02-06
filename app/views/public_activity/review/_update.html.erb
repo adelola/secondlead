@@ -1,0 +1,6 @@
+<li class="list-group-item">
+  <%= link_to(a.trackable.reviewer.first_name, "/#!/users/#{a.trackable.reviewer_id}/lists") %>
+  updated their review of
+  <%= link_to(a.trackable.drama.name, "/#!/dramas/#{a.trackable.drama.id}") %>:
+  <%= a.trackable.body %>.
+</li>

@@ -1,0 +1,5 @@
+<li class="list-group-item">
+  <%= link_to(a.trackable.user.first_name, "/#!/users/#{a.trackable.user_id}/lists") %>
+  has updated their list:
+  <%= link_to(a.trackable.name, "/#!/users/#{a.trackable.user_id}/lists/#{a.trackable.id}") %>.
+</li>
