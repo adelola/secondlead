@@ -1,2 +1,6 @@
-<%= a.trackable.weight %>
-rater:<%= a.trackable.rater %>
+<li class="list-group-item">
+  <%= link_to(a.trackable.rater.first_name, "/#!/users/#{a.trackable.rater_id}/lists") %>
+  gave
+  <%= link_to(a.trackable.drama.name, "/#!/dramas/#{a.trackable.drama.id}") %>
+  <%= a.trackable.weight %> hearts.
+</li>
