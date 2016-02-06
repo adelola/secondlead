@@ -17,3 +17,9 @@
  *= require_tree .
  *= require_self
  */
+
+.main-container {
+  max-width: 1400px;
+  position: relative;
+  margin: 0 auto;
+}

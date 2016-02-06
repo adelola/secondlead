@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160124002249) do
+ActiveRecord::Schema.define(version: 20160201024108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,8 +35,20 @@ ActiveRecord::Schema.define(version: 20160124002249) do
 
   create_table "casts", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.date     "dob"
+    t.string   "star_sign"
+    t.string   "height"
+    t.string   "weight"
+    t.string   "blood_type"
+    t.integer  "age"
+    t.string   "non_english_name"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.string   "image_url"
   end
 
   create_table "drama_casts", force: :cascade do |t|
@@ -68,6 +80,13 @@ ActiveRecord::Schema.define(version: 20160124002249) do
     t.string   "poster_content_type"
     t.integer  "poster_file_size"
     t.datetime "poster_updated_at"
+    t.string   "romanized_title"
+    t.string   "also_known_as"
+    t.string   "network"
+    t.string   "broadcast_period"
+    t.string   "rating"
+    t.string   "viki_url"
+    t.string   "drama_fever_url"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -114,9 +133,12 @@ ActiveRecord::Schema.define(version: 20160124002249) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "rating_id"
+    t.integer  "rating_weight"
   end
 
   add_index "reviews", ["drama_id"], name: "index_reviews_on_drama_id", using: :btree
+  add_index "reviews", ["rating_id"], name: "index_reviews_on_rating_id", using: :btree
   add_index "reviews", ["reviewer_id"], name: "index_reviews_on_reviewer_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -132,4 +154,5 @@ ActiveRecord::Schema.define(version: 20160124002249) do
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["username", "email"], name: "index_users_on_username_and_email", unique: true, using: :btree
 
+  add_foreign_key "reviews", "ratings"
 end

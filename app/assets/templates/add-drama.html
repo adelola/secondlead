@@ -1,6 +1,14 @@
-<select name ="add_drama" id="add_drama" ng-model="selectedList" ng-change="addToList(selectedList, drama.id)" class="form-control" required>
-	<option ng-repeat="list in userLists" value="{{list.id}}">{{list.name}}</option>
-</select>
-
-
-
+<div ng-cloak>
+  <md-content>
+    <div>
+      <md-input-container>
+        <label>Add to your list</label>
+        <md-select name ="add_drama" id="add_drama" ng-model="selectedList" ng-change="addToList(selectedList, drama.id)" class="form-control" required>
+          <md-option ng-repeat="list in userLists" value="{{list.id}}">
+            {{list.name}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+    </div>
+  </md-content>
+</div>

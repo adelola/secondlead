@@ -3,13 +3,13 @@
 'use strict';
 
 angular.module('secondLead.common')
-  .factory('Auth', ['$http', 'store', function($http, store) {
+  .factory('Auth', ['$http', 'store', function ($http, store){
 	return {
-	  isAuthenticated: function() {
+	  isAuthenticated: function () {
 	    return store.get('jwt');
 	  },
 
-	  login: function(credentials) {
+	  login: function (credentials){
 	    var login = $http.post('/auth/login', credentials);
 	    login.success(function(result) {
 	      store.set('jwt', result.token);
@@ -18,7 +18,7 @@ angular.module('secondLead.common')
 	    return login;
 	  },
 
-	  logout: function() {
+	  logout: function () {
 	    var clearJWT = store.remove('jwt');
 	    var clearUser = store.remove('user');
 		return {

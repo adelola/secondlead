@@ -1,0 +1,31 @@
+nav {
+  margin-bottom: 50px;
+  md-toolbar, md-toolbar:not(.md-menu-toolbar) {
+    background-color: #FE7A47;
+  }
+  h2 {
+    padding-right: 20px;
+  }
+  .md-button:hover {
+    background-color: white !important;
+    color: #FE7A47 !important;
+  }
+  .search-box {
+    padding-top: 40px;
+    button {
+      /*line-height: 30px;*/
+      vertical-align: top;
+      min-height: 30px;
+      min-width: 0;
+      margin-top: 14px !important;
+    }
+  }
+  a:hover {
+    text-decoration: none;
+    background: none;
+    color: #FE7A47 !important
+  }
+  a:visited {
+    color: white;
+  }
+}

@@ -1,9 +1,11 @@
 <div ng-controller= "DramasCtrl as dramas">
-  <dir-pagination-controls boundary-links="true" template-url="/dirPagination.html"> </dir-pagination-controls>
+  <div class="clearfix">
+    <dir-pagination-controls boundary-links="true" template-url="/dirPagination.html"> </dir-pagination-controls>
+  </div>
   <div gridster= "dramas.gridsterOpts">
     <div gridster-item="items" dir-paginate= "drama in dramas.items | itemsPerPage: dramas.pageSize" current-page="dramas.currentPage" ng-cloak>
-      <md-content layout="row" layout-wrap layout-align="center start" layout-xs="column" >
-        <div flex="50" flex-xs="100" layout="column">
+      <md-content layout="row" layout-wrap layout-align="center start" layout-xs="column">
+        <div flex-xs="100" layout="column">
           <md-card>
             <a ui-sref="drama({dramaID: drama.id})">
               <img src="{{drama.image_url}}" alt="{{drama.poster_file_name}}">
@@ -11,17 +13,20 @@
             <md-card-title>
               <md-card-title-text>
                 <a ui-sref="drama({dramaID: drama.id})">
-                    {{drama.name}} <br/>
-                    {{drama.release_date}}
+                  {{drama.name}}
                 </a>
+                {{drama.release_date}}
               </md-card-title-text>
             </md-card-title>
-            <md-card-actions layout="row" layout-align="end center">
+            <md-card-actions layout="row" layout-align="end center" ng-if="dramas.user">
               <add-drama drama="drama" user="{{dramas.user.id}}" user-lists="dramas.userLists" selected-list="dramas.selectedList"> </add-drama>
             </md-card-actions>
           </md-card>
         </div>
       </md-content>
     </div>
+  </div>
+  <div class="clearfix">
+    <dir-pagination-controls boundary-links="true" template-url="/dirPagination.html"> </dir-pagination-controls>
   </div>
 </div>

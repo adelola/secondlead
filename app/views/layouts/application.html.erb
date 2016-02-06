@@ -8,27 +8,47 @@
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css" rel="stylesheet">
   </head>
   <body ng-controller="MainCtrl as main">
-    <nav>
-      <div class="nav-wrapper">
-       <div class="row">
-         <div class="col s12">
-            <ul id="navbar" class="right hide-on-med-and-down">
-              <li> <a ui-sref='dramas' ui-sref-active="active">Browse</a> </li>
-              <li> <a ng-if="main.currentUser" ui-sref='user.lists({userID: main.currentUser.id})' ui-sref-active="active">MyPage</li>
-              <li> <a ng-if="main.loggedIn || main.currentUser" ng-click="main.logout()">Logout</a></li>
-              <li> <a ng-if="!main.loggedIn && !main.currentUser" ui-sref='register' ui-sref-active="active">Sign Up</a></li>
-              <li> <a ng-if="!main.loggedIn && !main.currentUser" ui-sref='login' ui-sref-active="active">Log In</a></li>
-            </ul>
+    <nav ng-cloak>
+      <md-content>
+        <md-toolbar>
+          <div class="md-toolbar-tools">
+            <h2>
+              <span>Second Lead</span>
+            </h2>
+            <md-button aria-label="Browse" ng-if="true" ui-sref='dramas'>
+              <a ui-sref-active="active">Browse</a>
+            </md-button>
+            <md-button aria-label="My Page" ng-if="main.currentUser" ui-sref='user.lists({userID: main.currentUser.id})'>
+              <a ui-sref-active="active">My Page</a>
+            </md-button>
+            <md-button aria-label="Logout" ng-if="main.loggedIn || main.currentUser">
+              <a ng-click="main.logout()">Logout</a>
+            </md-button>
+            <md-button aria-label="Register" ng-if="!main.loggedIn && !main.currentUser">
+              <a ui-sref='register' ui-sref-active="active">Sign Up</a>
+            </md-button>
+            <md-button aria-label="Login" ng-if="!main.loggedIn && !main.currentUser">
+              <a ui-sref='login' ui-sref-active="active">Log In</a>
+            </md-button>
+            <span flex></span>
+            <div class="search-box">
+              <%= form_tag search_path, method: :get do %>
+                <md-input-container>
+                  <label>Search</label>
+                  <input name="q", id="q">
+                </md-input-container>
+                <md-button type="submit" class="go">
+                  <i class="fa fa-search fa-1x"></i>
+                </md-button>
+              <% end %>
+            </div>
           </div>
-        </div>
-      </div>
-      <%= form_tag search_path, method: :get do %>
-        <%= text_field_tag :q, params[:q], placeholder: 'Search' %>
-        <%= submit_tag "Go", name: nil %>
-      <% end %>
+        </md-toolbar>
+      </md-content>
     </nav>
     <section class="container">
       <ui-view></ui-view>

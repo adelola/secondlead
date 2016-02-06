@@ -1,6 +1,6 @@
 angular
   .module('secondLead')
-  .controller('AddListModalCtrl', function ($scope, $uibModalInstance) {
+  .controller('AddListModalCtrl', function ($scope, $uibModalInstance){
 
     $scope.name = null;
     $scope.description =null;

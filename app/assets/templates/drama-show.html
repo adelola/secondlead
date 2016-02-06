@@ -1,60 +1,104 @@
 <section>
-  <div class="drama-image-and-info" layout="row">
-    <div class="drama-image" flex>
+  <div class="drama-image-and-info row">
+    <div class="drama-image col m12 l5">
       <img src="{{drama.image_url}}" alt="{{drama.poster_file_name}}">
     </div>
-    <div class="drama-info" flex="60">
+    <div class="drama-info col m12 l7">
       <h1>{{drama.name}}</h1>
       <div layout="row">
         <div class="drama-info-left" flex>
           <div ng-controller="RatingsCtrl as ctrl" class="drama-rating-picker">
             <div drama-rating drama="drama" rating-id ="ctrl.id" rating-value="ctrl.rating" data-max="ctrl.max"></div>
           </div>
-          <p>{{drama.non_english_name}}</p>
+          <p>{{drama.country}}</p>
+          <p>
+            {{drama.non_english_name}}
+            <span ng-if="drama.romanized_title">/</span>
+            {{drama.romanized_title}}
+          </p>
           <p>{{drama.year}}</p>
           <p>{{drama.episode_count}} Episodes</p>
+          <p>{{drama.network}}</p>
+          <p>{{drama.broadcast_period}}</p>
         </div>
         <div class="drama-info-right" flex>
           <div class="drama-rating">
             <div class="drama-rating-box">{{drama.avgRating}}</div>
             Avg Rating
           </div>
+          <div ng-if="drama.user" class="add-drama-box">
+            <add-drama drama="drama.drama" user="{{drama.user.id}}" user-lists="drama.userLists" selected-list="drama.selectedList"> </add-drama>
+          </div>
         </div>
-      </div>
-      <div class="drama-description">
-        {{drama.description}}
       </div>
     </div>
   </div>
-  <div class="drama-review-and-cast" layout="row">
-    <div class="drama-review" flex="60">
-      <h3>Reviews</h3>
-      <div ng-if="drama.user">
-        <add-review drama="drama"></add-review>
-      </div>
-      <div ng-controller="ReviewsCtrl as ctrl">
-        <div ng-repeat= "review in ctrl.reviews" ng-cloak>
-          <md-content>
-            <md-list>
-              <md-list-item class="md-3-line">
-                <img src="https://lh5.googleusercontent.com/-Qhu7Srm0lp8/AAAAAAAAAAI/AAAAAAAAReo/s-uOtXpAmHE/photo.jpg" class="md-avatar" alt="yolo" />
-                <div class="md-list-item-text">
-                  <h3>
-                    <span name-user user-id="review.reviewer_id"></span>
-                  </h3>
-                  <p>
-                    {{review.body}}
-                  </p>
+  <div class="drama-description">
+    {{drama.description}}
+  </div>
+  <div class="watch-drama-links">
+    <a href="{{drama.viki_url}}" ng-if="drama.viki_url">Watch on Viki</a>
+    <a href="{{drama.drama_fever_url}}" ng-if="drama.drama_fever_url">Watch on Drama Fever</a>
+  </div>
+  <div class="drama-review-and-cast row">
+    <div class="drama-review col m12 l8">
+      <div ng-cloak>
+        <md-content>
+          <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Reviews">
+              <md-content class="md-padding">
+                <div ng-if="drama.user">
+                  <add-review drama="drama"></add-review>
                 </div>
-              </md-list-item>
-            </md-list>
-          </md-content>
-        </div>
+                <div ng-controller="ReviewsCtrl as ctrl">
+                  <h4>{{ctrl.reviews.length}} Reviews</h4>
+                  <div ng-repeat= "review in ctrl.reviews" ng-cloak>
+                    <md-content>
+                      <md-list>
+                        <md-list-item class="md-3-line">
+                          <img src="https://lh5.googleusercontent.com/-Qhu7Srm0lp8/AAAAAAAAAAI/AAAAAAAAReo/s-uOtXpAmHE/photo.jpg" class="md-avatar" alt="yolo" />
+                          <div class="md-list-item-text">
+                            <h3>
+                              <span name-user user-id="review.reviewer_id"></span>
+                            </h3>
+                            <p ng-if="review.rating_weight > 0">
+                              <i class="fa fa-heart fa-1x review-hearts" ng-repeat="n in getNums(review.rating_weight) track by $index"></i>
+                            </p>
+                            <p>
+                              {{review.body}}
+                            </p>
+                          </div>
+                        </md-list-item>
+                      </md-list>
+                    </md-content>
+                  </div>
+                </div>
+              </md-content>
+            </md-tab>
+            <md-tab label="Comments">
+              <md-content class="md-padding">
+                <div class="comments">
+                  <dir-disqus disqus-shortname="secondlead"
+                       disqus-identifier="{{ identifier }}"
+                       disqus-url="{{ url }}">
+                  </dir-disqus>
+                </div>
+              </md-content>
+            </md-tab>
+          </md-tabs>
+        </md-content>
       </div>
     </div>
-    <div class="drama-cast" flex>
+    <div class="drama-cast col m12 l4 row">
       <h3>Cast</h3>
-      <div ng-repeat="cast in drama.casts">{{cast}}</div>
+      <div ng-repeat="cast in drama.casts" class="col m6">
+        <a ui-sref="cast({castID: cast.id})">
+          <img src="{{cast.image_url}}" alt="{{cast.poster_file_name}}">
+        </a>
+        <a ui-sref="cast({castID: cast.id})">
+          {{cast.name}}
+        </a>
+      </div>
     </div>
   </div>
 </section>

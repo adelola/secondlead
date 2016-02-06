@@ -10,7 +10,7 @@ angular
     '$state', 
     'store',
     'UserModel',
-    function (Restangular, $state, store, UserModel) {
+    function (Restangular, $state, store, UserModel){
     var register = this;
 
     register.newUser = {};
@@ -18,7 +18,7 @@ angular
     register.onSubmit = function () {
       UserModel.register(register.newUser)
       	.then(function(response){
-          if (response.errors){
+          if (response.errors) {
             register.error = response.errors[0];
           } else { 
             store.set('jwt',response.token);

@@ -8,8 +8,11 @@ class CastsController < ApplicationController
   end
 
   def show
-    @cast = Cast.find_by(id: params[:id])
-    respond_with(@cast)
+    @cast.add_image_url
+    # respond_with(@cast)
+    respond_to do |format|
+      format.json { render json: @cast }
+    end
   end
 
   # GET /casts/new
@@ -69,6 +72,6 @@ class CastsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cast_params
-      params.require(:cast).permit(:name)
+      params.require(:cast).permit(:name, :age)
     end
 end

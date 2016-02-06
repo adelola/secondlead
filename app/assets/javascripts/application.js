@@ -16,9 +16,7 @@
 //= require angular-gridster
 //= require angular-jwt
 //= require angular-rails-templates
-//= require angular-route
 //= require angular-ui-router
-//= require angular-ui-select
 //= require angular-xeditable
 //= require angular-aria
 //= require angular-animate
@@ -27,6 +25,7 @@
 //= require a0-angular-storage
 //= require angularUtils-pagination
 //= require lodash
+//= require angularUtils-disqus
 //= require restangular
 //= require_tree ../templates
 

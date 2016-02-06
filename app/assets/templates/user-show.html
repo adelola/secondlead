@@ -1,5 +1,12 @@
 <div>
-  <h2>Hi, {{user.profile.username}} </h2>
-  
- <div ui-view></div>
+  <div id="user-bar">
+  	<div id="user-info">
+  	  <i class="fa fa-user fa-2x user-icon"></i><span name-user user-id="user.profile.id"></span>
+  	  <div ng-if="user.currentUser && !user.authorized()" class="relationship">
+  	    <md-button class="alter-relationship" ng-if="!user.relationshipId" ng-click="user.follow()"><i class="fa fa-plus fa-1x"></i></md-button>
+  	    <md-button class="alter-relationship" ng-if="user.relationshipId" ng-click="user.unfollow()"><i class="fa fa-minus fa-1x"></i></md-button>
+  	  </div>
+    </div>
+  </div>
+  <div ui-view></div>
 </div>
