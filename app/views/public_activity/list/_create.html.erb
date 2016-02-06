@@ -1,5 +1,5 @@
 <li class="list-group-item">
-  <%= a.trackable.user.first_name %>
+  <%= link_to(a.trackable.user.first_name, "/#!/users/#{a.trackable.user_id}/lists") %>
   has created a new list:
   <%= link_to(a.trackable.name, "/#!/users/#{a.trackable.user_id}/lists/#{a.trackable.id}") %>.
 </li>

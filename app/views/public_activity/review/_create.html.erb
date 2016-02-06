@@ -1,2 +1,8 @@
 <%= a.trackable.reviewer_id %>
 <%= a.trackable.body %> was added.
+<li class="list-group-item">
+  <%= link_to(a.trackable.reviewer.first_name, "/#!/users/#{a.trackable.reviewer_id}/lists") %>
+  reviewed
+  <%= link_to(a.trackable.drama.name, "/#!/dramas/#{a.trackable.drama.id}") %>:
+  <%= a.trackable.body %>.
+</li>
