@@ -1,0 +1,5 @@
+<li class="list-group-item">
+  <%= link_to(a.trackable.follower.first_name, "/#!/users/#{a.trackable.follower_id}/lists") %>
+  is now following
+  <%= link_to(a.trackable.followed.first_name, "/#!/users/#{a.trackable.followed_id}/lists") %>
+</li>
