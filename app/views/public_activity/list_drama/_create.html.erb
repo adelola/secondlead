@@ -1,0 +1,6 @@
+<li class="list-group-item">
+  <%= link_to(a.trackable.list.user.first_name, "/#!/users/#{a.trackable.list.user.id}/lists") %>
+  added
+  <%= link_to(a.trackable.drama.name, "/#!/dramas/#{a.trackable.drama.id}") %> to their list:
+  <%= link_to(a.trackable.list.name, "/#!/users/#{a.trackable.list.user.id}/lists/#{a.trackable.list.id}") %>.
+</li>
