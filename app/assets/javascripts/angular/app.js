@@ -37,9 +37,16 @@ angular
   }])
 
   .config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $urlRouterProvider){
-    $urlRouterProvider.otherwise('dramas');
+    $urlRouterProvider.otherwise('/');
 
     $stateProvider
+      // .state('home', {
+      //   url:'/',
+      //   templateUrl: 'index.html',
+      //   controller:'IndexCtrl',
+      //   controllerAs: 'index'
+      // })
+
       .state('register', {
         url:'/register',
         templateUrl: 'register.html',

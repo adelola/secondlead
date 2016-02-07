@@ -1,0 +1,14 @@
+<md-list>
+  <md-list-item class="md-2-line">
+  <img src="https://avatars0.githubusercontent.com/u/10727368?v=3&s=460" class="md-avatar" />
+    <div class="md-list-item-text">
+      <p>
+        <%= link_to(a.trackable.reviewer.first_name, "/#!/users/#{a.trackable.reviewer_id}/lists") %>
+        reviewed
+        <%= link_to(a.trackable.drama.name, "/#!/dramas/#{a.trackable.drama.id}") %>:
+        <%= truncate(a.trackable.body, length: 100) %>.
+      </p>
+    </div>
+  </md-list-item>
+  <md-divider ></md-divider>
+</md-list>
