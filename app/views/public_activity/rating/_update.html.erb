@@ -1,0 +1,6 @@
+<li class="list-group-item">
+  <%= link_to(a.trackable.rater.first_name, "/#!/users/#{a.trackable.rater_id}/lists") %>
+  changed their rating of
+  <%= link_to(a.trackable.drama.name, "/#!/dramas/#{a.trackable.drama.id}") %> to
+  <%= a.trackable.weight %> hearts.
+</li>
