@@ -1,0 +1,14 @@
+<md-list>
+  <md-list-item class="md-2-line">
+  <img src="https://avatars0.githubusercontent.com/u/10727368?v=3&s=460" class="md-avatar" />
+    <div class="md-list-item-text">
+      <p>
+        <%= link_to(a.trackable.list.user.first_name, "/#!/users/#{a.trackable.list.user.id}/lists") %>
+        added
+        <%= link_to(a.trackable.drama.name, "/#!/dramas/#{a.trackable.drama.id}") %> to their list:
+        <%= link_to(a.trackable.list.name, "/#!/users/#{a.trackable.list.user.id}/lists/#{a.trackable.list.id}") %>.
+      </p>
+    </div>
+  </md-list-item>
+  <md-divider ></md-divider>
+</md-list>

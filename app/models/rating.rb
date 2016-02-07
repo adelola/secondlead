@@ -1,4 +1,7 @@
 class Rating < ActiveRecord::Base
+  include PublicActivity::Model
+  tracked
+
   belongs_to :drama
   belongs_to :rater, class_name: "User"
 
