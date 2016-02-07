@@ -1,5 +1,13 @@
-<li class="list-group-item">
-  <%= link_to(a.trackable.user.first_name, "/#!/users/#{a.trackable.user_id}/lists") %>
-  has updated their list:
-  <%= link_to(a.trackable.name, "/#!/users/#{a.trackable.user_id}/lists/#{a.trackable.id}") %>.
-</li>
+<md-list>
+  <md-list-item class="md-2-line">
+  <img src="https://avatars0.githubusercontent.com/u/10727368?v=3&s=460" class="md-avatar" />
+    <div class="md-list-item-text">
+      <p>
+        <%= link_to(a.trackable.user.first_name, "/#!/users/#{a.trackable.user_id}/lists") %>
+        has updated their list:
+        <%= link_to(a.trackable.name, "/#!/users/#{a.trackable.user_id}/lists/#{a.trackable.id}") %>.
+      </p>
+    </div>
+  </md-list-item>
+  <md-divider ></md-divider>
+</md-list>

@@ -1,6 +1,14 @@
-<li class="list-group-item">
-  <%= link_to(a.trackable.rater.first_name, "/#!/users/#{a.trackable.rater_id}/lists") %>
-  changed their rating of
-  <%= link_to(a.trackable.drama.name, "/#!/dramas/#{a.trackable.drama.id}") %> to
-  <%= a.trackable.weight %> hearts.
-</li>
+<md-list>
+  <md-list-item class="md-2-line">
+  <img src="https://avatars0.githubusercontent.com/u/10727368?v=3&s=460" class="md-avatar" />
+    <div class="md-list-item-text">
+      <p>
+        <%= link_to(a.trackable.rater.first_name, "/#!/users/#{a.trackable.rater_id}/lists") %>
+        changed their rating of
+        <%= link_to(a.trackable.drama.name, "/#!/dramas/#{a.trackable.drama.id}") %> to
+        <%= a.trackable.weight %> hearts.
+      </p>
+    </div>
+  </md-list-item>
+  <md-divider ></md-divider>
+</md-list>
