@@ -4,7 +4,6 @@
 angular
   .module('secondLead',
   	['angular-jwt',
-    'angucomplete-alt',
     'angular-storage',
     'angularUtils.directives.dirPagination',
     'gridster',
@@ -169,6 +168,5 @@ angular
   .run(['editableOptions',function (editableOptions){
     editableOptions.theme = 'bs2';
   }]);
-
 
 })();
