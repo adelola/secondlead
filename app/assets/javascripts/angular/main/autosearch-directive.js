@@ -53,11 +53,10 @@
               }, scope.pause);
             } else {
               event.preventDefault();
-            }
-          };
+            }   
         };
-
-	    };
+      }
+	  };
 	}]);
 
 })();
