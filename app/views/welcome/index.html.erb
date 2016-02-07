@@ -1,5 +1,34 @@
 <div ng-cloak>
-  <md-content>
-    <%= render_activities(@activities) %>
+  <md-content class="activities-container">
+    <div class="new-activities">
+      <%= render_activities(@activities) %>
+    </div>
+    <%= image_tag "http://video.canadianliving.com/media/images/loading.gif", style: "display:none;", class: "loading-gif" %>
+    <%= link_to "Load More", activities_path, class: "load-more" %>
   </md-content>
 </div>
+
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function (){
+    $('a.load-more').click(function (e){
+      e.preventDefault();
+      $('.load-more').hide();
+      $('.loading-gif').show();
+      var last_id = $('.record').last().attr('data-id');
+
+      $.ajax({
+        type: "GET",
+        url: $(this).attr('href'),
+        data: {
+        id: last_id
+        },
+        success: function (response){
+          $('.new-activities').append(response)
+          $('.loading-gif').hide();
+          $('.load-more').show();
+        }
+      });
+    });
+  });
+</script>
