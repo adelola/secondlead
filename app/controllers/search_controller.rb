@@ -13,14 +13,4 @@ class SearchController < ApplicationController
     end
   end
 
-  def autocomplete
-    dramas = Drama.search(params[:q], index_name: [Drama.searchkick_index.name])
-
-    results = dramas.take(5).map do |x| 
-      Hash.try_convert({"name" => x.name})
-    end
-
-    render json: { results: results }
-  end
-
 end

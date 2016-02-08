@@ -14,7 +14,6 @@ angular
     'users',
     function (casts, dramas, ListModel, SearchService, UserModel, users){
     var ctrl = this;
-    console.log(ctrl.casts);
     ctrl.dramas = dramas;
     ctrl.casts = casts;
     ctrl.users = users;

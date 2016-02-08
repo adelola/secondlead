@@ -20,19 +20,16 @@ angular
 
       setDramas: function (results){
         dramaResults = results;
-        // $rootScope.$broadcast('results:updated');
         return dramaResults;
       },
 
       setCasts: function (results){
         castResults = results;
-        // $rootScope.$broadcast('results:updated');
         return castResults;
       },
 
       setUsers: function (results){
         userResults = results;
-        // $rootScope.$broadcast('results:updated');
         return userResults;
       },
 

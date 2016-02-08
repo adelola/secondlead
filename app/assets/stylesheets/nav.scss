@@ -1,5 +1,4 @@
 nav {
-  overflow: hidden;
   margin-bottom: 50px;
   md-toolbar, md-toolbar:not(.md-menu-toolbar) {
     background-color: #FE7A47;
@@ -12,7 +11,7 @@ nav {
     color: #FE7A47 !important;
   }
   .search-box {
-    padding-top: 0px;
+    padding-top: 40px;
     margin-left: 30%;
     button {
       /*line-height: 30px;*/
