@@ -1,5 +1,7 @@
 class ListDrama < ActiveRecord::Base
-  belongs_to :drama 
-  belongs_to :list 
- 
+  include PublicActivity::Model
+  tracked
+
+  belongs_to :drama
+  belongs_to :list
 end
