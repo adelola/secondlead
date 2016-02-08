@@ -16,7 +16,7 @@
               </md-card-title-text>
             </md-card-title>
             <md-card-actions layout="row" layout-align="end center" ng-if="lists.authorized()">
-              <delete-drama drama="drama" remove-item= "lists.top_five_list.removeItem(drama)" list="{{lists.top_five_list.id}}" user="lists.userID"> </delete-drama>
+              <delete-drama drama="drama" remove-item= "lists.top_five_list.removeItem(drama)" list="{{lists.top_five_list.id}}" user="{{lists.userID}}"> </delete-drama>
             </md-card-actions>
           </md-card>
         </div>
