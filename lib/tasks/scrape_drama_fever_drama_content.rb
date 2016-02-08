@@ -76,7 +76,29 @@ class ScrapeDramaFeverDramaContent
   end
 
   def scrape_genre
-    @doc.search('.theme-list li > a').map { |element| element.inner_text }
+    @doc.search('.metagroup > a').map { |element| element.inner_text }
+  end
+
+  def language
+    scrape_genre.each do |genre|
+      if genre =~ /korea/i
+        return "Korea"
+      elsif genre =~ /taiwan/i
+        return "Taiwan"
+      elsif genre =~ /china/i
+        return "China"
+      elsif genre =~ /british/i
+        return "Britain"
+      elsif genre =~ /japan/i
+        return "Japan"
+      elsif genre =~ /spain/i
+        return "Spain"
+      elsif genre =~ /Argentinian/i
+        return "Argentina"
+      else
+        return nil
+      end
+    end
   end
 
   def find_drama
@@ -103,7 +125,8 @@ class ScrapeDramaFeverDramaContent
           release_date:     scrape_release_date,
           plot:             scrape_plot,
           network:          scrape_network,
-          drama_fever_url:  @url
+          drama_fever_url:  @url,
+          language:         language
         )
         scrape_genre.each do |genre|
           @drama.genres.find_or_create_by(name: genre)
