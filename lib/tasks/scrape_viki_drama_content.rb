@@ -115,7 +115,7 @@ class ScrapeVikiDramaContent
         end
       end
       if scrape_cast_urls.any?
-        scrape_cast_urls.each do |url|
+        scrape_cast_urls.uniq.each do |url|
           ScrapeCastContent.new(url, @drama)
         end
       end
