@@ -1,6 +1,6 @@
 <div>
-  <div gridster= "list.gridsterOpts">
-    <div gridster-item="drama" ng-repeat= "drama in lists.top_five" ng-cloak>
+  <div gridster= "user.gridsterOpts">
+    <div gridster-item="drama" ng-repeat= "drama in lists.top_five_dramas" ng-cloak>
       <md-content layout="row" layout-wrap layout-align="center start" layout-xs="column">
         <div flex-xs="100" layout="column">
           <md-card>
@@ -15,8 +15,8 @@
                 {{drama.release_date}}
               </md-card-title-text>
             </md-card-title>
-            <md-card-actions layout="row" layout-align="end center" ng-if="list.authorized()">
-              <delete-drama drama="drama" remove-item= "list.removeItem(drama)" list="{{list.id}}" user="{{list.userID}}"> </delete-drama>
+            <md-card-actions layout="row" layout-align="end center" ng-if="lists.authorized()">
+              <delete-drama drama="drama" remove-item= "lists.top_five_list.removeItem(drama)" list="{{lists.top_five_list.id}}" user="lists.userID"> </delete-drama>
             </md-card-actions>
           </md-card>
         </div>

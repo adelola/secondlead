@@ -8,15 +8,17 @@ angular
     'Gridster',
     'ListModel',
     'lists',
-    'top_five',
+    'top_five_list',
+    'top_five_dramas',
     '$scope',
     '$stateParams',
     '$uibModal',
     'UserModel',
-    function (Gridster,ListModel,lists, top_five, $scope, $stateParams, $uibModal, UserModel){
+    function (Gridster,ListModel,lists, top_five_list, top_five_dramas, $scope, $stateParams, $uibModal, UserModel){
     var ctrl = this;
     ctrl.items = lists;
-    ctrl.top_five = top_five;
+    ctrl.top_five_list = top_five_list;
+    ctrl.top_five_dramas = top_five_dramas;
     ctrl.userID = $stateParams.userID;
     var currentUser = UserModel.currentUser().id.toString();
 
