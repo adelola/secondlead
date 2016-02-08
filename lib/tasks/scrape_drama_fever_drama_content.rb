@@ -15,7 +15,6 @@ class ScrapeDramaFeverDramaContent
       end
     end
     @url = url
-    binding.pry
     add_content_to_db
   end
 
@@ -108,7 +107,7 @@ class ScrapeDramaFeverDramaContent
   end
 
   def is_in_database?
-    find_drama.nil?
+    !find_drama.nil?
   end
 
   def add_content_to_db
@@ -136,9 +135,9 @@ class ScrapeDramaFeverDramaContent
             DramaGenre.create(genre: genre, drama: @drama)
           end
         end
-        scrape_cast.each do |cast|
-          @drama.casts.find_or_create_by(name: cast)
-        end
+        # scrape_cast.each do |cast|
+        #   @drama.casts.find_or_create_by(name: cast)
+        # end
       end
     end
   end
