@@ -36,10 +36,10 @@ class Drama < ActiveRecord::Base
 
   def self.fetch
     sample = Drama.where.not(poster_file_name: nil).limit(100)
-    sample_with_images = sample.map do |x|
-      x.add_image_url
-    end
-    sample_with_images
+    # sample_with_images = sample.map do |x|
+    #   x.add_image_url
+    # end
+    # sample_with_images
   end
 
   def avg_rating
