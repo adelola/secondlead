@@ -16,7 +16,12 @@ class DramasController < ApplicationController
   def create
     list = List.find_by(id: params[:list_id])
     drama = Drama.find_by(id: params[:id])
-    unless list.dramas.find_by(id: drama.id)
+    if list.dramas.find_by(id: drama.id)
+      binding.pry
+      render json: { message: "Drama is already in #{list.name}" }
+    elsif list.name == 'Top Five' && list.dramas.count >= 5
+      render json: { message: "You already have five dramas in your top 5" }
+    else
       new_list_drama = drama.add_to_list(list)
       if new_list_drama.save
         render json: { message: "Drama successfully added to #{list.name}" }

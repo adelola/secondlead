@@ -91,6 +91,8 @@ class ScrapeVikiDramaContent
     if @doc != false
       if scrape_image_url != nil
         @drama = Drama.create!(name: scrape_name, poster: URI.parse(scrape_image_url))
+        @drama.image_url = @drama.poster.url
+        @drama.save
       else
         @drama = Drama.create!(name: scrape_name)
       end
