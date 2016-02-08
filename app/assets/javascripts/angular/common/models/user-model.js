@@ -2,7 +2,7 @@
 'use strict';
 
 angular
-  .module('secondLead')
+  .module('secondLead.common')
   
   .factory('UserModel',['Auth', '$http', 'Restangular', '$rootScope', 'store', function (Auth, $http, Restangular, $rootScope, store){
     var baseUsers = Restangular.all('users');

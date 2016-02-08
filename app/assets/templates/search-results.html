@@ -1,0 +1,69 @@
+<div>
+  <div ng-if="!search.users">
+    No users found
+  </div>
+  <div ng-if="search.users"> 
+  	<h5>Users</h5> 
+  	<md-content layout="row">
+      <div ng-repeat="user in search.users"> 
+        <a id="user-search-results" ui-sref="user.lists({userID: user.id})"> {{user.username}} </a><br/><br/>
+      </div> 
+    </md-content>
+  </div>
+  <div ng-if="!search.casts">
+    No performers found
+  </div>
+  <div ng-if="search.casts"> 
+    <h5>Performers</h5> 
+    <div gridster= "search.gridsterOpts">
+      <div gridster-item="items" dir-paginate= "cast in search.casts | itemsPerPage: search.pageSize" current-page="search.currentPage" ng-cloak>
+        <md-content layout="row" layout-wrap layout-align="center start" layout-xs="column">
+          <div flex-xs="100" layout="column">
+            <md-card>
+              <a ui-sref="cast({castID: cast.id})">
+                <img src="{{cast.image_url}}" alt="{{cast.poster_file_name}}">
+              </a>
+              <md-card-title>
+                <md-card-title-text>
+                  <a ui-sref="cast({castID: cast.id})">
+                    {{cast.name}}
+                  </a>
+                </md-card-title-text>
+              </md-card-title>
+            </md-card>
+          </div>
+        </md-content>
+      </div>
+    </div>
+  </div>
+  <div ng-if="!search.dramas">
+    No dramas found
+  </div>
+  <div ng-if="search.dramas">
+  <h5>Dramas</h5>
+    <div gridster= "search.gridsterOpts">
+      <div gridster-item="items" dir-paginate= "drama in search.dramas | itemsPerPage: search.pageSize" current-page="search.currentPage" ng-cloak>
+        <md-content layout="row" layout-wrap layout-align="center start" layout-xs="column">
+          <div flex-xs="100" layout="column">
+            <md-card>
+              <a ui-sref="drama({dramaID: drama.id})">
+                <img src="{{drama.image_url}}" alt="{{drama.poster_file_name}}">
+              </a>
+              <md-card-title>
+                <md-card-title-text>
+                  <a ui-sref="drama({dramaID: drama.id})">
+                    {{drama.name}}
+                  </a>
+                  {{drama.release_date}}
+                </md-card-title-text>
+              </md-card-title>
+              <md-card-actions layout="row" layout-align="end center" ng-if="search.user">
+                <add-drama drama="drama" user="{{search.user.id}}" user-lists="search.userLists" selected-list="search.selectedList"> </add-drama>
+              </md-card-actions>
+            </md-card>
+          </div>
+        </md-content>
+      </div>
+    </div>
+  </div>
+</div>

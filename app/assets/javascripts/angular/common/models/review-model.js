@@ -2,7 +2,7 @@
 'use strict';
 
 angular
-  .module('secondLead')
+  .module('secondLead.common')
   
   .factory('ReviewModel',['$http', 'Restangular', 'store', function ($http, Restangular, store){
     var currentUser = store.get('user');
