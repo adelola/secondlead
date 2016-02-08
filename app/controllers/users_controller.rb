@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   respond_to :json, :html
 
   def index
-    @users = User.all 
+    @users = User.all
     respond_with(@users)
   end
 
@@ -23,11 +23,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @lists = @user.lists
+    @user     = User.find(params[:id])
+    @lists    = @user.lists[1..-1]
+    @top_five = @user.lists.first
     respond_with({user: @user, lists: @lists})
   end
-  
+
   def following
     @title = "Following"
     @user  = User.find(params[:id])
@@ -45,7 +46,7 @@ class UsersController < ApplicationController
 private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation) 
+    params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation)
   end
 
 end
