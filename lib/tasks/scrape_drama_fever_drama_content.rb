@@ -1,6 +1,6 @@
 require 'open-uri'
 
-class ScrapeDramaContent
+class ScrapeDramaFeverDramaContent
 
   def initialize(url)
     begin
@@ -74,7 +74,7 @@ class ScrapeDramaContent
   def add_content_to_db
     if @doc != false
       if scrape_image_url != nil
-        @drama = Drama.create!(name: scrape_name, poster: URI.parse("http:" + scrape_image_url))
+        @drama = Drama.create!(name: scrape_name, poster: URI.parse("https:" + scrape_image_url))
       else
         @drama = Drama.create!(name: scrape_name)
       end
