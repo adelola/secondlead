@@ -71,8 +71,10 @@ class ScrapeDramaFeverDramaContent
     end
   end
 
-  def scrape_cast
-    @doc.search('.actor-info h4 > a').map { |element| element.inner_text }
+  def scrape_cast_urls
+    @doc.search('.actor-info h4 > a').map { |element| element["href"] }.map do |url|
+        "https://www.dramafever.com/" + url
+    end
   end
 
   def scrape_genre
@@ -128,8 +130,11 @@ class ScrapeDramaFeverDramaContent
           drama_fever_url:  @url,
           language:         language
         )
-        scrape_genre.each do |genre|
-          @drama.genres.find_or_create_by(name: genre)
+        if scrape_genre.any?
+          scrape_genre.each do |name|
+            genre = Genre.where(name: name).first_or_create
+            DramaGenre.create(genre: genre, drama: @drama)
+          end
         end
         scrape_cast.each do |cast|
           @drama.casts.find_or_create_by(name: cast)
