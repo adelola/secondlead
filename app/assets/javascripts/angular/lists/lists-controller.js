@@ -8,20 +8,22 @@ angular
     'Gridster',
     'ListModel',
     'lists',
+    'top_five',
     '$scope',
     '$stateParams',
     '$uibModal',
     'UserModel',
-    function (Gridster,ListModel,lists,$scope, $stateParams, $uibModal, UserModel){
+    function (Gridster,ListModel,lists, top_five, $scope, $stateParams, $uibModal, UserModel){
     var ctrl = this;
     ctrl.items = lists;
+    ctrl.top_five = top_five;
     ctrl.userID = $stateParams.userID;
     var currentUser = UserModel.currentUser().id.toString();
 
     ctrl.authorized = function () {
       if ( ctrl.userID === currentUser) {
         return true
-      } 
+      }
     };
 
     var createList = function (listParams){
@@ -46,7 +48,7 @@ angular
     ctrl.removeItem = function (item){
       ctrl.items.splice(ctrl.items.indexOf(item),1);
     };
-    
+
     ctrl.gridsterOpts = Gridster.getOptions();
   }])
 

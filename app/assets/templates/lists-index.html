@@ -1,4 +1,29 @@
 <div>
+  <div gridster= "list.gridsterOpts">
+    <div gridster-item="drama" ng-repeat= "drama in lists.top_five" ng-cloak>
+      <md-content layout="row" layout-wrap layout-align="center start" layout-xs="column">
+        <div flex-xs="100" layout="column">
+          <md-card>
+            <a ui-sref="drama({dramaID: drama.id})">
+              <img src="{{drama.image_url}}" alt="{{drama.poster_file_name}}">
+            </a>
+            <md-card-title>
+              <md-card-title-text>
+                <a ui-sref="drama({dramaID: drama.id})">
+                  {{drama.name}}
+                </a>
+                {{drama.release_date}}
+              </md-card-title-text>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center" ng-if="list.authorized()">
+              <delete-drama drama="drama" remove-item= "list.removeItem(drama)" list="{{list.id}}" user="{{list.userID}}"> </delete-drama>
+            </md-card-actions>
+          </md-card>
+        </div>
+      </md-content>
+    </div>
+  </div>
+
   <h2 ng-cloak>
     Lists
     <md-button class="add-list" ng-if="lists.authorized()" ng-click="lists.showModal()"><i class="fa fa-plus fa-1x"></i></md-button>

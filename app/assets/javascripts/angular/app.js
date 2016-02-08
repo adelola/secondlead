@@ -120,6 +120,9 @@ angular
           resolve: {
             lists: ['user', function (user){
               return user["lists"];
+            }],
+            top_five: ['user', function (user){
+              return user["top_five"];
             }]
           }
         })
