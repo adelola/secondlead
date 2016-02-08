@@ -1,4 +1,4 @@
-(4630..4631).each do |num|
+(4861..4861).each do |num|
   ScrapeDramaFeverDramaContent.new("https://www.dramafever.com/drama/#{num}")
 end
 

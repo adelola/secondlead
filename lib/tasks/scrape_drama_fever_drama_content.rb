@@ -14,9 +14,8 @@ class ScrapeDramaFeverDramaContent
         raise e
       end
     end
+    binding.pry
     add_content_to_db
-    # @doc   = Nokogiri::HTML(open(url))
-    # add_content_to_db
   end
 
   def scrape_name
@@ -25,7 +24,7 @@ class ScrapeDramaFeverDramaContent
 
   def scrape_non_english_name
     if @doc.search('.info-card h3 > span').map { |element| element.inner_text }[1] != nil
-      @doc.search('.info-card h3 > span').map { |element| element.inner_text }[1].gsub(/[()]/, "")
+      @doc.search('.info-card h3 > span').map { |element| element.inner_text }[1].gsub(/[()]/, "").gsub(/\s+/, "")
     else
       nil
     end
@@ -34,6 +33,14 @@ class ScrapeDramaFeverDramaContent
   def scrape_episode_count
     if @doc.search('.quickview').map { |element| element.inner_text }[0] != nil
       @doc.search('.quickview').map { |element| element.inner_text }[0].gsub(/[a-z\-|]/i, "").slice(2..3)
+    else
+      nil
+    end
+  end
+
+  def scrape_network
+    if @doc.search('.quickview').map { |element| element.inner_text }[0] != nil
+      @doc.search('.quickview').map { |element| element.inner_text }[0].split("|")[1].strip
     else
       nil
     end
@@ -48,8 +55,8 @@ class ScrapeDramaFeverDramaContent
   end
 
   def scrape_plot
-    if @doc.search('.short-descrip > p').map { |element| element.inner_text }[0] != nil
-      @doc.search('.short-descrip > p').map { |element| element.inner_text }[0].strip
+    if @doc.search('.synopsis').map { |element| element.inner_text }[0] != nil
+      @doc.search('.synopsis').map { |element| element.inner_text }[0].strip
     else
       nil
     end
@@ -71,6 +78,14 @@ class ScrapeDramaFeverDramaContent
     @doc.search('.theme-list li > a').map { |element| element.inner_text }
   end
 
+  def find_drama
+    Drama.find_by_non_english_name(scrape_non_english_name)
+  end
+
+  def is_in_database?
+    find_drama.nil?
+  end
+
   def add_content_to_db
     if @doc != false
       if scrape_image_url != nil
@@ -82,7 +97,8 @@ class ScrapeDramaFeverDramaContent
         non_english_name: scrape_non_english_name,
         episode_count:    scrape_episode_count,
         release_date:     scrape_release_date,
-        plot:             scrape_plot
+        plot:             scrape_plot,
+        network:          scrape_network
       )
       scrape_genre.each do |genre|
         @drama.genres.find_or_create_by(name: genre)
