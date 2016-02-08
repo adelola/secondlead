@@ -34,7 +34,7 @@ class ScrapeVikiDramaContent
       contents = @doc.search('.dl-horizontal > dd').map { |element| element.inner_text }
 
       if /original title/i =~ header
-        @original_title = contents[index]
+        @original_title = contents[index].gsub(/\s+/, "")
       elsif /romanized title/i =~ header
         @romanized_title = contents[index]
       elsif /Also known as/i =~ header

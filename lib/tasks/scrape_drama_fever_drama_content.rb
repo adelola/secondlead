@@ -14,6 +14,7 @@ class ScrapeDramaFeverDramaContent
         raise e
       end
     end
+    @url = url
     binding.pry
     add_content_to_db
   end
@@ -88,23 +89,28 @@ class ScrapeDramaFeverDramaContent
 
   def add_content_to_db
     if @doc != false
-      if scrape_image_url != nil
-        @drama = Drama.create!(name: scrape_name, poster: URI.parse("https:" + scrape_image_url))
+      if is_in_database?
+        find_drama.update(drama_fever_url: @url)
       else
-        @drama = Drama.create!(name: scrape_name)
-      end
-      @drama.update_attributes(
-        non_english_name: scrape_non_english_name,
-        episode_count:    scrape_episode_count,
-        release_date:     scrape_release_date,
-        plot:             scrape_plot,
-        network:          scrape_network
-      )
-      scrape_genre.each do |genre|
-        @drama.genres.find_or_create_by(name: genre)
-      end
-      scrape_cast.each do |cast|
-        @drama.casts.find_or_create_by(name: cast)
+        if scrape_image_url != nil
+          @drama = Drama.create!(name: scrape_name, poster: URI.parse("https:" + scrape_image_url))
+        else
+          @drama = Drama.create!(name: scrape_name)
+        end
+        @drama.update_attributes(
+          non_english_name: scrape_non_english_name,
+          episode_count:    scrape_episode_count,
+          release_date:     scrape_release_date,
+          plot:             scrape_plot,
+          network:          scrape_network,
+          drama_fever_url:  @url
+        )
+        scrape_genre.each do |genre|
+          @drama.genres.find_or_create_by(name: genre)
+        end
+        scrape_cast.each do |cast|
+          @drama.casts.find_or_create_by(name: cast)
+        end
       end
     end
   end
