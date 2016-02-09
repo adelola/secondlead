@@ -14,7 +14,6 @@ class ScrapeDramaFeverCastContent
         raise e
       end
     end
-
     @drama = drama
     @dob = nil
     @blood_type = nil
@@ -22,7 +21,6 @@ class ScrapeDramaFeverCastContent
     @weight = nil
     @height = nil
     @star_sign = nil
-    scrape_info
     add_content_to_db
   end
 
@@ -31,39 +29,46 @@ class ScrapeDramaFeverCastContent
     now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
   end
 
+  def scrape_name
+    if @doc.search('.actor-stat-box h3').map { |element| element.inner_text }[0] != nil
+      @doc.search('.actor-stat-box h3').map { |element| element.inner_text }[0].strip
+    else
+      nil
+    end
+  end
+
   def scrape_info
-    @doc.search('.dl-horizontal > dt').map { |element| element.inner_text }.each_with_index do |header, index|
-      contents = @doc.search('.dl-horizontal > dd').map { |element| element.inner_text }
-      if (/born/i =~ header) == 0
-        @dob = Date.parse(contents[index].split("(").first)
+    @doc.search('.actor-vitals > li').map { |element| element.inner_text }.each do |stat|
+      if stat =~ /birth/i
+        @dob = Date.parse(stat.split(":")[1])
         @age = age(@dob)
-      elsif (/blood type/i =~ header) == 0
-        @blood_type = contents[index]
-      elsif (/star sign/i =~ header) == 0
-        @star_sign = contents[index]
-      elsif (/height/i =~ header) == 0
-        @height = contents[index]
-      elsif (/weight/i =~ header) == 0
-        @weight = contents[index]
+      elsif stat =~ /height/i
+        @height = stat.split(":")[1]
+      elsif stat =~ /weight/i
+        @weight = stat.split(":")[1]
       end
     end
   end
 
-  def scrape_name
-    @doc.search('.display-2').map { |element| element.inner_text }[0].strip
+  def scrape_star_sign
+    @doc.search('.stat-zodiac > img').map { |element| element['title'] }[0]
   end
 
-  def scrape_non_english_name
-    if @doc.search('.billboard-desc-title').map { |element| element.inner_text }[0] != nil
-      @doc.search('.billboard-desc-title').map { |element| element.inner_text }[0].strip
+  def scrape_star_sign
+    @doc.search('.stat-btype').map { |element| element.inner_text }[0]
+  end
+
+  def scrape_dob
+    if @doc.search('.actor-vitals > li').map { |element| element.inner_text }[0] != nil
+      @doc.search('.actor-stat-box h3').map { |element| element.inner_text }[0].strip
     else
       nil
     end
   end
 
   def scrape_image_url
-    if @doc.search('.billboard-image > img').map { |element| element['srcset'] }[0] != nil
-      @doc.search('.billboard-image > img').map { |element| element['srcset'] }[0].split(",").last.split(" ")[0].strip
+    if @doc.search('.keyart > img').map { |element| element['src'] }[0] != nil
+      "https:" + @doc.search('.keyart > img').map { |element| element['src'] }[0]
     else
       nil
     end

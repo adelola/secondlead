@@ -1,4 +1,4 @@
-(4861..4861).each do |num|
+(1374..1374).each do |num|
   ScrapeDramaFeverDramaContent.new("https://www.dramafever.com/drama/#{num}")
 end
 
@@ -9,3 +9,4 @@ end
 #   end
 # end
 
+ScrapeDramaFeverCastContent.new("https://www.dramafever.com/chen-ivy/actor/3075/", Drama.last)
