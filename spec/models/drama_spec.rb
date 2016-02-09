@@ -14,12 +14,14 @@ RSpec.describe Drama, type: :model do
   end
 
   let!(:drama) { FactoryGirl.create(:drama, poster_file_name: 'not_a_real_poster.png') }
+  let!(:rating_one) { FactoryGirl.create(:rating, drama: drama) }
+  let!(:rating_two) { FactoryGirl.create(:rating, drama: drama, weight: 1) }
 
   it "fetches a drama" do
     expect(Drama.fetch.count).to eq(1)
   end
 
   it "returns array of its rating weights" do
-    expect(Drama.fetch.count).to eq(1)
+    expect(drama.all_ratings).to eq([5, 1])
   end
 end
