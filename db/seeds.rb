@@ -9,4 +9,3 @@ end
 #   end
 # end
 
-ScrapeDramaFeverCastContent.new("https://www.dramafever.com/chen-ivy/actor/3075/", Drama.last)

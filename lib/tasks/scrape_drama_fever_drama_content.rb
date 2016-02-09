@@ -137,9 +137,11 @@ class ScrapeDramaFeverDramaContent
             DramaGenre.create(genre: genre, drama: @drama)
           end
         end
-        # scrape_cast.each do |cast|
-        #   @drama.casts.find_or_create_by(name: cast)
-        # end
+        if scrape_cast_urls.any?
+          scrape_cast_urls.uniq.each do |url|
+            ScrapeDramaFeverCastContent.new(url, @drama)
+          end
+        end
       end
     end
   end
