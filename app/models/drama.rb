@@ -29,17 +29,8 @@ class Drama < ActiveRecord::Base
     ListDrama.new(drama: self, list: list)
   end
 
-  def add_image_url
-    self.image_url = self.poster.url
-    self
-  end
-
   def self.fetch
     sample = Drama.where.not(poster_file_name: nil).limit(100)
-    # sample_with_images = sample.map do |x|
-    #   x.add_image_url
-    # end
-    # sample_with_images
   end
 
   def avg_rating
@@ -54,5 +45,4 @@ class Drama < ActiveRecord::Base
       avg.round(1)
     end
   end
-
 end
