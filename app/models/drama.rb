@@ -33,16 +33,23 @@ class Drama < ActiveRecord::Base
     sample = Drama.where.not(poster_file_name: nil).limit(100)
   end
 
-  def avg_rating
-    all_ratings = self.ratings.map do |x|
-      x.weight
-    end
-    if all_ratings.count == 0
+  def all_ratings
+    self.ratings.map { |rating| rating.weight }
+  end
+
+  def all_ratings_size
+    all_ratings.size
+  end
+
+  def average_rating
+    all_ratings.compact.reduce(:+).to_f / all_ratings_size
+  end
+
+  def return_average_rating
+    if all_ratings_size == 0
       return 0
     else
-      all_ratings = all_ratings.compact
-      avg = all_ratings.reduce(:+).to_f / all_ratings.size
-      avg.round(1)
+      average_rating.round(1)
     end
   end
 end
