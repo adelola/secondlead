@@ -24,4 +24,8 @@ RSpec.describe Drama, type: :model do
   it "returns array of its rating weights" do
     expect(drama.all_ratings).to eq([5, 1])
   end
+
+  it "returns all_ratings size" do
+    expect(drama.all_ratings_size).to eq(2)
+  end
 end
