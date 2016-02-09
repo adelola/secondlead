@@ -5,7 +5,7 @@ class RatingsController < ApplicationController
 
   def index
     drama = Drama.find_by(id: params[:drama_id])
-    score = drama.avg_rating
+    score = drama.return_average_rating
     respond_with(score)
   end
 
@@ -51,7 +51,6 @@ class RatingsController < ApplicationController
   end
 
   private
-
     def set_rating
       @rating = Rating.find_by(id: params[:id])
     end
@@ -63,5 +62,4 @@ class RatingsController < ApplicationController
     def update_params
       params.permit(:weight)
     end
-
 end

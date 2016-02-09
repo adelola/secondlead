@@ -8,7 +8,7 @@ class DramasController < ApplicationController
   end
 
   def show
-    @drama = Drama.find_by(id: params[:id]).add_image_url
+    @drama = Drama.find_by(id: params[:id])
     @casts = @drama.casts
     respond_with(drama: @drama, casts: @casts)
   end
@@ -17,7 +17,6 @@ class DramasController < ApplicationController
     list = List.find_by(id: params[:list_id])
     drama = Drama.find_by(id: params[:id])
     if list.dramas.find_by(id: drama.id)
-      binding.pry
       render json: { message: "Drama is already in #{list.name}" }
     elsif list.name == 'Top Five' && list.dramas.count >= 5
       render json: { message: "You already have five dramas in your top 5" }
@@ -39,5 +38,4 @@ class DramasController < ApplicationController
       render json: { errors: "Oops, something went wrong." }
     end
   end
-
 end

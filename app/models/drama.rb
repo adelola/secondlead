@@ -29,30 +29,32 @@ class Drama < ActiveRecord::Base
     ListDrama.new(drama: self, list: list)
   end
 
+  def self.fetch
+    sample = Drama.where.not(poster_file_name: nil).limit(100)
+  end
+
   def add_image_url
     self.image_url = self.poster.url
     self
   end
 
-  def self.fetch
-    sample = Drama.where.not(poster_file_name: nil).limit(100)
-    # sample_with_images = sample.map do |x|
-    #   x.add_image_url
-    # end
-    # sample_with_images
+  def all_ratings
+    self.ratings.map { |rating| rating.weight }
   end
 
-  def avg_rating
-    all_ratings = self.ratings.map do |x|
-      x.weight
-    end
-    if all_ratings.count == 0
+  def all_ratings_size
+    all_ratings.size
+  end
+
+  def average_rating
+    all_ratings.compact.reduce(:+).to_f / all_ratings_size
+  end
+
+  def return_average_rating
+    if all_ratings_size == 0
       return 0
     else
-      all_ratings = all_ratings.compact
-      avg = all_ratings.reduce(:+).to_f / all_ratings.size
-      avg.round(1)
+      average_rating.round(1)
     end
   end
-
 end
