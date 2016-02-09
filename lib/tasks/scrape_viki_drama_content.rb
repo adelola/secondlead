@@ -20,6 +20,7 @@ class ScrapeVikiDramaContent
     @also_known_as = nil
     @network = nil
     @broadcast_period = nil
+    @release_date = nil
     @rating = nil
     scrape_info
     add_content_to_db
@@ -34,7 +35,7 @@ class ScrapeVikiDramaContent
       contents = @doc.search('.dl-horizontal > dd').map { |element| element.inner_text }
 
       if /original title/i =~ header
-        @original_title = contents[index]
+        @original_title = contents[index].gsub(/\s+/, "")
       elsif /romanized title/i =~ header
         @romanized_title = contents[index]
       elsif /Also known as/i =~ header
@@ -43,6 +44,7 @@ class ScrapeVikiDramaContent
         @network = contents[index]
       elsif /Broadcast Period/i =~ header
         @broadcast_period = contents[index]
+        @release_date = @broadcast_period[0..3]
       elsif /Rating/i =~ header
         @rating = contents[index]
       end
