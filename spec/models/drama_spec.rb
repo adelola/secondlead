@@ -13,10 +13,9 @@ RSpec.describe Drama, type: :model do
     DatabaseCleaner.clean
   end
 
-  it "adds itself to list" do
-    @drama = FactoryGirl.build(:drama, name: "test")
-    @list = FactoryGirl.build(:list, name: "test")
-    @drama.add_to_list
-    expect(@list).to include(@drama)
+  let!(:drama) { FactoryGirl.create(:drama, poster_file_name: 'not_a_real_poster.png') }
+
+  it "fetches drama" do
+    expect(Drama.fetch.count).to eq(1)
   end
 end
