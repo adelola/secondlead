@@ -22,10 +22,12 @@ RSpec.describe Review, type: :model do
     expect(review.rating).to eq(rating)
   end
 
-  # not currently working
-  # it "updates the review with new rating" do
-  #   rating.update(weight: 1)
-  #   rating.update_review
-  #   expect(review.rating_weight).to eq(1)
-  # end
+  it "has no rating weight" do
+    expect(review.rating_weight).to eq(nil)
+  end
+
+  it "updates the review with new rating" do
+    review.update_with_rating
+    expect(review.rating_weight).to eq(5)
+  end
 end
