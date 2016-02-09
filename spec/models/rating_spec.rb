@@ -13,12 +13,19 @@ RSpec.describe Rating, type: :model do
     DatabaseCleaner.clean
   end
 
-  let!(:drama_one) { FactoryGirl.create(:drama, poster_file_name: 'not_a_real_poster.png') }
-  let!(:drama_two) { FactoryGirl.create(:drama) }
-  let!(:rating_one) { FactoryGirl.create(:rating, drama: drama_one) }
-  let!(:rating_two) { FactoryGirl.create(:rating, drama: drama_one, weight: 1) }
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:drama) { FactoryGirl.create(:drama) }
+  let!(:review) { FactoryGirl.create(:review, drama: drama, reviewer: user) }
+  let!(:rating) { FactoryGirl.create(:rating, drama: drama, rater: user) }
 
-  it "fetches a drama" do
-    expect(Drama.fetch.count).to eq(1)
+  it "finds review" do
+    expect(rating.review).to eq(review)
   end
+
+  # not currently working
+  # it "updates the review with new rating" do
+  #   rating.update(weight: 1)
+  #   rating.update_review
+  #   expect(review.rating_weight).to eq(1)
+  # end
 end
