@@ -33,6 +33,11 @@ class Drama < ActiveRecord::Base
     sample = Drama.where.not(poster_file_name: nil).limit(100)
   end
 
+  def add_image_url
+    self.image_url = self.poster.url
+    self
+  end
+
   def all_ratings
     self.ratings.map { |rating| rating.weight }
   end
