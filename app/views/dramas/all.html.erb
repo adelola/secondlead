@@ -1,0 +1,21 @@
+<style type="text/css">
+</style>
+
+<table class="striped highlight">
+  <thead>
+    <tr>
+        <th data-field="id">Image</th>
+        <th data-field="name">Drama Name</th>
+        <th data-field="price">Cast</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @dramas.each do |drama| %>
+      <tr>
+        <td><%= image_tag drama.image_url %></td>
+        <td><%= drama.name %></td>
+        <td>$0.87</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
