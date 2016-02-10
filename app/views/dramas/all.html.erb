@@ -1,20 +1,32 @@
 <style type="text/css">
+  .drama {
+    width: 350px;
+  }
+  .cast {
+    width: 150px;
+  }
 </style>
 
-<table class="striped highlight">
+<table class="bordered highlight">
   <thead>
     <tr>
         <th data-field="id">Image</th>
         <th data-field="name">Drama Name</th>
+        <th data-field="name">Drama Plot</th>
         <th data-field="price">Cast</th>
     </tr>
   </thead>
   <tbody>
     <% @dramas.each do |drama| %>
       <tr>
-        <td><%= image_tag drama.image_url %></td>
+        <td><%= image_tag drama.image_url, class: 'drama' %></td>
         <td><%= drama.name %></td>
-        <td>$0.87</td>
+        <td><%= drama.plot %></td>
+        <td>
+          <% drama.casts.each do |cast| %>
+            <%= image_tag cast.image_url, class: 'cast' %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

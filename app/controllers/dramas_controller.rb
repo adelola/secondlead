@@ -2,7 +2,8 @@ class DramasController < ApplicationController
   respond_to :json, :html
 
   def all
-    @dramas = Drama.all
+    @dramas = Drama.all.order(:name)
+    render layout: 'all'
   end
 
   def index
