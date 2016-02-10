@@ -2,7 +2,7 @@ class DramasController < ApplicationController
   respond_to :json, :html
 
   def all
-    @dramas = Drama.all.order(:name)
+    @dramas = Drama.all.order(:non_english_name)
     render layout: 'all'
   end
 
