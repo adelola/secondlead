@@ -1,6 +1,10 @@
 class DramasController < ApplicationController
   respond_to :json, :html
 
+  def all
+    @dramas = Drama.all
+  end
+
   def index
     @dramas = Drama.fetch
     @genres = Genre.limit(20)
