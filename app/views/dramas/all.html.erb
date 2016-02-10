@@ -1,6 +1,6 @@
 <style type="text/css">
   .drama {
-    width: 350px;
+    width: 400px;
   }
   .cast {
     width: 150px;
@@ -17,9 +17,10 @@
   <thead>
     <tr>
         <th data-field="id">ID</th>
+        <th data-field="id">Delete</th>
         <th data-field="id">Image</th>
         <th data-field="name">Drama Name</th>
-        <th data-field="name">Drama Plot</th>
+        <th data-field="name">Drama Country</th>
         <th data-field="price" class="cast-column">Cast</th>
     </tr>
   </thead>
@@ -27,6 +28,8 @@
     <% @dramas.each do |drama| %>
       <tr>
         <td><%= drama.id %></td>
+        <td><%= button_to "delete", {:controller => :dramas,
+      :action => 'delete', :id => drama.id }, :method => :delete, form: {target: '_blank'} %></td>
         <td><%= image_tag drama.image_url, class: 'drama' %></td>
         <td><%= drama.name %> / <%= drama.non_english_name %></td>
         <td><%= drama.language %></td>

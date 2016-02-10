@@ -32,4 +32,5 @@ Rails.application.routes.draw do
   match 'relationships/find', to: 'relationships#find', via: 'get', :format => 'json'
 
   match '/all', to: 'dramas#all', via: 'get'
+  match '/delete', to: 'dramas#delete', via: 'delete'
 end
