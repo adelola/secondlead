@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="secondLead">
+  <head>
+    <title>Second Lead</title>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <%= stylesheet_link_tag    'application', media: 'all'%>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!--   <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css" rel="stylesheet">
+  </head>
+  <body ng-controller="MainCtrl as main">
+    <nav ng-cloak>
+      <md-content>
+        <md-toolbar>
+          <div class="md-toolbar-tools">
+            <h2>
+              <span>Second Lead</span>
+            </h2>
+            <md-button aria-label="Browse" ng-if="true" ui-sref='dramas'>
+              <a ui-sref-active="active">Browse</a>
+            </md-button>
+            <md-button aria-label="My Page" ng-if="main.currentUser" ui-sref='user.lists({userID: main.currentUser.id})'>
+              <a ui-sref-active="active">My Page</a>
+            </md-button>
+            <md-button aria-label="Logout" ng-if="main.loggedIn || main.currentUser">
+              <a ng-click="main.logout()">Logout</a>
+            </md-button>
+            <md-button aria-label="Register" ng-if="!main.loggedIn && !main.currentUser">
+              <a ui-sref='register' ui-sref-active="active">Sign Up</a>
+            </md-button>
+            <md-button aria-label="Login" ng-if="!main.loggedIn && !main.currentUser">
+              <a ui-sref='login' ui-sref-active="active">Log In</a>
+            </md-button>
+            <div class="search-box">
+              <form name="searchForm" id="search-form" role="form" ng-submit="main.submitSearch(main.query)">
+                <md-input-container>
+                  <label>Search</label>
+                  <auto-search query="main.query" show-search="main.showResults()">
+                </md-input-container>
+                <md-button type="submit" class="go">
+                  <i class="fa fa-search fa-1x"></i>
+                </md-button>
+              </form>
+            </div>
+          </div>
+        </md-toolbar>
+      </md-content>
+    </nav>
+    <section class="">
+      <ui-view></ui-view>
+      <%= yield %>
+    </section>
+  </body>
+</html>

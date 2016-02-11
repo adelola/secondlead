@@ -1,6 +1,17 @@
 class DramasController < ApplicationController
   respond_to :json, :html
 
+  def all
+    @dramas = Drama.all.order(:non_english_name)
+    render layout: 'all'
+  end
+
+  def delete
+    drama = Drama.find(params[:id])
+    drama.destroy
+    redirect_to all_path
+  end
+
   def index
     @dramas = Drama.fetch
     @genres = Genre.limit(20)

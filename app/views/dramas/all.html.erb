@@ -1,0 +1,44 @@
+<style type="text/css">
+  .drama {
+    width: 400px;
+  }
+  .cast {
+    width: 150px;
+  }
+  .cast-column {
+    width: 800px;
+  }
+  span {
+    display: inline-block;
+  }
+</style>
+
+<table class="bordered highlight">
+  <thead>
+    <tr>
+        <th data-field="id">ID</th>
+        <th data-field="id">Delete</th>
+        <th data-field="id">Image</th>
+        <th data-field="name">Drama Name</th>
+        <th data-field="name">Drama Country</th>
+        <th data-field="price" class="cast-column">Cast</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @dramas.each do |drama| %>
+      <tr>
+        <td><%= drama.id %></td>
+        <td><%= button_to "delete", {:controller => :dramas,
+      :action => 'delete', :id => drama.id }, :method => :delete, form: {target: '_blank'} %></td>
+        <td><%= image_tag drama.poster.url(:medium), class: 'drama' %></td>
+        <td><%= drama.name %> / <%= drama.non_english_name %></td>
+        <td><%= drama.language %></td>
+        <td class="cast-column row">
+          <% drama.casts.each do |cast| %>
+            <%= image_tag cast.picture.url(:thumb), class: 'cast s4' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
