@@ -36,6 +36,31 @@
       ctrl.blood_type        = cast.cast.blood_type;
       ctrl.dramas            = cast.dramas;
 
-      ctrl.gridsterOpts = Gridster.getOptions();
+      ctrl.gridsterOpts = {
+        columns: 4,
+        width: 'auto',
+        colWidth: 'auto',
+        rowHeight: 'match',
+        margins: [5, 5],
+        outerMargin: true,
+        isMobile: false,
+        mobileBreakPoint: 750,
+        mobileModeEnabled: true,
+        minColumns: 1,
+        minRows: 2,
+        maxRows: 100,
+        defaultSizeX: 1,
+        defaultSizeY: 1,
+        minSizeX: 1,
+        maxSizeX: null,
+        minSizeY: 1,
+        maxSizeY: null,
+        resizable: {
+           enabled: false
+        },
+        draggable: {
+           enabled: false
+        }
+      };
     }]);
 })();
