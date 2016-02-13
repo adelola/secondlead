@@ -1,5 +1,4 @@
 class CastsController < ApplicationController
-  before_action :set_cast, only: [:show]
   respond_to :json, :html
 
   def index
@@ -8,16 +7,15 @@ class CastsController < ApplicationController
   end
 
   def show
+    @cast     = Cast.find(params[:id])
+    @dramas   = @cast.dramas
+    @response = {cast: @cast, dramas: @dramas}
     respond_to do |format|
-      format.json { render json: @cast }
+      format.json { render json: @response }
     end
   end
 
   private
-    def set_cast
-      @cast = Cast.find(params[:id])
-    end
-
     def cast_params
       params.require(:cast).permit(:name, :age)
     end
