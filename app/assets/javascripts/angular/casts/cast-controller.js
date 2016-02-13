@@ -5,9 +5,24 @@
     .module('secondLead')
 
     .controller('CastCtrl', [
-      'cast', 'Gridster',
-      function(cast, Gridster){
+      'cast',
+      'Gridster',
+      'UserModel',
+      'ListModel',
+      function(cast, Gridster, UserModel, ListModel){
       var ctrl = this;
+
+      ctrl.user = '';
+
+      var initialize = function () {
+        if (UserModel.currentUser()) {
+          ctrl.user = UserModel.currentUser();
+          ctrl.userLists = ListModel.currentUserLists(ctrl.user.id);
+        }
+      };
+      initialize();
+
+      ctrl.selectedList = {};
 
       ctrl.image_url         = cast.cast.image_url;
       ctrl.picture_file_name = cast.cast.picture_file_name;
