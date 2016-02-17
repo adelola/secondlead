@@ -6,10 +6,17 @@ angular
 
   .factory('DramaModel',['Restangular', function (Restangular){
      var baseDramas = Restangular.all('dramas');
+     function extract (result){
+       return result.data;
+     };  
 
      return {
 
       getAll: baseDramas.getList().$object,
+
+      getSome: function (genre){
+        return $http.get('/dramas/filter', {params: {genre: genre}}).then(extract);
+      },
 
       getOne: function (dramaID){
         return Restangular.one('dramas', dramaID).get()
