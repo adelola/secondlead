@@ -1,17 +1,18 @@
-<div class="search-filter">
-  <span uib-dropdown on-toggle="toggled(open)">
-      <a href id="genre-dropdown" uib-dropdown-toggle>
-        Genre
-      </a>
-      <ul uib-dropdown-menu aria-labelledby="genre-dropdown">
-        <li ng-repeat="choice in items">
-          <a href>{{choice}}</a>
-        </li>
-      </ul>
-  </span>
-</div>
-
 <div ng-controller= "DramasCtrl as dramas">
+  
+  <div class="search-filter">
+    <span uib-dropdown on-toggle="toggled(open)">
+        <a href id="genre-dropdown" uib-dropdown-toggle>
+          Genre
+        </a>
+        <ul uib-dropdown-menu aria-labelledby="genre-dropdown">
+          <li ng-repeat="choice in items">
+            <a href>{{choice}}</a>
+          </li>
+        </ul>
+    </span>
+  </div>
+
   <div class="clearfix">
     <dir-pagination-controls boundary-links="true" template-url="/dirPagination.html"> </dir-pagination-controls>
   </div>
