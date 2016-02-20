@@ -13,4 +13,14 @@ class SearchController < ApplicationController
     end
   end
 
+  def filter
+    genre = Genre.where(name: params[:genre])
+    @results = genre.dramas
+    if @results 
+      respond_with(@results)
+    else
+      render json: { errors: "Oops, something went wrong." }
+    end
+  end
+
 end
