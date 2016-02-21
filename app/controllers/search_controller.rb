@@ -14,7 +14,7 @@ class SearchController < ApplicationController
   end
 
   def filter
-    genre = Genre.where(name: params[:genre])
+    genre = Genre.where(name: params[:genre]).first
     @results = genre.dramas
     if @results 
       respond_with(@results)
