@@ -39,6 +39,7 @@
 //= require_tree ./angular/users
 //= require_tree .
 
+//= require isteven-multi-select
 
 // require modernizr.custom
 
