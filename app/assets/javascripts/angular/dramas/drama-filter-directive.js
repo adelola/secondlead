@@ -14,12 +14,19 @@ angular.module('secondLead')
         {name: "Idol", ticked: false}, 
         {name: "Melodrama", ticked: false}, 
         {name: "Mystery", ticked: false}, 
-        {name: "Romance", ticked: false}, 
         {name: "Supernatural", ticked: false}, 
         {name: "Thriller", ticked: false} 
       ];
 
+      scope.countryItems = [
+        {name: "China", ticked: false}, 
+        {name: "Japan", ticked: false}, 
+        {name: "Korea", ticked: false}, 
+        {name: "Taiwan", ticked: false}
+      ];
+
       scope.selectedGenres = [];
+      scope.selectedCountries = [];
 	  }
 	}
 }])

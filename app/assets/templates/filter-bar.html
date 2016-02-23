@@ -1,4 +1,4 @@
-
+<form action="#">
   <div     
     isteven-multi-select
     input-model="genreItems"
@@ -9,3 +9,19 @@
     helper-elements="none"
     output-properties="name">
   Genre </div>
+
+   <div     
+    isteven-multi-select
+    input-model="countryItems"
+    output-model="selectedCountries"
+    button-label="name"
+    item-label="name"
+    tick-property="ticked"
+    helper-elements="none"
+    output-properties="name">
+  Country </div>
+
+
+
+	<button>Filter</button>
+</form>
