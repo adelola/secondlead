@@ -27,6 +27,12 @@ angular.module('secondLead')
 
       scope.selectedGenres = [];
       scope.selectedCountries = [];
+
+      scope.filter = function () {
+        event.preventDefault();
+        console.log(scope.selectedGenres);
+        console.log(scope.selectedCountries);  
+      }
 	  }
 	}
 }])
