@@ -4,21 +4,21 @@ angular.module('secondLead')
   	  restrict: 'E',
   	  templateUrl:'filter-bar.html',
   	  scope: {
-  	  
+        items: "="
   	  },
 	  link: function (scope, element, attrs) {
       scope.genreItems = [
-        {name: "Action", ticked: false},
-        {name: "Comedy", ticked: false}, 
-        {name: "Historical", ticked: false}, 
-        {name: "Idol", ticked: false}, 
-        {name: "Melodrama", ticked: false}, 
-        {name: "Mystery", ticked: false}, 
-        {name: "Supernatural", ticked: false}, 
-        {name: "Thriller", ticked: false} 
+        {name: "Action", value: "action", ticked: false},
+        {name: "Comedy", value: "comedy", ticked: false}, 
+        {name: "Historical", value: "historical", ticked: false}, 
+        {name: "Idol", value: "idol", ticked: false}, 
+        {name: "Melodrama", value: "melodrama", ticked: false}, 
+        {name: "Mystery", value: "mystery", ticked: false}, 
+        {name: "Supernatural", value: "supernatural", ticked: false}, 
+        {name: "Thriller", value: "thriller", ticked: false} 
       ];
 
-      scope.countryItems = [
+      scope.countryItem = [
         {name: "China", ticked: false}, 
         {name: "Japan", ticked: false}, 
         {name: "Korea", ticked: false}, 
@@ -26,13 +26,17 @@ angular.module('secondLead')
       ];
 
       scope.selectedGenres = [];
-      scope.selectedCountries = [];
+      scope.selectedCountry = [];
 
       scope.filter = function () {
         event.preventDefault();
-        console.log(scope.selectedGenres);
-        console.log(scope.selectedCountries);  
-      }
+        DramaModel.getSome(scope.selectedGenres, scope.selectedCountry)
+          .then( function(result){
+            console.log(result.dramas);
+            scope.items = result.dramas; 
+        });
+        
+      };
 	  }
 	}
 }])

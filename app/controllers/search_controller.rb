@@ -14,10 +14,21 @@ class SearchController < ApplicationController
   end
 
   def filter
-    genre = Genre.where(name: params[:genre]).first
-    @results = genre.dramas
+    # country =  params[:country][0][:name]
+    if genres = params[:genres].map {|x| x[:value]}
+      dramas = genres.map do |genre|
+        Genre.find_by(name: genre).dramas
+      end
+      @results = dramas.inject(:&)
+      if country =  params[:country][0][:name]
+        @results = @results.select { |drama| drama.language == country}
+      end
+    elsif country && !genres
+      @results = Drama.where(language: country)
+    end
+
     if @results 
-      respond_with(@results)
+       render json: { dramas: @results}
     else
       render json: { errors: "Oops, something went wrong." }
     end

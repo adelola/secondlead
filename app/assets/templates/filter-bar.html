@@ -7,18 +7,19 @@
     item-label="name"
     tick-property="ticked"
     helper-elements="none"
-    output-properties="name">
+    output-properties="value">
   Genre </div>
 
    <div     
     isteven-multi-select
-    input-model="countryItems"
-    output-model="selectedCountries"
+    input-model="countryItem"
+    output-model="selectedCountry"
     button-label="name"
     item-label="name"
     tick-property="ticked"
     helper-elements="none"
-    output-properties="name">
+    output-properties="name"
+    selection-mode="single">
   Country </div>
 
   <button ng-click="filter()">Filter</button>
