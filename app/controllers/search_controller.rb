@@ -14,24 +14,33 @@ class SearchController < ApplicationController
   end
 
   def filter
-    # country =  params[:country][0][:name]
-    if genres = params[:genres].map {|x| x[:value]}
+    if params[:genres] 
+      genres = params[:genres].map {|x| x[:value]}
+    end
+    if params[:country]
+      country =  params[:country][0][:name]
+    end
+
+    if genres
       dramas = genres.map do |genre|
         Genre.find_by(name: genre).dramas
       end
       @results = dramas.inject(:&)
-      if country =  params[:country][0][:name]
+      if country
         @results = @results.select { |drama| drama.language == country}
       end
     elsif country && !genres
       @results = Drama.where(language: country)
+    else
+      @results = Drama.fetch
     end
 
     if @results 
        render json: { dramas: @results}
     else
-      render json: { errors: "Oops, something went wrong." }
+      render json: { message: "No results found" }
     end
+
   end
 
 end
