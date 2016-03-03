@@ -1,5 +1,5 @@
 <form action="#">
-  <div     
+  <div id="genre-filter"     
     isteven-multi-select
     input-model="genreItems"
     output-model="selectedGenres"
@@ -10,7 +10,7 @@
     output-properties="value">
   Genre </div>
 
-   <div     
+   <div id="country-filter"    
     isteven-multi-select
     input-model="countryItem"
     output-model="selectedCountry"
@@ -22,5 +22,5 @@
     selection-mode="single">
   Country </div>
 
-  <button ng-click="filter()">Filter</button>
+  <button id="filter-button" ng-click="filter()">Filter</button>
 </form>

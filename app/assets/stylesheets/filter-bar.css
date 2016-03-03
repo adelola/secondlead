@@ -1,6 +1,45 @@
 /* 
  * Don't modify things marked with ! - unless you know what you're doing
  */
+#genre-filter {
+  display: inline
+}
+
+#country-filter {
+  display: inline
+}
+
+#filter-button {
+    display: inline;
+    position: relative;
+    text-align: center;    
+    cursor: pointer;
+    border: 1px solid #c6c6c6;    
+    padding: 1px 8px 1px 8px;    
+    font-size: 14px;
+    min-height : 38px !important;
+    border-radius: 4px;
+    color: #555;   
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none; 
+    white-space:normal;
+    background-color: #fff;
+    background-image: linear-gradient(#fff, #f7f7f7);
+}
+
+#filter-button:hover {    
+    background-image: linear-gradient(#fff, #e9e9e9);    
+  }
+ 
+#filter-button:disabled {
+    background-image: linear-gradient(#fff, #fff);      
+    border: 1px solid #ddd;    
+    color: #999;
+  }
+
 
 /* ! vertical layout */
 .multiSelect .vertical {
@@ -33,7 +72,7 @@
 
 /* the multiselect button */
 .multiSelect > button {
-    display: inline;
+    display: inline-block;
     position: relative;
     text-align: center;    
     cursor: pointer;
