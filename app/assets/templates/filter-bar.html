@@ -1,0 +1,27 @@
+<form action="#">
+  <label>Genres</label>
+  <div id="genre-filter"     
+    isteven-multi-select
+    input-model="genreItems"
+    output-model="selectedGenres"
+    button-label="name"
+    item-label="name"
+    tick-property="ticked"
+    helper-elements="none"
+    output-properties="value">
+  </div>
+  <label>Country</label>
+   <div id="country-filter"    
+    isteven-multi-select
+    input-model="countryItem"
+    output-model="selectedCountry"
+    button-label="name"
+    item-label="name"
+    tick-property="ticked"
+    helper-elements="none"
+    output-properties="name"
+    selection-mode="single">
+  </div>
+
+  <button id="filter-button" ng-click="filter()">Filter</button>
+</form>

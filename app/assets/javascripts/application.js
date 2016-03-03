@@ -24,6 +24,7 @@
 //= require angular-material
 //= require a0-angular-storage
 //= require angularUtils-pagination
+//= require isteven-multi-select
 //= require lodash
 //= require angularUtils-disqus
 //= require restangular

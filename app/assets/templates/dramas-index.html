@@ -1,4 +1,9 @@
 <div ng-controller= "DramasCtrl as dramas">
+  
+  <div class="search-filter">
+    <dramas-filter items="dramas.items"> </dramas-filter>
+  </div>
+
   <div class="clearfix">
     <dir-pagination-controls boundary-links="true" template-url="/dirPagination.html"> </dir-pagination-controls>
   </div>

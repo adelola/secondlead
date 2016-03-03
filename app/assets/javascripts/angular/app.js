@@ -14,6 +14,7 @@ angular
     'ui.router',
     'xeditable',
     'ngMaterial',
+    'isteven-multi-select',
     'angularUtils.directives.dirDisqus' ])
 
   .config(['$httpProvider', 'jwtInterceptorProvider', function Config ($httpProvider, jwtInterceptorProvider) {
