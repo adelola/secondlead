@@ -1,5 +1,5 @@
 angular.module('secondLead')
-  .directive('dramaFilter', ['DramaModel', function (DramaModel) {
+  .directive('dramasFilter', ['DramaModel', function (DramaModel) {
   	return {
   	  restrict: 'E',
   	  templateUrl:'filter-bar.html',
@@ -32,7 +32,6 @@ angular.module('secondLead')
         event.preventDefault();
         DramaModel.getSome(scope.selectedGenres, scope.selectedCountry)
           .then( function(result){
-            console.log(result.dramas);
             scope.items = result.dramas; 
         });
         
