@@ -1,4 +1,5 @@
 <form action="#">
+  <label>Genres</label>
   <div id="genre-filter"     
     isteven-multi-select
     input-model="genreItems"
@@ -8,8 +9,8 @@
     tick-property="ticked"
     helper-elements="none"
     output-properties="value">
-  Genre </div>
-
+  </div>
+  <label>Country</label>
    <div id="country-filter"    
     isteven-multi-select
     input-model="countryItem"
@@ -20,7 +21,7 @@
     helper-elements="none"
     output-properties="name"
     selection-mode="single">
-  Country </div>
+  </div>
 
   <button id="filter-button" ng-click="filter()">Filter</button>
 </form>
