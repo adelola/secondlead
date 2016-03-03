@@ -36,4 +36,28 @@
       </table>
     </div>
   </div>
+  <div gridster= "cast.gridsterOpts">
+    <div gridster-item="drama" ng-repeat= "drama in cast.dramas" ng-cloak>
+      <md-content layout="row" layout-wrap layout-align="center start" layout-xs="column">
+        <div flex-xs="100" layout="column">
+          <md-card>
+            <a ui-sref="drama({dramaID: drama.id})">
+              <img src="{{drama.image_url}}" alt="{{drama.poster_file_name}}">
+            </a>
+            <md-card-title>
+              <md-card-title-text>
+                <a ui-sref="drama({dramaID: drama.id})">
+                  {{drama.name}}
+                </a>
+                {{drama.release_date}}
+              </md-card-title-text>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center" ng-if="cast.user">
+              <add-drama drama="drama" user="{{cast.user.id}}" user-lists="cast.userLists" selected-list="cast.selectedList"> </add-drama>
+            </md-card-actions>
+          </md-card>
+        </div>
+      </md-content>
+    </div>
+  </div>
 </section>
